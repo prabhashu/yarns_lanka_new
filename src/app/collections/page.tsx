@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -7,7 +8,7 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import SectionTitle from "@/components/ui/SectionTitle";
 import AnimatedSection from "@/components/ui/AnimatedSection";
-import { products } from "@/lib/products";
+import { products, colors } from "@/lib/products";
 import { ArrowRight, Sparkles } from "lucide-react";
 
 export default function Collections() {
@@ -54,51 +55,7 @@ export default function Collections() {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10 mt-16">
             {products.map((product, index) => (
-              <AnimatedSection 
-                key={product.id} 
-                delay={index * 0.15} 
-                direction="up" 
-                className="group flex flex-col h-full bg-white/5 backdrop-blur-md rounded-2xl overflow-hidden border border-white/10 hover:border-brand-gold/40 transition-all duration-500 shadow-xl"
-              >
-                <Link href={`/collections/${product.slug}`} className="flex flex-col h-full outline-none">
-                  
-                  {/* Image Container */}
-                  <div className="relative h-[320px] overflow-hidden w-full">
-                    <Image 
-                      src={product.image} 
-                      alt={product.name} 
-                      fill 
-                      className="object-cover transition-transform duration-700 group-hover:scale-110" 
-                    />
-                    <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500"></div>
-                    
-                    {/* Hover Overlay Button */}
-                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-brand-black/30 backdrop-blur-[2px]">
-                      <span className="font-sans text-xs uppercase tracking-[0.2em] text-white border border-white px-6 py-3 backdrop-blur-md bg-black/20 hover:bg-white hover:text-black transition-colors duration-300">
-                        View Details
-                      </span>
-                    </div>
-                  </div>
-                  
-                  {/* Content Container */}
-                  <div className="p-8 flex flex-col flex-grow bg-gradient-to-b from-transparent to-black/40">
-                    <h3 className="font-serif text-2xl text-white mb-3 group-hover:text-brand-gold transition-colors duration-300">
-                      {product.shortName}
-                    </h3>
-                    <p className="text-brand-grey-medium text-sm leading-relaxed mb-8 flex-grow">
-                      {product.description.substring(0, 90)}...
-                    </p>
-                    
-                    {/* Fake Footer Action */}
-                    <div className="flex items-center justify-between mt-auto pt-4 border-t border-white/10">
-                      <span className="font-sans text-xs uppercase tracking-widest text-brand-gold flex items-center gap-2 group-hover:translate-x-2 transition-transform duration-300">
-                        Explore <ArrowRight size={14} />
-                      </span>
-                      <span className="text-brand-grey-dark"><Sparkles size={14}/></span>
-                    </div>
-                  </div>
-                </Link>
-              </AnimatedSection>
+              <ProductCard key={product.id} product={product} index={index} />
             ))}
           </div>
           
@@ -125,5 +82,83 @@ export default function Collections() {
       
       <Footer />
     </>
+  );
+}
+
+function ProductCard({ product, index }: { product: any, index: number }) {
+  const [selectedColor, setSelectedColor] = useState(colors[0].name);
+  const currentImage = product.colorImages?.[selectedColor] || product.image;
+
+  // Render colors that are actually defined
+  const availableColors = product.colorImages ? colors.filter(c => product.colorImages?.[c.name]) : colors.slice(0, 1);
+  if (availableColors.length === 0) availableColors.push(colors[0]);
+
+  return (
+    <AnimatedSection 
+      delay={index * 0.15} 
+      direction="up" 
+      className="group flex flex-col h-full bg-white/5 backdrop-blur-md rounded-2xl overflow-hidden border border-white/10 hover:border-brand-gold/40 transition-all duration-500 shadow-xl"
+    >
+      <div className="relative h-[320px] overflow-hidden w-full">
+        <Link href={`/collections/${product.slug}`} className="block w-full h-full outline-none">
+          <Image 
+            src={currentImage} 
+            alt={product.name} 
+            fill 
+            className="object-cover transition-transform duration-700 group-hover:scale-110" 
+          />
+          <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500"></div>
+          
+          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-brand-black/30 backdrop-blur-[2px]">
+            <span className="font-sans text-xs uppercase tracking-[0.2em] text-white border border-white px-6 py-3 backdrop-blur-md bg-black/20 transition-colors duration-300 group-hover:bg-white group-hover:text-black">
+              View Details
+            </span>
+          </div>
+        </Link>
+      </div>
+      
+      <div className="p-8 pb-6 flex flex-col flex-grow bg-gradient-to-b from-transparent to-black/40">
+        <Link href={`/collections/${product.slug}`} className="outline-none">
+          <h3 className="font-serif text-2xl text-white mb-3 group-hover:text-brand-gold transition-colors duration-300">
+            {product.shortName}
+          </h3>
+          <p className="text-brand-grey-medium text-sm leading-relaxed flex-grow">
+            {product.description.substring(0, 90)}...
+          </p>
+        </Link>
+
+        {/* Color Change Option */}
+        <div className="mt-6 flex items-center gap-3">
+          {availableColors.map((color) => (
+            <button
+              key={color.name}
+              onClick={(e) => {
+                e.preventDefault();
+                setSelectedColor(color.name);
+              }}
+              className={`w-7 h-7 rounded-full border transition-all duration-300 flex items-center justify-center p-[2px] ${
+                selectedColor === color.name 
+                  ? 'border-brand-gold translate-y-[-2px] shadow-[0_2px_8px_rgba(212,175,55,0.4)] scale-110' 
+                  : 'border-white/20 hover:border-white/50'
+              }`}
+              title={color.name}
+            >
+              <span 
+                className="w-full h-full rounded-full shadow-inner border border-black/20" 
+                style={{ backgroundColor: color.hex }}
+              ></span>
+            </button>
+          ))}
+        </div>
+        
+        {/* Fake Footer Action */}
+        <div className="flex items-center justify-between mt-6 pt-4 border-t border-white/10">
+          <Link href={`/collections/${product.slug}`} className="font-sans text-xs uppercase tracking-widest text-brand-gold flex items-center gap-2 group-hover:translate-x-2 transition-transform duration-300 outline-none">
+            Explore <ArrowRight size={14} />
+          </Link>
+          <span className="text-brand-grey-dark"><Sparkles size={14}/></span>
+        </div>
+      </div>
+    </AnimatedSection>
   );
 }

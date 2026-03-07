@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import Hero from "@/components/home/Hero";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import Button from "@/components/ui/Button";
@@ -23,102 +23,11 @@ import {
 } from "lucide-react";
 
 export default function Home() {
-  const heroRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: heroRef,
-    offset: ["start start", "end start"]
-  });
-
-  // Parallax effects
-  const yBg = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
-  const opacityText = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
-  const scaleText = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
-
   return (
     <>
       <Header />
-      
       <main className="w-full bg-brand-black overflow-hidden relative">
-        {/* Background glow effects */}
-        <div className="absolute top-1/4 -left-64 w-96 h-96 bg-brand-gold/10 rounded-full blur-[120px] pointer-events-none"></div>
-        <div className="absolute bottom-1/4 -right-64 w-96 h-96 bg-brand-gold/10 rounded-full blur-[120px] pointer-events-none"></div>
-
-        {/* --- HERO SECTION (Parallax) --- */}
-        <section ref={heroRef} className="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden">
-          <motion.div 
-            style={{ y: yBg }} 
-            className="absolute inset-0 w-full h-[120%]"
-          >
-            <Image 
-              src="https://i.pinimg.com/736x/98/34/c2/9834c2087a1f4907143188ff63e5e057.jpg" 
-              alt="Luxury KNIGHTS Bedding in a refined bedroom"
-              fill
-              priority
-              className="object-cover object-center"
-              unoptimized
-            />
-            {/* Darker gradient for better text contrast */}
-            <div className="absolute inset-0 bg-gradient-to-b from-brand-black/70 via-brand-black/40 to-brand-black"></div>
-          </motion.div>
-
-          <motion.div 
-            style={{ opacity: opacityText, scale: scaleText }}
-            className="relative z-10 text-center px-6 max-w-4xl mx-auto mt-20"
-          >
-            <motion.span 
-              initial={{ opacity: 0, letterSpacing: "0px" }}
-              animate={{ opacity: 1, letterSpacing: "8px" }}
-              transition={{ duration: 1.2, ease: "easeOut" }}
-              className="block font-sans text-brand-gold uppercase text-xs md:text-sm font-semibold mb-6 ml-2"
-            >
-              Yarns Lanka Presents
-            </motion.span>
-            
-            <motion.h1 
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.3 }}
-              className="heading-xl mb-6 drop-shadow-2xl"
-            >
-              Enduring Style for a <br className="hidden md:block"/>
-              <span className="italic text-brand-gold-light">Refined</span> Lifestyle
-            </motion.h1>
-            
-            <motion.p 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 1, delay: 0.6 }}
-              className="text-lg md:text-xl text-brand-grey-light mb-10 max-w-2xl mx-auto font-light"
-            >
-              Discover the most sought after Egyptian Cotton Bed Linen. Crafted with integrity, designed for luxury.
-            </motion.p>
-            
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.9 }}
-              className="flex flex-col sm:flex-row items-center justify-center gap-6"
-            >
-              <Button href="/collections" variant="primary" size="lg">
-                Shop the Collection
-              </Button>
-              <Button href="/contact" variant="glass" size="lg">
-                Partner With Us
-              </Button>
-            </motion.div>
-
-            {/* Scroll indicator */}
-            <motion.div 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 2, duration: 1 }}
-              className="absolute -bottom-32 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
-            >
-              <span className="text-xs uppercase tracking-widest text-brand-grey-medium font-semibold">Scroll</span>
-              <div className="w-[1px] h-12 bg-gradient-to-b from-brand-gold to-transparent animate-pulse"></div>
-            </motion.div>
-          </motion.div>
-        </section>
+        <Hero />
 
         {/* --- TRUST BANNER --- */}
         <section className="relative z-20 -mt-10 max-w-7xl mx-auto px-6">

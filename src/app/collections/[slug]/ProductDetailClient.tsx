@@ -17,9 +17,14 @@ import {
 import { ChevronDown, ArrowLeft, Ruler, Sparkles, Droplets } from "lucide-react";
 
 export default function ProductDetailClient({ product }: { product: Product }) {
+  const availableColors = product.colorImages ? colors.filter(c => product.colorImages?.[c.name]) : colors.slice(0, 1);
+  if (availableColors.length === 0) availableColors.push(colors[0]);
+
   const [selectedTc, setSelectedTc] = useState("300");
-  const [selectedColor, setSelectedColor] = useState(colors[0].name);
+  const [selectedColor, setSelectedColor] = useState(availableColors[0].name);
   const [isCareOpen, setIsCareOpen] = useState(false);
+
+  const currentImage = product.colorImages?.[selectedColor] || product.image;
 
   return (
     <>
@@ -39,7 +44,7 @@ export default function ProductDetailClient({ product }: { product: Product }) {
             <AnimatedSection direction="right" className="lg:col-span-6 lg:sticky lg:top-[120px]">
               <div className="relative w-full aspect-[4/5] rounded-3xl overflow-hidden mb-6 bg-brand-charcoal border border-white/5 group">
                 <Image 
-                  src={product.image} 
+                  src={currentImage} 
                   alt={product.name} 
                   fill 
                   priority
@@ -48,16 +53,32 @@ export default function ProductDetailClient({ product }: { product: Product }) {
                 <div className="absolute inset-0 shadow-[inset_0_0_100px_rgba(5,5,5,0.4)] pointer-events-none"></div>
               </div>
               
-              <div className="flex gap-4">
-                <div className="relative w-20 h-20 rounded-xl overflow-hidden cursor-pointer border-2 border-brand-gold">
-                  <Image src={product.image} alt="Thumbnail 1" fill className="object-cover" />
-                </div>
-                <div className="relative w-20 h-20 rounded-xl overflow-hidden cursor-pointer border-2 border-transparent hover:border-brand-gold/50 transition-colors">
-                  <Image src={product.image} alt="Thumbnail 2" fill className="object-cover opacity-70 hover:opacity-100" />
-                </div>
-                <div className="relative w-20 h-20 rounded-xl overflow-hidden cursor-pointer border-2 border-transparent hover:border-brand-gold/50 transition-colors">
-                  <Image src={product.image} alt="Thumbnail 3" fill className="object-cover opacity-70 hover:opacity-100" />
-                </div>
+              <div className="flex flex-wrap gap-4">
+                {availableColors.map((color) => {
+                  const isSelected = selectedColor === color.name;
+                  const thumbSrc = product.colorImages?.[color.name] || product.image;
+                  
+                  return (
+                    <div 
+                      key={color.name}
+                      onClick={() => setSelectedColor(color.name)}
+                      className={`relative w-20 h-20 rounded-xl overflow-hidden cursor-pointer border-2 transition-colors duration-300 ${
+                        isSelected 
+                          ? 'border-brand-gold shadow-[0_0_15px_rgba(212,175,55,0.3)]' 
+                          : 'border-transparent hover:border-brand-gold/50'
+                      }`}
+                    >
+                      <Image 
+                        src={thumbSrc} 
+                        alt={`${product.name} - ${color.name}`} 
+                        fill 
+                        className={`object-cover transition-opacity duration-300 ${
+                          isSelected ? 'opacity-100' : 'opacity-60 hover:opacity-100'
+                        }`} 
+                      />
+                    </div>
+                  );
+                })}
               </div>
             </AnimatedSection>
 
@@ -112,7 +133,7 @@ export default function ProductDetailClient({ product }: { product: Product }) {
                     <span className="text-sm font-serif italic text-brand-grey-medium">{selectedColor}</span>
                   </div>
                   <div className="flex flex-wrap gap-4">
-                    {colors.map((color) => (
+                    {availableColors.map((color) => (
                       <button 
                         key={color.name}
                         onClick={() => setSelectedColor(color.name)}

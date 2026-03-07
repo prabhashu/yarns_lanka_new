@@ -36,28 +36,28 @@ export default function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="glass-dark rounded-2xl p-8 md:p-12 shadow-2xl relative overflow-hidden group"
+            className="glass-dark rounded-2xl p-6 sm:p-8 md:p-12 shadow-2xl relative overflow-hidden group"
           >
             {/* Shimmer effect inside banner */}
             <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/5 to-transparent group-hover:animate-[shimmer_2s_infinite] pointer-events-none"></div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-4 divide-y md:divide-y-0 md:divide-x divide-white/10">
               <div className="flex flex-col items-center text-center px-4 pt-4 md:pt-0">
-                <Leaf className="text-brand-gold mb-4" size={32} strokeWidth={1.5} />
-                <h3 className="text-white font-sans uppercase tracking-widest text-sm font-semibold mb-2">100% Organic</h3>
-                <p className="text-brand-grey-medium text-sm">Finest Egyptian Cotton</p>
+                <Leaf className="text-brand-gold mb-3 md:mb-4" size={32} strokeWidth={1.5} />
+                <h3 className="text-white font-sans uppercase tracking-widest text-xs md:text-sm font-semibold mb-2">100% Organic</h3>
+                <p className="text-brand-grey-medium text-xs md:text-sm">Finest Egyptian Cotton</p>
               </div>
               
-              <div className="flex flex-col items-center text-center px-4 pt-8 md:pt-0">
-                <ShieldCheck className="text-brand-gold mb-4" size={32} strokeWidth={1.5} />
-                <h3 className="text-white font-sans uppercase tracking-widest text-sm font-semibold mb-2">ISO 9001:2015</h3>
-                <p className="text-brand-grey-medium text-sm">Certified facility operations</p>
+              <div className="flex flex-col items-center text-center px-4 pt-6 md:pt-0">
+                <ShieldCheck className="text-brand-gold mb-3 md:mb-4" size={32} strokeWidth={1.5} />
+                <h3 className="text-white font-sans uppercase tracking-widest text-xs md:text-sm font-semibold mb-2">ISO 9001:2015</h3>
+                <p className="text-brand-grey-medium text-xs md:text-sm">Certified facility operations</p>
               </div>
               
-              <div className="flex flex-col items-center text-center px-4 pt-8 md:pt-0">
-                <Globe2 className="text-brand-gold mb-4" size={32} strokeWidth={1.5} />
-                <h3 className="text-white font-sans uppercase tracking-widest text-sm font-semibold mb-2">Global Reach</h3>
-                <p className="text-brand-grey-medium text-sm">Residential & Hospitality</p>
+              <div className="flex flex-col items-center text-center px-4 pt-6 md:pt-0">
+                <Globe2 className="text-brand-gold mb-3 md:mb-4" size={32} strokeWidth={1.5} />
+                <h3 className="text-white font-sans uppercase tracking-widest text-xs md:text-sm font-semibold mb-2">Global Reach</h3>
+                <p className="text-brand-grey-medium text-xs md:text-sm">Residential & Hospitality</p>
               </div>
             </div>
           </motion.div>
@@ -90,7 +90,7 @@ export default function Home() {
               </div>
             </AnimatedSection>
 
-            <AnimatedSection direction="left" className="relative h-[600px] w-full rounded-2xl overflow-hidden group">
+            <AnimatedSection direction="left" className="relative h-[300px] sm:h-[400px] md:h-[600px] w-full rounded-2xl overflow-hidden group">
               <Image 
                 src="/product-sheets.png" 
                 alt="Detailed fabric texture by Yarns Lanka" 
@@ -121,7 +121,7 @@ export default function Home() {
           <div className="absolute top-0 w-full h-px bg-gradient-to-r from-transparent via-brand-gold/50 to-transparent"></div>
           
           <div className="container mx-auto px-6">
-            <div className="flex flex-col md:flex-row justify-between items-end mb-16">
+            <div className="flex flex-col md:flex-row md:justify-between items-start md:items-end gap-6 md:gap-0 mb-10 md:mb-16">
               <SectionTitle 
                 subtitle="The Knights Portfolio"
                 title="Curated Thread Counts"
@@ -140,7 +140,7 @@ export default function Home() {
                 <AnimatedSection 
                   key={col.tc} 
                   delay={index * 0.2} 
-                  className="group relative h-[450px] rounded-xl overflow-hidden cursor-pointer"
+                  className="group relative h-[320px] sm:h-[350px] md:h-[450px] rounded-xl overflow-hidden cursor-pointer"
                 >
                   <Image src={col.img} alt={col.name} fill className="object-cover transition-transform duration-700 group-hover:scale-110" />
                   
@@ -190,7 +190,7 @@ export default function Home() {
               <AnimatedSection 
                 key={idx} 
                 delay={idx * 0.1} 
-                className="glass-panel p-8 rounded-xl hover:-translate-y-2 transition-transform duration-300 relative overflow-hidden group"
+                className="glass-panel p-6 sm:p-8 rounded-xl hover:-translate-y-2 transition-transform duration-300 relative overflow-hidden group"
               >
                 {/* Hover Glow */}
                 <div className="absolute -inset-2 bg-gradient-to-r from-brand-gold/0 via-brand-gold/20 to-brand-gold/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl"></div>
@@ -225,11 +225,11 @@ export default function Home() {
                 Yarns Lanka supports scalable production for wholesale buyers, interior designers, and hospitality partners globally. Let us bring your vision to life with precision manufacturing.
               </p>
               
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-                <Button href="/contact" variant="primary" size="lg">
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mt-8">
+                <Button href="/contact" variant="primary" size="lg" className="w-full sm:w-auto">
                   Partner With Us
                 </Button>
-                <div className="flex items-center gap-3 text-brand-grey-medium font-sans text-sm tracking-wider uppercase">
+                <div className="flex items-center gap-3 text-brand-grey-medium font-sans text-xs sm:text-sm tracking-wider uppercase">
                   <CheckCircle2 className="text-brand-gold" size={20} />
                   <span>Custom Sizing Available</span>
                 </div>

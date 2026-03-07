@@ -39,7 +39,7 @@ export default function SectionTitle({
 
   return (
     <motion.div 
-      className={`mb-12 ${centered ? 'text-center flex flex-col items-center' : ''}`}
+      className={`mb-6 md:mb-12 ${centered ? 'text-center flex flex-col items-center w-full' : 'w-full md:w-auto'}`}
       variants={containerVariants}
       initial="hidden"
       whileInView="visible"

@@ -47,6 +47,16 @@ git commit -m "Describe your changes here"
 git push origin main
 ```
 
+## 📜 Contributing & Update History
+When updating the site or adding new features, please ensure you clearly document your changes in your commit messages. This helps maintain a clean history of what has been updated on the website over time.
+
+Example update history from recent changes:
+- Improved and redesigned the website's mobile responsiveness.
+- Added premium aesthetic animations and layout structures.
+- Converted styling to use custom, dynamic designs.
+
+If you are a new developer contributing to the project, please ensure you consult with the core maintainers before pushing significant architectural changes.
+
 ## �🛠️ Tech Stack
 - **Framework:** [Next.js](https://nextjs.org) (App Router)
 - **Styling:** [Tailwind CSS](https://tailwindcss.com)

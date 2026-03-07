@@ -62,11 +62,11 @@ export const products: Product[] = [
         ],
         colorImages: {
             "White": "https://i.pinimg.com/1200x/66/d8/84/66d884e46b302834ff565f00a4fdc3e5.jpg",
-            "Blue": "https://i.pinimg.com/1200x/cd/66/03/cd6603a1154c3757bf5cabd1d06bdebd.jpg",
-            "Grey": "https://i.pinimg.com/1200x/5a/a8/9e/5aa89e92ffbb47c87c2fb2faac6c459c.jpg",
-            "Peach": "https://i.pinimg.com/1200x/8c/fb/8e/8cfb8e05a5b2ab5be1a70ffaa9d99723.jpg",
-            "Bronze": "https://i.pinimg.com/1200x/72/7e/65/727e65161fe0df4fcc02f232ce3de2db.jpg",
-            "Cream": "https://i.pinimg.com/1200x/ef/e0/ab/efe0abac012da7df783cb0d0b0b8c6bb.jpg"
+            "Blue": "https://i.pinimg.com/1200x/cd/e2/15/cde2150ab9db6c98493c7dc61a33b033.jpg",
+            "Grey": "https://i.pinimg.com/1200x/4d/b0/d0/4db0d0810c948bd8fa3ffc67e52cf0e0.jpg",
+            "Peach": "https://i.pinimg.com/1200x/5e/96/6b/5e966b8a36f059da4775449e8b399341.jpg",
+            "Bronze": "https://i.pinimg.com/1200x/d1/7f/4d/d17f4d180584e888e0a9eb8f6f451fd7.jpg",
+            "Cream": "https://i.pinimg.com/736x/08/cd/ad/08cdad4681a2d620c7a565de430038ae.jpg"
         }
     },
     {

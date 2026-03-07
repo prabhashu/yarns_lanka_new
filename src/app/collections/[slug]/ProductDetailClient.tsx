@@ -14,15 +14,17 @@ import {
   careInstructions, 
   colors 
 } from "@/lib/products";
-import { ChevronDown, ArrowLeft, Ruler, Sparkles, Droplets } from "lucide-react";
+import { ChevronDown, ArrowLeft, Ruler, Sparkles, Droplets, X } from "lucide-react";
 
 export default function ProductDetailClient({ product }: { product: Product }) {
   const availableColors = product.colorImages ? colors.filter(c => product.colorImages?.[c.name]) : colors.slice(0, 1);
   if (availableColors.length === 0) availableColors.push(colors[0]);
 
   const [selectedTc, setSelectedTc] = useState("300");
+  const [selectedSize, setSelectedSize] = useState(product.sizes[0].name);
   const [selectedColor, setSelectedColor] = useState(availableColors[0].name);
   const [isCareOpen, setIsCareOpen] = useState(false);
+  const [isSizeGuideOpen, setIsSizeGuideOpen] = useState(false);
 
   const currentImage = product.colorImages?.[selectedColor] || product.image;
 
@@ -126,6 +128,34 @@ export default function ProductDetailClient({ product }: { product: Product }) {
                   </div>
                 </div>
 
+                {/* Size Selector and Guide Link */}
+                <div className="mb-8 border-t border-white/5 pt-6">
+                  <div className="flex justify-between items-baseline mb-4">
+                    <span className="font-sans text-xs font-bold uppercase tracking-widest text-white">Size</span>
+                    <button 
+                      onClick={() => setIsSizeGuideOpen(true)} 
+                      className="text-xs font-serif italic text-brand-grey-medium underline hover:text-brand-gold transition-colors"
+                    >
+                      View Size Guide
+                    </button>
+                  </div>
+                  <div className="flex flex-wrap gap-3">
+                    {product.sizes.map((size) => (
+                      <button 
+                        key={size.name}
+                        onClick={() => setSelectedSize(size.name)}
+                        className={`px-4 py-2 border rounded-lg transition-all duration-300 font-sans text-sm ${
+                          selectedSize === size.name 
+                            ? 'border-brand-gold text-brand-gold bg-brand-gold/10 shadow-[0_0_10px_rgba(212,175,55,0.1)]' 
+                            : 'border-white/10 text-brand-grey-medium hover:border-white/40 hover:text-white'
+                        }`}
+                      >
+                        {size.name}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
                 {/* Color Selector */}
                 <div>
                   <div className="flex justify-between items-baseline mb-4">
@@ -188,33 +218,6 @@ export default function ProductDetailClient({ product }: { product: Product }) {
                   </ul>
                 </div>
 
-                {/* Size Guide Table */}
-                <div>
-                  <h4 className="font-sans text-sm tracking-widest uppercase text-white mb-4 flex items-center gap-3">
-                    <Ruler className="text-brand-gold" size={18} /> Size Guide (Australian Market)
-                  </h4>
-                  <p className="text-xs text-brand-grey-dark font-serif italic mb-6">* Sizes can be customized upon request.</p>
-                  
-                  <div className="overflow-x-auto rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm">
-                    <table className="w-full text-left text-sm">
-                      <thead className="bg-white/5 border-b border-white/10 font-sans tracking-widest text-brand-gold uppercase text-xs">
-                        <tr>
-                          <th className="p-5 font-semibold">Size</th>
-                          <th className="p-5 font-semibold">Dimensions {product.slug === 'bed-linen-set' ? '(Included)' : '(cm)'}</th>
-                        </tr>
-                      </thead>
-                      <tbody className="divide-y divide-white/5 text-brand-grey-light">
-                        {product.sizes.map((size) => (
-                          <tr key={size.name} className="hover:bg-white/5 transition-colors">
-                            <td className="p-5">{size.name}</td>
-                            <td className="p-5">{size.dimensions}</td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-
                 {/* Care Instructions Accordion */}
                 <div className="border-t border-b border-white/10">
                   <button 
@@ -254,6 +257,62 @@ export default function ProductDetailClient({ product }: { product: Product }) {
             </AnimatedSection>
           </div>
         </div>
+
+        {/* Modal: Size Guide */}
+        <AnimatePresence>
+          {isSizeGuideOpen && (
+            <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+              <motion.div 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                onClick={() => setIsSizeGuideOpen(false)}
+                className="absolute inset-0 bg-black/80 backdrop-blur-sm"
+              />
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.95, y: 20 }}
+                className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto bg-brand-charcoal border border-brand-gold/30 rounded-3xl p-8 z-10 shadow-2xl"
+              >
+                <button 
+                  onClick={() => setIsSizeGuideOpen(false)}
+                  className="absolute top-6 right-6 text-brand-grey-dark hover:text-white transition-colors"
+                  aria-label="Close size guide"
+                >
+                  <X size={24} />
+                </button>
+                
+                <div className="text-center mb-8">
+                  <Ruler className="text-brand-gold mx-auto mb-4" size={32} />
+                  <h3 className="font-serif text-3xl text-white mb-2">Size Guide</h3>
+                  <p className="text-brand-grey-medium font-serif italic">Australian Market Standards</p>
+                </div>
+
+                <div className="overflow-x-auto rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm">
+                  <table className="w-full text-left text-sm">
+                    <thead className="bg-white/5 border-b border-white/10 font-sans tracking-widest text-brand-gold uppercase text-xs">
+                      <tr>
+                        <th className="p-5 font-semibold">Size</th>
+                        <th className="p-5 font-semibold">Dimensions {product.slug === 'bed-linen-set' ? '(Included)' : '(cm)'}</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-white/5 text-brand-grey-light">
+                      {product.sizes.map((size) => (
+                        <tr key={size.name} className="hover:bg-white/5 transition-colors">
+                          <td className="p-5">{size.name}</td>
+                          <td className="p-5">{size.dimensions}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+                
+                <p className="text-xs text-brand-grey-dark font-serif italic mt-6 text-center">* Sizes can be customized upon request.</p>
+              </motion.div>
+            </div>
+          )}
+        </AnimatePresence>
       </main>
       
       <Footer />

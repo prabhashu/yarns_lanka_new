@@ -53,7 +53,7 @@ export default function Hero() {
   return (
     <section
       ref={containerRef}
-      className="relative h-[100vh] md:h-[110vh] min-h-[600px] md:min-h-[700px] flex items-center justify-center overflow-hidden bg-brand-black"
+      className="relative h-[100svh] min-h-[500px] md:h-[110vh] md:min-h-[700px] flex items-center justify-center overflow-hidden bg-brand-black"
     >
       {/* Dynamic Background Image */}
       <motion.div
@@ -94,10 +94,10 @@ export default function Hero() {
         <div className="overflow-hidden mb-8 w-full px-4">
           <motion.h1
             variants={revealVariants}
-            className="text-4xl md:text-7xl lg:text-8xl font-serif text-white leading-[1.1] md:leading-[0.9] tracking-tight"
+            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-serif text-white leading-[1.1] md:leading-[0.9] tracking-tight pb-2"
           >
             Enduring Style for a <br className="hidden md:block" />
-            <span className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-brand-gold-light via-brand-gold to-brand-gold-dark italic pr-6">
+            <span className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-brand-gold-light via-brand-gold to-brand-gold-dark italic pr-2 md:pr-6">
               Refined
             </span>{" "}
             Lifestyle
@@ -116,12 +116,12 @@ export default function Hero() {
         {/* CTA Buttons */}
         <motion.div
           variants={itemVariants}
-          className="flex flex-col sm:flex-row items-center gap-6"
+          className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 mt-4 w-full sm:w-auto px-4"
         >
-          <Button href="/collections" variant="primary" size="lg" className="min-w-[200px] shadow-[0_0_30px_rgba(212,175,55,0.2)]">
+          <Button href="/collections" variant="primary" size="lg" className="w-full sm:w-auto min-w-[200px] shadow-[0_0_30px_rgba(212,175,55,0.2)]">
             Explore Collections
           </Button>
-          <Button href="/contact" variant="glass" size="lg" className="min-w-[200px]">
+          <Button href="/contact" variant="glass" size="lg" className="w-full sm:w-auto min-w-[200px]">
            Partner With Us
           </Button>
         </motion.div>

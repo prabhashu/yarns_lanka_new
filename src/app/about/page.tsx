@@ -50,8 +50,8 @@ export default function About() {
         </section>
 
         {/* --- WHO WE ARE (Dark Split Grid) --- */}
-        <section className="section-padding container mx-auto px-6 relative z-20 -mt-20">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center glass-dark rounded-3xl p-8 lg:p-16 shadow-2xl border border-white/5">
+        <section className="section-padding container mx-auto px-6 relative z-20 -mt-10 md:-mt-20">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16 lg:gap-24 items-center glass-dark rounded-3xl p-6 md:p-8 lg:p-16 shadow-2xl border border-white/5">
             <AnimatedSection direction="right" className="space-y-6">
               <SectionTitle 
                 subtitle="The Company"
@@ -65,7 +65,7 @@ export default function About() {
               </p>
             </AnimatedSection>
             
-            <AnimatedSection direction="left" className="relative h-[500px] rounded-2xl overflow-hidden group">
+            <AnimatedSection direction="left" className="relative h-[300px] sm:h-[400px] md:h-[500px] rounded-2xl overflow-hidden group">
               <Image 
                 src="/hero-bedroom.png" 
                 alt="Luxury bedding by Yarns Lanka" 
@@ -78,7 +78,7 @@ export default function About() {
         </section>
 
         {/* --- WHAT WE DO (Light/Cream Split) --- */}
-        <section className="section-padding bg-brand-cream text-brand-black relative mt-32">
+        <section className="section-padding bg-brand-cream text-brand-black relative mt-20 md:mt-32">
           {/* Top curve detail */}
           <div className="absolute top-0 left-0 w-full overflow-hidden leading-none -mt-px">
             <svg className="relative block w-[calc(110%+1.3px)] h-[80px]" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" viewBox="0 0 1200 120">
@@ -86,9 +86,9 @@ export default function About() {
             </svg>
           </div>
 
-          <div className="container mx-auto px-6 mt-16">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center lg:flex-row-reverse">
-              <AnimatedSection direction="left" className="order-2 lg:order-1 relative h-[600px] rounded-2xl overflow-hidden shadow-2xl group">
+          <div className="container mx-auto px-6 mt-10 md:mt-16">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16 lg:gap-24 items-center lg:flex-row-reverse">
+              <AnimatedSection direction="left" className="order-2 lg:order-1 relative h-[300px] sm:h-[400px] md:h-[600px] rounded-2xl overflow-hidden shadow-2xl group">
                 <Image 
                   src="/product-sheets.png" 
                   alt="Close up of fabric weaving" 
@@ -127,8 +127,8 @@ export default function About() {
             centered
           />
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 mt-16 max-w-5xl mx-auto">
-            <AnimatedSection direction="up" delay={0.1} className="glass-panel p-10 lg:p-14 rounded-2xl relative overflow-hidden group">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 lg:gap-12 mt-10 md:mt-16 max-w-5xl mx-auto">
+            <AnimatedSection direction="up" delay={0.1} className="glass-panel p-8 md:p-10 lg:p-14 rounded-2xl relative overflow-hidden group">
                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-brand-gold to-transparent opacity-50 group-hover:opacity-100 transition-opacity duration-300"></div>
               <h3 className="font-sans text-xl tracking-[0.2em] uppercase text-white mb-6 flex items-center gap-4">
                 <span className="w-8 h-[1px] bg-brand-gold"></span>
@@ -139,7 +139,7 @@ export default function About() {
               </p>
             </AnimatedSection>
             
-            <AnimatedSection direction="up" delay={0.3} className="glass-panel p-10 lg:p-14 rounded-2xl relative overflow-hidden group">
+            <AnimatedSection direction="up" delay={0.3} className="glass-panel p-8 md:p-10 lg:p-14 rounded-2xl relative overflow-hidden group">
                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-brand-gold to-transparent opacity-50 group-hover:opacity-100 transition-opacity duration-300"></div>
               <h3 className="font-sans text-xl tracking-[0.2em] uppercase text-white mb-6 flex items-center gap-4">
                 <span className="w-8 h-[1px] bg-brand-gold"></span>
@@ -161,11 +161,11 @@ export default function About() {
               centered
             />
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-16 max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mt-10 md:mt-16 max-w-6xl mx-auto">
               
-              <AnimatedSection delay={0.1} className="glass-panel p-8 rounded-2xl group hover:border-brand-gold/40 transition-colors duration-500 lg:col-span-2 relative overflow-hidden">
+              <AnimatedSection delay={0.1} className="glass-panel p-6 md:p-8 rounded-2xl group hover:border-brand-gold/40 transition-colors duration-500 lg:col-span-2 relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-64 h-64 bg-brand-gold/10 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/4 group-hover:bg-brand-gold/20 transition-all duration-700"></div>
-                <div className="relative z-10 flex flex-col md:flex-row gap-8 items-start md:items-center">
+                <div className="relative z-10 flex flex-col md:flex-row gap-6 md:gap-8 items-start md:items-center">
                   <div className="w-16 h-16 rounded-2xl bg-brand-charcoal border border-white/10 flex items-center justify-center text-brand-gold shadow-[0_0_20px_rgba(212,175,55,0.15)] flex-shrink-0 group-hover:scale-110 transition-transform duration-500">
                     <Palette size={32} />
                   </div>
@@ -176,7 +176,7 @@ export default function About() {
                 </div>
               </AnimatedSection>
               
-              <AnimatedSection delay={0.2} className="glass-panel p-8 rounded-2xl group hover:border-brand-gold/40 transition-colors duration-500 relative overflow-hidden">
+              <AnimatedSection delay={0.2} className="glass-panel p-6 md:p-8 rounded-2xl group hover:border-brand-gold/40 transition-colors duration-500 relative overflow-hidden">
                  <div className="absolute bottom-0 right-0 w-32 h-32 bg-brand-gold/10 rounded-full blur-[50px] translate-y-1/2 translate-x-1/4 group-hover:bg-brand-gold/20 transition-all duration-700"></div>
                 <div className="relative z-10">
                   <div className="w-14 h-14 rounded-2xl bg-brand-charcoal border border-white/10 flex items-center justify-center text-brand-gold mb-6 shadow-[0_0_15px_rgba(212,175,55,0.1)] group-hover:scale-110 transition-transform duration-500">
@@ -187,7 +187,7 @@ export default function About() {
                 </div>
               </AnimatedSection>
               
-              <AnimatedSection delay={0.3} className="glass-panel p-8 rounded-2xl group hover:border-brand-gold/40 transition-colors duration-500 relative overflow-hidden">
+              <AnimatedSection delay={0.3} className="glass-panel p-6 md:p-8 rounded-2xl group hover:border-brand-gold/40 transition-colors duration-500 relative overflow-hidden">
                 <div className="absolute top-0 left-0 w-32 h-32 bg-brand-gold/10 rounded-full blur-[50px] -translate-y-1/2 -translate-x-1/4 group-hover:bg-brand-gold/20 transition-all duration-700"></div>
                 <div className="relative z-10">
                   <div className="w-14 h-14 rounded-2xl bg-brand-charcoal border border-white/10 flex items-center justify-center text-brand-gold mb-6 shadow-[0_0_15px_rgba(212,175,55,0.1)] group-hover:scale-110 transition-transform duration-500">
@@ -198,7 +198,7 @@ export default function About() {
                 </div>
               </AnimatedSection>
               
-              <AnimatedSection delay={0.4} className="glass-panel p-8 rounded-2xl group hover:border-brand-gold/40 transition-colors duration-500 relative overflow-hidden">
+              <AnimatedSection delay={0.4} className="glass-panel p-6 md:p-8 rounded-2xl group hover:border-brand-gold/40 transition-colors duration-500 relative overflow-hidden">
                  <div className="absolute bottom-0 left-0 w-32 h-32 bg-brand-gold/10 rounded-full blur-[50px] translate-y-1/2 -translate-x-1/4 group-hover:bg-brand-gold/20 transition-all duration-700"></div>
                 <div className="relative z-10">
                   <div className="w-14 h-14 rounded-2xl bg-brand-charcoal border border-white/10 flex items-center justify-center text-brand-gold mb-6 shadow-[0_0_15px_rgba(212,175,55,0.1)] group-hover:scale-110 transition-transform duration-500">
@@ -209,7 +209,7 @@ export default function About() {
                 </div>
               </AnimatedSection>
               
-              <AnimatedSection delay={0.5} className="glass-panel p-8 rounded-2xl group hover:border-brand-gold/40 transition-colors duration-500 relative overflow-hidden">
+              <AnimatedSection delay={0.5} className="glass-panel p-6 md:p-8 rounded-2xl group hover:border-brand-gold/40 transition-colors duration-500 relative overflow-hidden">
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-brand-gold/5 rounded-full blur-[60px] group-hover:bg-brand-gold/15 transition-all duration-700 pointer-events-none"></div>
                 <div className="relative z-10 shrink-0">
                   <div className="w-14 h-14 rounded-2xl bg-brand-charcoal border border-white/10 flex items-center justify-center text-brand-gold mb-6 shadow-[0_0_15px_rgba(212,175,55,0.1)] group-hover:scale-110 transition-transform duration-500">

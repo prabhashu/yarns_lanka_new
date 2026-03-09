@@ -15,7 +15,7 @@ export default function Home() {
   return (
     <>
       <Header />
-      <main className="w-full bg-white overflow-hidden relative">
+      <main className="w-full bg-white overflow-x-hidden relative">
         <Hero />
 
 

@@ -44,7 +44,7 @@ export default function AnimatedSection({
         x: 0, 
         y: 0 
       }}
-      viewport={{ once, margin: "-10%" }}
+      viewport={{ once, amount: 0.1 }}
       transition={{ 
         duration: 0.8, 
         delay: delay, 

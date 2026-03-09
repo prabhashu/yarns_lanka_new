@@ -72,7 +72,7 @@ export default function Hero() {
         <div className="absolute inset-0 bg-gradient-to-b from-brand-black/40 via-transparent to-brand-black/20"></div>
         <div className="absolute inset-0 bg-brand-black/20"></div>
         {/* Glass Grain Texture Overlay */}
-        <div className="absolute inset-0 opacity-[0.03] pointer-events-none mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
+        <div className="absolute inset-0 opacity-[0.03] pointer-events-none mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')] hidden md:block"></div>
       </motion.div>
 
       {/* Hero Content */}
@@ -162,8 +162,8 @@ export default function Hero() {
       </motion.div>
 
       {/* Decorative Elements */}
-      <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-brand-gold/5 blur-[120px] rounded-full -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
-      <div className="absolute bottom-0 left-0 w-1/3 h-1/3 bg-brand-gold/5 blur-[120px] rounded-full translate-y-1/2 -translate-x-1/2 pointer-events-none"></div>
+      <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-brand-gold/5 blur-[120px] rounded-full -translate-y-1/2 translate-x-1/2 pointer-events-none hidden md:block"></div>
+      <div className="absolute bottom-0 left-0 w-1/3 h-1/3 bg-brand-gold/5 blur-[120px] rounded-full translate-y-1/2 -translate-x-1/2 pointer-events-none hidden md:block"></div>
     </section>
   );
 }

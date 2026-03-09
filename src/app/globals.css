@@ -4,8 +4,8 @@
 
 @layer base {
   :root {
-    --background: #050505;
-    --foreground: #F5F0EB;
+    --background: #FFFFFF;
+    --foreground: #333333;
 
     --color-black: #050505;
     --color-charcoal: #1A1A1A;
@@ -19,6 +19,11 @@
     --color-medium-grey: #8A8A8A;
     --color-warm-grey: #6B6B6B;
     --color-dark-grey: #333333;
+
+    /* New accent colors */
+    --color-accent-sage: #9CAF88;
+    --color-accent-blush: #E8D3C8;
+    --color-accent-slate: #8A9A9D;
 
     --font-serif: "Playfair Display", serif;
     --font-sans: "Inter", sans-serif;
@@ -72,15 +77,15 @@
 
   /* Typography utilities for consistent headings */
   .heading-xl {
-    @apply font-serif text-5xl md:text-7xl leading-tight text-white tracking-wide;
+    @apply font-serif text-5xl md:text-7xl leading-tight text-brand-black tracking-wide;
   }
 
   .heading-lg {
-    @apply font-serif text-4xl md:text-5xl leading-tight text-white;
+    @apply font-serif text-4xl md:text-5xl leading-tight text-brand-black;
   }
 
   .heading-md {
-    @apply font-serif text-3xl md:text-4xl leading-snug text-white;
+    @apply font-serif text-3xl md:text-4xl leading-snug text-brand-black;
   }
 
   /* Layout wrappers */
@@ -90,11 +95,11 @@
 
   /* Glassmorphism helpers */
   .glass-panel {
-    @apply bg-white/5 backdrop-blur-md border border-white/10 shadow-2xl;
+    @apply bg-brand-cream/80 backdrop-blur-md border border-brand-accent-sage/30 shadow-2xl;
   }
 
   .glass-dark {
-    @apply bg-black/40 backdrop-blur-xl border border-white/5;
+    @apply bg-brand-charcoal/50 backdrop-blur-xl border border-black/10;
   }
 }
 
@@ -104,11 +109,11 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--color-black);
+  background: var(--color-off-white);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--color-dark-grey);
+  background: var(--color-medium-grey);
   border-radius: 5px;
 }
 

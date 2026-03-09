@@ -2,24 +2,29 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { useRef } from "react";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import SectionTitle from "@/components/ui/SectionTitle";
 import AnimatedSection from "@/components/ui/AnimatedSection";
 import { 
-  Palette, 
   Users, 
   Globe2, 
   Shield, 
-  Lightbulb
+  Lightbulb,
+  Factory,
+  Heart,
+  Sparkles
 } from "lucide-react";
 
 export default function About() {
+  const containerRef = useRef<HTMLDivElement>(null);
+
   return (
     <>
       <Header />
       
-      <main className="w-full bg-brand-black overflow-hidden relative">
+      <main ref={containerRef} className="w-full bg-brand-cream overflow-hidden relative">
         {/* --- PAGE HERO --- */}
         <section className="relative h-[45vh] min-h-[350px] flex items-center justify-center">
           <div className="absolute inset-0 w-full h-full z-0">
@@ -30,8 +35,9 @@ export default function About() {
               priority
               className="object-cover object-center"
             />
-            {/* Dark Cinematic Gradient */}
-            <div className="absolute inset-0 bg-gradient-to-t from-brand-black via-brand-black/60 to-black/80 z-10"></div>
+            {/* Dark Overlay Gradient */}
+            <div className="absolute inset-0 bg-gradient-to-b from-brand-black/40 via-transparent to-brand-black/20 z-10"></div>
+            <div className="absolute inset-0 bg-brand-black/20 z-10"></div>
           </div>
           
           <div className="relative z-20 text-center px-6 max-w-4xl mx-auto pt-20">
@@ -40,78 +46,110 @@ export default function About() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, ease: "easeOut" }}
             >
-              <h1 className="heading-xl mb-6">Our Story</h1>
+              <h1 className="heading-xl mb-6 text-white drop-shadow-md">Our Story</h1>
               <div className="h-[2px] w-16 bg-brand-gold mx-auto mb-8 opacity-80"></div>
-              <p className="text-xl md:text-2xl text-brand-gold-light font-serif italic max-w-2xl mx-auto px-4">
+              <p className="text-xl md:text-2xl text-brand-gold-dark font-serif italic max-w-2xl mx-auto px-4">
                 Building a future where timeless textiles bring joy, comfort, and sustainability.
               </p>
             </motion.div>
           </div>
         </section>
 
-        {/* --- WHO WE ARE (Dark Split Grid) --- */}
-        <section className="section-padding container mx-auto px-6 relative z-20 -mt-10 md:-mt-20">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16 lg:gap-24 items-center glass-dark rounded-3xl p-6 md:p-8 lg:p-16 shadow-2xl border border-white/5">
-            <AnimatedSection direction="right" className="space-y-6">
-              <SectionTitle 
-                subtitle="The Company"
-                title="Who We Are" 
-              />
-              <p className="text-xl text-brand-cream font-serif italic leading-relaxed">
-                <strong className="font-sans font-normal not-italic text-brand-gold">Yarns Lanka (Pvt) Ltd</strong> is a fabrics and textiles company committed to setting industry benchmarks in sustainable and ethical manufacturing.
-              </p>
-              <p className="text-brand-grey-medium leading-relaxed">
-                Built on strong partnerships, we bring together technology, responsibility, and craftsmanship under one organization. We are focused on long-term value creation, trust, and thoughtful growth across international markets.
-              </p>
-            </AnimatedSection>
-            
-            <AnimatedSection direction="left" className="relative h-[300px] sm:h-[400px] md:h-[500px] rounded-2xl overflow-hidden group">
-              <Image 
-                src="/hero-bedroom.png" 
-                alt="Luxury bedding by Yarns Lanka" 
-                fill 
-                className="object-cover transition-transform duration-700 group-hover:scale-105" 
-              />
-              <div className="absolute inset-0 shadow-[inset_0_0_100px_rgba(5,5,5,0.8)] pointer-events-none"></div>
-            </AnimatedSection>
+        {/* --- WHO WE ARE (Parallax Scroll) --- */}
+        <section className="relative bg-white py-24 z-20">
+          <div className="container mx-auto px-6">
+            <div className="flex flex-col md:flex-row justify-between items-end mb-16">
+              <AnimatedSection>
+                <SectionTitle 
+                  subtitle="The Company"
+                  title="Who We Are"
+                />
+              </AnimatedSection>
+              <AnimatedSection direction="left" delay={0.2} className="mt-8 md:mt-0 max-w-xl">
+                <p className="text-xl text-brand-charcoal/80 font-light leading-relaxed font-serif italic border-l-2 border-brand-gold pl-6">
+                  <strong className="text-brand-gold-dark not-italic font-sans">Yarns Lanka</strong> is a distinguished name in the Home Textiles industry, combining large-scale mastery with refined quality.
+                </p>
+              </AnimatedSection>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start mt-16">
+              <AnimatedSection direction="right" className="space-y-12">
+                <div>
+                  <h3 className="text-2xl font-serif text-brand-black mb-4 flex items-center gap-4">
+                    <span className="w-8 h-[1px] bg-brand-gold"></span> WE CHANGE THE GAME
+                  </h3>
+                  <p className="text-brand-charcoal/70 text-base leading-relaxed font-light mb-6">
+                    Nestled in the Pearl of the Indian Ocean Sri Lanka, Yarns Lanka is a distinguished name in the Home Textiles industry. Guided by foresight, integrity, and enduring partnerships, we combine large-scale mastery with refined quality.
+                  </p>
+                  <p className="text-brand-charcoal/70 text-base leading-relaxed font-light">
+                    Now stepping confidently into international markets, we bring refined home textiles that embody elegance, reliability, and timeless innovation.
+                  </p>
+                </div>
+                
+                <div>
+                  <h3 className="text-2xl font-serif text-brand-black mb-4 flex items-center gap-4">
+                    <span className="w-8 h-[1px] bg-brand-gold"></span> WE ARE IN THIS TOGETHER
+                  </h3>
+                  <p className="text-brand-charcoal/70 text-base leading-relaxed font-light">
+                    Our atmosphere reflects a clear identity while staying true to our core values, which are deeply rooted in our culture. As the brand grows, so does our team, giving people the freedom to express themselves and strive to create a positive impact that extends beyond business. We believe in putting people first—it is our touchstone, our point of reference, and our defining identity.
+                  </p>
+                </div>
+              </AnimatedSection>
+
+              <AnimatedSection direction="left" className="space-y-12">
+                <div className="relative h-[250px] md:h-[350px] rounded-3xl overflow-hidden group shadow-xl">
+                  <Image 
+                    src="/hero-bedroom.png" 
+                    alt="Luxury bedding by Yarns Lanka" 
+                    fill 
+                    className="object-cover transition-transform duration-[2s] group-hover:scale-105" 
+                  />
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-4">
+                  <div>
+                    <h3 className="text-xl font-serif text-brand-black mb-4">Commitment to Excellence</h3>
+                    <p className="text-brand-charcoal/70 text-sm leading-relaxed font-light">
+                      Excellence guides everything we do. Through disciplined processes, ethical practices, and unwavering attention to detail, we deliver enduring quality, inspire trust, and set new benchmarks in every endeavor.
+                    </p>
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-serif text-brand-black mb-4">Attracted to Positivity</h3>
+                    <p className="text-brand-charcoal/70 text-sm leading-relaxed font-light">
+                      We embrace positivity to make a meaningful impact. A change of perspective is all it takes to see the light, unlock new opportunities, and create solutions that transform challenges into lasting value.
+                    </p>
+                  </div>
+                </div>
+              </AnimatedSection>
+            </div>
           </div>
         </section>
 
-        {/* --- WHAT WE DO (Light/Cream Split) --- */}
-        <section className="section-padding bg-brand-cream text-brand-black relative mt-20 md:mt-32">
-          {/* Top curve detail */}
-          <div className="absolute top-0 left-0 w-full overflow-hidden leading-none -mt-px">
-            <svg className="relative block w-[calc(110%+1.3px)] h-[80px]" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" viewBox="0 0 1200 120">
-              <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" className="fill-brand-black"></path>
-            </svg>
+        {/* --- FORGING NEW HORIZONS (Cinematic Pan) --- */}
+        <section className="relative py-24 md:py-32 overflow-hidden rounded-t-[40px] md:rounded-t-[60px] -mt-8 mx-0 md:mx-4 z-30 bg-brand-cream border border-black/5">
+          <div className="absolute inset-0 z-0">
+             <Image 
+                src="/collection-overview.png" 
+                alt="Knights Bedding Layout" 
+                fill 
+                className="object-cover -scale-x-100 opacity-[0.15] mix-blend-multiply" 
+              />
           </div>
-
-          <div className="container mx-auto px-6 mt-10 md:mt-16">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16 lg:gap-24 items-center lg:flex-row-reverse">
-              <AnimatedSection direction="left" className="order-2 lg:order-1 relative h-[300px] sm:h-[400px] md:h-[600px] rounded-2xl overflow-hidden shadow-2xl group">
-                <Image 
-                  src="/product-sheets.png" 
-                  alt="Close up of fabric weaving" 
-                  fill 
-                  className="object-cover transition-transform duration-700 group-hover:scale-105" 
-                />
-              </AnimatedSection>
-
-              <AnimatedSection direction="right" className="order-1 lg:order-2 space-y-6">
-                <SectionTitle 
-                  subtitle="Our Expertise"
-                  title="What We Do" 
-                  light
-                />
-                <p className="text-xl text-brand-charcoal font-serif italic leading-relaxed">
-                  We design and manufacture a refined bed linen collection under our flagship brand <strong>KNIGHTS</strong>.
-                </p>
-                <div className="space-y-4 text-brand-grey-dark leading-relaxed">
-                  <p>
-                    Our collection balances designer sensibility with enduring simplicity — styles created to last beyond trends. Through Knights, we deliver premium bedding while sourcing quality raw materials and adding value through skilled local expertise.
+          
+          <div className="container mx-auto px-6 relative z-10">
+            <div className="max-w-5xl mx-auto text-center">
+              <AnimatedSection direction="up">
+                <span className="text-brand-gold font-sans tracking-[0.3em] text-sm md:text-base uppercase mb-6 block drop-shadow-sm">Evolution</span>
+                <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif text-brand-black leading-tight mb-12 drop-shadow-xl">
+                  FORGING <span className="italic text-brand-gold">NEW</span><br/> HORIZONS
+                </h2>
+                
+                <div className="bg-white/90 backdrop-blur-xl p-8 md:p-12 lg:p-16 rounded-[30px] shadow-[0_30px_60px_rgba(0,0,0,0.05)] border border-white space-y-6 relative group">
+                  <p className="text-brand-charcoal md:text-lg font-light leading-relaxed relative z-10">
+                    With KNIGHTS, we set out to redefine comfort and style while nurturing our communities and caring for the planet. Every step of our process is guided by responsibility, innovation, and a commitment to bridging gaps in quality and sustainability.
                   </p>
-                  <p>
-                    Our scalable production capacity serves wholesale buyers, designers, and international partners with precision.
+                  <p className="text-brand-charcoal md:text-lg font-light leading-relaxed relative z-10">
+                    Starting with sourcing the finest materials in Sri Lanka, we combine craftsmanship and technical expertise to create bedding that elevates everyday living. KNIGHTS reflects our vision of a seamless ecosystem where design, ethics, and quality come together to shape timeless, enduring products.
                   </p>
                 </div>
               </AnimatedSection>
@@ -119,107 +157,180 @@ export default function About() {
           </div>
         </section>
 
-        {/* --- MISSION & VISION (Cards) --- */}
-        <section className="section-padding container mx-auto px-6">
-          <SectionTitle 
-            subtitle="Our Purpose"
-            title="Mission & Vision"
-            centered
-          />
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 lg:gap-12 mt-10 md:mt-16 max-w-5xl mx-auto">
-            <AnimatedSection direction="up" delay={0.1} className="glass-panel p-8 md:p-10 lg:p-14 rounded-2xl relative overflow-hidden group">
-               <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-brand-gold to-transparent opacity-50 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <h3 className="font-sans text-xl tracking-[0.2em] uppercase text-white mb-6 flex items-center gap-4">
-                <span className="w-8 h-[1px] bg-brand-gold"></span>
-                Our Mission
-              </h3>
-              <p className="text-brand-grey-light text-lg leading-relaxed font-light">
-                To place design, people, and the planet at the heart of everything we do, creating timeless fabrics that inspire freedom of expression, empower people, and shape a sustainable future.
-              </p>
-            </AnimatedSection>
+        {/* --- WHAT WE DO (Staggered Floating Cards) --- */}
+        <section className="py-24 md:py-32 bg-white relative overflow-hidden">
+          {/* Background decoration */}
+          <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-brand-gold/5 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+          <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-brand-accent-sage/5 rounded-full blur-[80px] translate-y-1/2 -translate-x-1/2 pointer-events-none"></div>
+
+          <div className="container mx-auto px-6 relative z-10">
+            <div className="mb-20">
+              <AnimatedSection direction="up">
+                 <SectionTitle 
+                  subtitle="Capabilities"
+                  title="What We Do"
+                />
+                <div className="max-w-4xl border-l-4 border-brand-gold pl-6 md:pl-10 mt-8">
+                  <p className="text-2xl md:text-3xl text-brand-charcoal font-serif italic mb-6 leading-tight">
+                    &quot;We are a company with humanity at its core.&quot;
+                  </p>
+                  <p className="text-base md:text-lg text-brand-charcoal/70 font-light leading-relaxed">
+                    From environmentally responsible products to ethical workplace practices, we strive to protect the planet while building a better tomorrow. Our teams work collaboratively to solve customer challenges—addressing logistics, customization, and operational efficiency—while continuously exploring opportunities to expand a diverse, future-ready brand portfolio.
+                  </p>
+                </div>
+              </AnimatedSection>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16 md:mt-24">
+              <AnimatedSection direction="up" delay={0.1} className="h-full">
+                <div className="bg-brand-cream/50 h-full p-8 md:p-10 rounded-[30px] hover:bg-white hover:shadow-2xl hover:-translate-y-4 transition-all duration-500 border border-brand-black/5 hover:border-brand-gold/30 group">
+                  <div className="w-16 h-16 rounded-2xl bg-white border border-brand-black/5 flex items-center justify-center text-brand-gold mb-8 shadow-md group-hover:scale-110 transition-transform duration-500">
+                    <Heart size={28} strokeWidth={1.5} />
+                  </div>
+                  <h4 className="text-xl md:text-2xl font-serif text-brand-black mb-4">Designed Around Living</h4>
+                  <p className="text-brand-charcoal/70 font-light leading-relaxed text-base">
+                    Homes are living spaces that evolve with people and lifestyles. Our textiles are created to complement this evolution—bringing together comfort, functionality, and timeless aesthetics. Each fabric is thoughtfully designed to enrich everyday living while responding to global trends and changing consumer expectations.
+                  </p>
+                </div>
+              </AnimatedSection>
+
+              <AnimatedSection direction="up" delay={0.2} className="h-full md:translate-y-12">
+                <div className="bg-brand-cream/50 h-full p-8 md:p-10 rounded-[30px] hover:bg-white hover:shadow-2xl hover:-translate-y-4 transition-all duration-500 border border-brand-black/5 hover:border-brand-gold/30 group">
+                  <div className="w-16 h-16 rounded-2xl bg-white border border-brand-black/5 flex items-center justify-center text-brand-gold mb-8 shadow-md group-hover:scale-110 transition-transform duration-500">
+                    <Lightbulb size={28} strokeWidth={1.5} />
+                  </div>
+                  <h4 className="text-xl md:text-2xl font-serif text-brand-black mb-4">Shaping Tomorrow&apos;s Textiles</h4>
+                  <p className="text-brand-charcoal/70 font-light leading-relaxed text-base">
+                   We believe progress is driven by curiosity and collaboration. By exploring emerging yarn technologies, sustainable materials, and new design possibilities, we continue to push the boundaries of home textiles. Our ambition is to shape fabrics that not only meet the needs of today, but anticipate the homes of tomorrow.
+                  </p>
+                </div>
+              </AnimatedSection>
+
+              <AnimatedSection direction="up" delay={0.3} className="h-full md:translate-y-24">
+                <div className="bg-brand-cream/50 h-full p-8 md:p-10 rounded-[30px] hover:bg-white hover:shadow-2xl hover:-translate-y-4 transition-all duration-500 border border-brand-black/5 hover:border-brand-gold/30 group">
+                  <div className="w-16 h-16 rounded-2xl bg-white border border-brand-black/5 flex items-center justify-center text-brand-gold mb-8 shadow-md group-hover:scale-110 transition-transform duration-500">
+                    <Factory size={28} strokeWidth={1.5} />
+                  </div>
+                  <h4 className="text-xl md:text-2xl font-serif text-brand-black mb-4">Technology</h4>
+                  <p className="text-brand-charcoal/70 font-light leading-relaxed text-base">
+                    Our products are processed in-house through the latest machinery within an ISO 9001:2015 certified facility. With a dedicated strong workforce, we deliver mass-produced yet finely crafted yarns, featuring neat stitching, high-quality finish, and unique colors that ensure enduring beauty and performance in every creation.
+                  </p>
+                </div>
+              </AnimatedSection>
+            </div>
             
-            <AnimatedSection direction="up" delay={0.3} className="glass-panel p-8 md:p-10 lg:p-14 rounded-2xl relative overflow-hidden group">
-               <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-brand-gold to-transparent opacity-50 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <h3 className="font-sans text-xl tracking-[0.2em] uppercase text-white mb-6 flex items-center gap-4">
-                <span className="w-8 h-[1px] bg-brand-gold"></span>
-                Our Vision
-              </h3>
-              <p className="text-brand-grey-light text-lg leading-relaxed font-light">
-                We envision a future where timeless textiles bring joy and comfort, where we thrive together, and the planet is protected for generations to come.
-              </p>
-            </AnimatedSection>
+            {/* Spacer for staggered cards */}
+            <div className="h-0 md:h-24"></div>
           </div>
         </section>
 
-        {/* --- VALUES (Bento Grid) --- */}
-        <section className="section-padding bg-black/40 border-t border-white/5 relative">
-          <div className="container mx-auto px-6">
-            <SectionTitle 
-              subtitle="Core Principles"
-              title="Our Values" 
-              centered
-            />
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mt-10 md:mt-16 max-w-6xl mx-auto">
+        {/* --- MISSION & VISION (Massive Typography) --- */}
+        <section className="py-24 md:py-32 bg-brand-charcoal text-white relative overflow-hidden rounded-t-[40px] md:rounded-t-[60px] shadow-[0_-20px_50px_rgba(0,0,0,0.1)]">
+          {/* Background Text */}
+          <div className="absolute top-10 left-0 w-full overflow-hidden opacity-[0.02] pointer-events-none select-none">
+             <span className="text-[10rem] md:text-[15rem] font-serif font-bold whitespace-nowrap">PURPOSE PURPOSE</span>
+          </div>
+
+          <div className="container mx-auto px-6 relative z-10">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
+              <AnimatedSection direction="right">
+                <h3 className="text-brand-gold font-sans text-xs md:text-sm tracking-[0.4em] uppercase mb-8 flex items-center gap-4">
+                  <span className="w-8 h-[1px] bg-brand-gold"></span> MISSION
+                </h3>
+                <p className="text-2xl md:text-4xl font-serif leading-[1.3] text-white italic drop-shadow-lg">
+                  &quot;To enrich lives and inspire better lifestyles through timeless home textiles, <span className="text-brand-gold not-italic">one home at a time.</span>&quot;
+                </p>
+              </AnimatedSection>
               
-              <AnimatedSection delay={0.1} className="glass-panel p-6 md:p-8 rounded-2xl group hover:border-brand-gold/40 transition-colors duration-500 lg:col-span-2 relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-64 h-64 bg-brand-gold/10 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/4 group-hover:bg-brand-gold/20 transition-all duration-700"></div>
-                <div className="relative z-10 flex flex-col md:flex-row gap-6 md:gap-8 items-start md:items-center">
-                  <div className="w-16 h-16 rounded-2xl bg-brand-charcoal border border-white/10 flex items-center justify-center text-brand-gold shadow-[0_0_20px_rgba(212,175,55,0.15)] flex-shrink-0 group-hover:scale-110 transition-transform duration-500">
-                    <Palette size={32} />
+              <AnimatedSection direction="left" delay={0.2}>
+                <h3 className="text-brand-gold font-sans text-xs md:text-sm tracking-[0.4em] uppercase mb-8 flex items-center gap-4">
+                  <span className="w-8 h-[1px] bg-brand-gold"></span> VISION
+                </h3>
+                <p className="text-2xl md:text-4xl font-serif leading-[1.3] text-white italic drop-shadow-lg">
+                  &quot;To be the leading home-textiles brand, inspiring better lifestyles worldwide through <span className="text-brand-gold not-italic">trend-evolving products</span> in every home.&quot;
+                </p>
+              </AnimatedSection>
+            </div>
+          </div>
+        </section>
+
+        {/* --- VALUES (Dynamic Bento) --- */}
+        <section className="py-24 bg-brand-cream border-t border-black/5 relative">
+          <div className="container mx-auto px-6">
+            <AnimatedSection>
+               <SectionTitle 
+                subtitle="Core Principles"
+                title="Our Values" 
+                centered
+              />
+            </AnimatedSection>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 mt-16 max-w-7xl mx-auto">
+              
+              <AnimatedSection delay={0.1} className="col-span-1 md:col-span-2 bg-white backdrop-blur-md border border-black/5 shadow-lg p-8 md:p-12 rounded-[30px] group hover:border-brand-gold/30 transition-all duration-500 overflow-hidden relative">
+                <div className="absolute inset-0 bg-gradient-to-br from-brand-gold/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                <div className="relative z-10 flex flex-col md:flex-row gap-8 items-start md:items-center">
+                  <div className="w-16 h-16 rounded-full bg-brand-gold/10 flex items-center justify-center text-brand-gold shadow-md shrink-0">
+                    <Sparkles size={28} strokeWidth={1.5} />
                   </div>
                   <div>
-                    <h4 className="font-sans text-lg uppercase tracking-widest text-white mb-3">1. Creativity</h4>
-                    <p className="text-brand-grey-medium leading-relaxed max-w-lg">We are artists with a disciplined eye, and we lose fear because art is freedom.</p>
+                    <h4 className="font-sans text-xl uppercase tracking-widest text-brand-black mb-4">1. Inspired Living</h4>
+                    <p className="text-brand-charcoal/70 text-base leading-relaxed font-light">We inspire elevated living. By re-imagining the ordinary, we break conventional patterns to create thoughtful solutions that enrich lifestyles and promote better living worldwide.</p>
                   </div>
                 </div>
               </AnimatedSection>
               
-              <AnimatedSection delay={0.2} className="glass-panel p-6 md:p-8 rounded-2xl group hover:border-brand-gold/40 transition-colors duration-500 relative overflow-hidden">
-                 <div className="absolute bottom-0 right-0 w-32 h-32 bg-brand-gold/10 rounded-full blur-[50px] translate-y-1/2 translate-x-1/4 group-hover:bg-brand-gold/20 transition-all duration-700"></div>
-                <div className="relative z-10">
-                  <div className="w-14 h-14 rounded-2xl bg-brand-charcoal border border-white/10 flex items-center justify-center text-brand-gold mb-6 shadow-[0_0_15px_rgba(212,175,55,0.1)] group-hover:scale-110 transition-transform duration-500">
-                    <Users size={28} />
+              <AnimatedSection delay={0.2} className="col-span-1 bg-white backdrop-blur-md border border-black/5 shadow-lg p-8 md:p-10 rounded-[30px] group hover:border-brand-gold/30 transition-all duration-500 overflow-hidden relative">
+                <div className="absolute inset-0 bg-gradient-to-bl from-brand-gold/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                <div className="relative z-10 flex flex-col h-full justify-between">
+                  <div className="w-14 h-14 rounded-full bg-brand-gold/10 flex items-center justify-center text-brand-gold mb-8 shadow-md">
+                    <Users size={24} strokeWidth={1.5} />
                   </div>
-                  <h4 className="font-sans text-base uppercase tracking-widest text-white mb-3">2. People First</h4>
-                  <p className="text-brand-grey-medium text-sm leading-relaxed">We always strive to live by values, because it truly makes us human beings.</p>
+                  <div>
+                    <h4 className="font-sans text-lg uppercase tracking-widest text-brand-black mb-4">2. People First</h4>
+                    <p className="text-brand-charcoal/70 text-base leading-relaxed font-light">We place people at the heart of everything we do. Guided by strong values and integrity, we believe that honouring our principles defines us not only as a company, but as human beings.</p>
+                  </div>
                 </div>
               </AnimatedSection>
               
-              <AnimatedSection delay={0.3} className="glass-panel p-6 md:p-8 rounded-2xl group hover:border-brand-gold/40 transition-colors duration-500 relative overflow-hidden">
-                <div className="absolute top-0 left-0 w-32 h-32 bg-brand-gold/10 rounded-full blur-[50px] -translate-y-1/2 -translate-x-1/4 group-hover:bg-brand-gold/20 transition-all duration-700"></div>
-                <div className="relative z-10">
-                  <div className="w-14 h-14 rounded-2xl bg-brand-charcoal border border-white/10 flex items-center justify-center text-brand-gold mb-6 shadow-[0_0_15px_rgba(212,175,55,0.1)] group-hover:scale-110 transition-transform duration-500">
-                    <Globe2 size={28} />
+              <AnimatedSection delay={0.3} className="col-span-1 bg-white backdrop-blur-md border border-black/5 shadow-lg p-8 md:p-10 rounded-[30px] group hover:border-brand-gold/30 transition-all duration-500 overflow-hidden relative">
+                <div className="absolute inset-0 bg-gradient-to-tr from-brand-gold/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                <div className="relative z-10 flex flex-col h-full justify-between">
+                  <div className="w-14 h-14 rounded-full bg-brand-gold/10 flex items-center justify-center text-brand-gold mb-8 shadow-md">
+                    <Globe2 size={24} strokeWidth={1.5} />
                   </div>
-                  <h4 className="font-sans text-base uppercase tracking-widest text-white mb-3">3. Love Planet</h4>
-                  <p className="text-brand-grey-medium text-sm leading-relaxed">We protect the planet, because it provides enough to satisfy everyone&apos;s need.</p>
+                  <div>
+                    <h4 className="font-sans text-lg uppercase tracking-widest text-brand-black mb-4">3. Love Planet</h4>
+                    <p className="text-brand-charcoal/70 text-base leading-relaxed font-light">We are committed to safeguarding our planet, recognizing that it generously provides for all. By embracing sustainable practices and mindful stewardship, we ensure its resources are preserved.</p>
+                  </div>
                 </div>
               </AnimatedSection>
               
-              <AnimatedSection delay={0.4} className="glass-panel p-6 md:p-8 rounded-2xl group hover:border-brand-gold/40 transition-colors duration-500 relative overflow-hidden">
-                 <div className="absolute bottom-0 left-0 w-32 h-32 bg-brand-gold/10 rounded-full blur-[50px] translate-y-1/2 -translate-x-1/4 group-hover:bg-brand-gold/20 transition-all duration-700"></div>
-                <div className="relative z-10">
-                  <div className="w-14 h-14 rounded-2xl bg-brand-charcoal border border-white/10 flex items-center justify-center text-brand-gold mb-6 shadow-[0_0_15px_rgba(212,175,55,0.1)] group-hover:scale-110 transition-transform duration-500">
-                    <Shield size={28} />
+              <AnimatedSection delay={0.4} className="col-span-1 bg-white backdrop-blur-md border border-black/5 shadow-lg p-8 md:p-10 rounded-[30px] group hover:border-brand-gold/30 transition-all duration-500 overflow-hidden relative">
+                <div className="absolute inset-0 bg-gradient-to-t from-brand-gold/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                <div className="relative z-10 flex flex-col h-full justify-between">
+                  <div className="w-14 h-14 rounded-full bg-brand-gold/10 flex items-center justify-center text-brand-gold mb-8 shadow-md">
+                    <Shield size={24} strokeWidth={1.5} />
                   </div>
-                  <h4 className="font-sans text-base uppercase tracking-widest text-white mb-3">4. Honesty</h4>
-                  <p className="text-brand-grey-medium text-sm leading-relaxed">We act with honesty and integrity, because it is the highest form of intimacy.</p>
+                  <div>
+                    <h4 className="font-sans text-lg uppercase tracking-widest text-brand-black mb-4">4. Integrity</h4>
+                    <p className="text-brand-charcoal/70 text-base leading-relaxed font-light">We uphold the utmost honesty and integrity, recognizing it as the supreme expression of trust and human connection. In every decision and interaction, we remain steadfast to these principles.</p>
+                  </div>
                 </div>
               </AnimatedSection>
               
-              <AnimatedSection delay={0.5} className="glass-panel p-6 md:p-8 rounded-2xl group hover:border-brand-gold/40 transition-colors duration-500 relative overflow-hidden">
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-brand-gold/5 rounded-full blur-[60px] group-hover:bg-brand-gold/15 transition-all duration-700 pointer-events-none"></div>
-                <div className="relative z-10 shrink-0">
-                  <div className="w-14 h-14 rounded-2xl bg-brand-charcoal border border-white/10 flex items-center justify-center text-brand-gold mb-6 shadow-[0_0_15px_rgba(212,175,55,0.1)] group-hover:scale-110 transition-transform duration-500">
-                    <Lightbulb size={28} />
+              <AnimatedSection delay={0.5} className="col-span-1 bg-white backdrop-blur-md border border-black/5 shadow-lg p-8 md:p-10 rounded-[30px] group hover:border-brand-gold/30 transition-all duration-500 overflow-hidden relative">
+                <div className="absolute inset-0 bg-gradient-to-tl from-brand-gold/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                <div className="relative z-10 flex flex-col h-full justify-between">
+                  <div className="w-14 h-14 rounded-full bg-brand-gold/10 flex items-center justify-center text-brand-gold mb-8 shadow-md">
+                    <Lightbulb size={24} strokeWidth={1.5} />
                   </div>
-                  <h4 className="font-sans text-base uppercase tracking-widest text-white mb-3">5. Innovation</h4>
-                  <p className="text-brand-grey-medium text-sm leading-relaxed">We have a passion for innovation because there&apos;s always a way to do it better.</p>
+                  <div>
+                    <h4 className="font-sans text-lg uppercase tracking-widest text-brand-black mb-4">5. Innovation</h4>
+                    <p className="text-brand-charcoal/70 text-base leading-relaxed font-light">We are driven by a relentless passion for innovation, always seeking new ways to elevate excellence. Guided by creativity and vision, we continually explore opportunities to improve.</p>
+                  </div>
                 </div>
               </AnimatedSection>
-
             </div>
           </div>
         </section>

@@ -44,8 +44,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${playfair.variable} ${inter.variable} dark`}>
-      <body className="bg-brand-black text-brand-cream min-h-screen flex flex-col antialiased selection:bg-brand-gold selection:text-brand-black">
+    <html lang="en" className={`${playfair.variable} ${inter.variable} light`}>
+      <body className="bg-brand-cream text-brand-black min-h-screen flex flex-col antialiased selection:bg-brand-gold selection:text-white">
         {children}
       </body>
     </html>

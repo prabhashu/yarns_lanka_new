@@ -26,7 +26,7 @@ export default function Contact() {
     <>
       <Header />
       
-      <main className="w-full bg-brand-black min-h-screen relative overflow-hidden">
+      <main className="w-full bg-white min-h-screen relative overflow-hidden">
         {/* Background Gradients */}
         <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-brand-gold/5 rounded-full blur-[150px] -translate-y-1/2 translate-x-1/3 pointer-events-none"></div>
         <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-brand-gold/5 rounded-full blur-[120px] translate-y-1/2 -translate-x-1/3 pointer-events-none"></div>
@@ -42,7 +42,8 @@ export default function Contact() {
               className="object-cover object-center"
             />
             {/* Dark Cinematic Gradient */}
-            <div className="absolute inset-0 bg-gradient-to-t from-brand-black via-brand-black/60 to-black/80 z-10"></div>
+            <div className="absolute inset-0 bg-gradient-to-b from-brand-black/40 via-transparent to-brand-black/20 z-10"></div>
+            <div className="absolute inset-0 bg-brand-black/20 z-10"></div>
           </div>
           
           <div className="relative z-20 text-center px-6 max-w-4xl mx-auto pt-20">
@@ -51,9 +52,9 @@ export default function Contact() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, ease: "easeOut" }}
             >
-              <h1 className="heading-xl mb-6">Get In Touch</h1>
+              <h1 className="heading-xl mb-6 text-white drop-shadow-md">Get In Touch</h1>
               <div className="h-[2px] w-16 bg-brand-gold mx-auto mb-8 opacity-80"></div>
-              <p className="font-serif italic text-xl text-brand-gold-light max-w-2xl mx-auto px-4">
+              <p className="font-serif italic text-xl text-brand-gold-dark max-w-2xl mx-auto px-4">
                 For wholesale inquiries, partnerships, or customer support.
               </p>
             </motion.div>
@@ -72,24 +73,24 @@ export default function Contact() {
               
               <div className="space-y-12 mb-16">
                 <div className="flex gap-6 items-start group">
-                  <div className="w-14 h-14 bg-brand-charcoal border border-white/10 rounded-2xl flex items-center justify-center text-brand-gold shrink-0 shadow-[0_0_15px_rgba(212,175,55,0.1)] group-hover:scale-110 group-hover:bg-brand-gold group-hover:text-black transition-all duration-500">
+                  <div className="w-14 h-14 bg-brand-accent-sage/10 border border-brand-accent-sage/20 rounded-2xl flex items-center justify-center text-brand-gold shrink-0 shadow-sm group-hover:scale-110 group-hover:bg-brand-gold group-hover:text-white transition-all duration-500">
                     <MapPin size={24} />
                   </div>
                   <div>
-                    <h4 className="font-sans text-sm tracking-widest uppercase text-white mb-2">Headquarters</h4>
-                    <p className="text-brand-grey-medium leading-relaxed">Yarns Lanka Private Limited<br/>189/G, Kondagammulla<br/>Demanhandiya, Negombo<br/>Sri Lanka</p>
+                    <h4 className="font-sans text-sm tracking-widest uppercase text-brand-black mb-2">Headquarters</h4>
+                    <p className="text-brand-charcoal/80 leading-relaxed">Yarns Lanka Private Limited<br/>189/G, Kondagammulla<br/>Demanhandiya, Negombo<br/>Sri Lanka</p>
                   </div>
                 </div>
                 
                 <div className="flex gap-6 items-start group">
-                  <div className="w-14 h-14 bg-brand-charcoal border border-white/10 rounded-2xl flex items-center justify-center text-brand-gold shrink-0 shadow-[0_0_15px_rgba(212,175,55,0.1)] group-hover:scale-110 group-hover:bg-brand-gold group-hover:text-black transition-all duration-500">
+                  <div className="w-14 h-14 bg-brand-accent-sage/10 border border-brand-accent-sage/20 rounded-2xl flex items-center justify-center text-brand-gold shrink-0 shadow-sm group-hover:scale-110 group-hover:bg-brand-gold group-hover:text-white transition-all duration-500">
                     <Mail size={24} />
                   </div>
                   <div>
-                    <h4 className="font-sans text-sm tracking-widest uppercase text-white mb-2">Email Us</h4>
+                    <h4 className="font-sans text-sm tracking-widest uppercase text-brand-black mb-2">Email Us</h4>
                     <p className="flex flex-col gap-1">
-                      <a href="mailto:Info@yarnslanka.com" className="text-brand-grey-medium hover:text-brand-gold transition-colors duration-300">Info@yarnslanka.com</a>
-                      <a href="mailto:yarnslanka@gmail.com" className="text-brand-grey-medium hover:text-brand-gold transition-colors duration-300">yarnslanka@gmail.com</a>
+                      <a href="mailto:Info@yarnslanka.com" className="text-brand-charcoal/80 hover:text-brand-gold transition-colors duration-300">Info@yarnslanka.com</a>
+                      
                     </p>
                   </div>
                 </div>
@@ -110,7 +111,7 @@ export default function Contact() {
                       key={i} 
                       href="#" 
                       aria-label={social.label}
-                      className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-brand-grey-light hover:bg-brand-gold hover:text-black hover:border-brand-gold transition-all duration-300 hover:-translate-y-1 shadow-[0_0_15px_rgba(0,0,0,0.5)]"
+                      className="w-12 h-12 rounded-full border border-black/10 flex items-center justify-center text-brand-charcoal hover:bg-brand-gold hover:text-white hover:border-brand-gold transition-all duration-300 hover:-translate-y-1 shadow-sm"
                     >
                       {social.icon}
                     </a>
@@ -121,34 +122,34 @@ export default function Contact() {
             
             {/* Form Column */}
             <AnimatedSection direction="left" delay={0.2} className="lg:col-span-7">
-              <div className="glass-panel p-8 md:p-12 rounded-3xl relative overflow-hidden group">
+              <div className="bg-brand-cream border border-brand-accent-sage/20 p-8 md:p-12 rounded-3xl relative overflow-hidden shadow-xl group">
                  {/* Internal hover glow */}
-                <div className="absolute top-0 right-0 w-32 h-32 bg-brand-gold/10 rounded-full blur-[40px] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
+                <div className="absolute top-0 right-0 w-32 h-32 bg-brand-gold/5 rounded-full blur-[40px] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
 
                 <div className="mb-10 text-center lg:text-left">
-                  <h3 className="font-serif text-3xl text-white mb-3">Send an Inquiry</h3>
-                  <p className="text-brand-grey-medium">Fill out the form below and our team will be in touch within 24 hours.</p>
+                  <h3 className="font-serif text-3xl text-brand-black mb-3">Send an Inquiry</h3>
+                  <p className="text-brand-charcoal/80">Fill out the form below and our team will be in touch within 24 hours.</p>
                 </div>
                 
                 <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
-                      <label htmlFor="firstName" className="font-sans text-xs font-semibold tracking-widest uppercase text-brand-grey-light">First Name</label>
+                      <label htmlFor="firstName" className="font-sans text-xs font-semibold tracking-widest uppercase text-brand-charcoal">First Name</label>
                       <input 
                         type="text" 
                         id="firstName" 
                         required 
-                        className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-4 text-white placeholder-white/20 focus:outline-none focus:border-brand-gold/50 focus:ring-1 focus:ring-brand-gold/50 transition-all duration-300" 
+                        className="w-full bg-white border border-black/10 rounded-xl px-4 py-4 text-brand-black placeholder-black/20 focus:outline-none focus:border-brand-gold/50 focus:ring-1 focus:ring-brand-gold/50 transition-all duration-300" 
                         placeholder="John"
                       />
                     </div>
                     <div className="space-y-2">
-                      <label htmlFor="lastName" className="font-sans text-xs font-semibold tracking-widest uppercase text-brand-grey-light">Last Name</label>
+                      <label htmlFor="lastName" className="font-sans text-xs font-semibold tracking-widest uppercase text-brand-charcoal">Last Name</label>
                       <input 
                         type="text" 
                         id="lastName" 
                         required 
-                        className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-4 text-white placeholder-white/20 focus:outline-none focus:border-brand-gold/50 focus:ring-1 focus:ring-brand-gold/50 transition-all duration-300"
+                        className="w-full bg-white border border-black/10 rounded-xl px-4 py-4 text-brand-black placeholder-black/20 focus:outline-none focus:border-brand-gold/50 focus:ring-1 focus:ring-brand-gold/50 transition-all duration-300"
                         placeholder="Doe"
                       />
                     </div>
@@ -156,50 +157,50 @@ export default function Contact() {
                   
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
-                      <label htmlFor="email" className="font-sans text-xs font-semibold tracking-widest uppercase text-brand-grey-light">Email Address</label>
+                      <label htmlFor="email" className="font-sans text-xs font-semibold tracking-widest uppercase text-brand-charcoal">Email Address</label>
                       <input 
                         type="email" 
                         id="email" 
                         required 
-                        className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-4 text-white placeholder-white/20 focus:outline-none focus:border-brand-gold/50 focus:ring-1 focus:ring-brand-gold/50 transition-all duration-300"
+                        className="w-full bg-white border border-black/10 rounded-xl px-4 py-4 text-brand-black placeholder-black/20 focus:outline-none focus:border-brand-gold/50 focus:ring-1 focus:ring-brand-gold/50 transition-all duration-300"
                         placeholder="john@example.com"
                       />
                     </div>
                     <div className="space-y-2">
-                      <label htmlFor="company" className="font-sans text-xs font-semibold tracking-widest uppercase text-brand-grey-light">Company (Optional)</label>
+                      <label htmlFor="company" className="font-sans text-xs font-semibold tracking-widest uppercase text-brand-charcoal">Company (Optional)</label>
                       <input 
                         type="text" 
                         id="company" 
-                        className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-4 text-white placeholder-white/20 focus:outline-none focus:border-brand-gold/50 focus:ring-1 focus:ring-brand-gold/50 transition-all duration-300"
+                        className="w-full bg-white border border-black/10 rounded-xl px-4 py-4 text-brand-black placeholder-black/20 focus:outline-none focus:border-brand-gold/50 focus:ring-1 focus:ring-brand-gold/50 transition-all duration-300"
                         placeholder="Company Name"
                       />
                     </div>
                   </div>
 
                   <div className="space-y-2">
-                    <label htmlFor="inquiryType" className="font-sans text-xs font-semibold tracking-widest uppercase text-brand-grey-light">Inquiry Type</label>
+                    <label htmlFor="inquiryType" className="font-sans text-xs font-semibold tracking-widest uppercase text-brand-charcoal">Inquiry Type</label>
                     <select 
                       id="inquiryType" 
                       required 
                       defaultValue=""
-                      className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-4 text-white focus:outline-none focus:border-brand-gold/50 focus:ring-1 focus:ring-brand-gold/50 transition-all duration-300 appearance-none"
-                      style={{ backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%238A8A8A' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e")`, backgroundPosition: 'right .5rem center', backgroundRepeat: 'no-repeat', backgroundSize: '1.5em 1.5em' }}
+                      className="w-full bg-white border border-black/10 rounded-xl px-4 py-4 text-brand-black focus:outline-none focus:border-brand-gold/50 focus:ring-1 focus:ring-brand-gold/50 transition-all duration-300 appearance-none"
+                      style={{ backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23333333' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e")`, backgroundPosition: 'right .5rem center', backgroundRepeat: 'no-repeat', backgroundSize: '1.5em 1.5em' }}
                     >
-                      <option value="" disabled className="bg-brand-black text-brand-grey-medium">Select an option</option>
-                      <option value="wholesale" className="bg-brand-black">Wholesale / B2B</option>
-                      <option value="retail" className="bg-brand-black">Customer Support</option>
-                      <option value="press" className="bg-brand-black">Press & Media</option>
-                      <option value="other" className="bg-brand-black">Other</option>
+                      <option value="" disabled className="bg-white text-brand-charcoal">Select an option</option>
+                      <option value="wholesale" className="bg-white">Wholesale / B2B</option>
+                      <option value="retail" className="bg-white">Customer Support</option>
+                      <option value="press" className="bg-white">Press & Media</option>
+                      <option value="other" className="bg-white">Other</option>
                     </select>
                   </div>
                   
                   <div className="space-y-2">
-                    <label htmlFor="message" className="font-sans text-xs font-semibold tracking-widest uppercase text-brand-grey-light">Message</label>
+                    <label htmlFor="message" className="font-sans text-xs font-semibold tracking-widest uppercase text-brand-charcoal">Message</label>
                     <textarea 
                       id="message" 
                       rows={5} 
                       required 
-                      className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-4 text-white placeholder-white/20 focus:outline-none focus:border-brand-gold/50 focus:ring-1 focus:ring-brand-gold/50 transition-all duration-300 resize-y"
+                      className="w-full bg-white border border-black/10 rounded-xl px-4 py-4 text-brand-black placeholder-black/20 focus:outline-none focus:border-brand-gold/50 focus:ring-1 focus:ring-brand-gold/50 transition-all duration-300 resize-y"
                       placeholder="How can we help you?"
                     ></textarea>
                   </div>
@@ -214,7 +215,7 @@ export default function Contact() {
         </section>
 
         {/* --- MAP SECTION --- */}
-        <section className="h-[500px] w-full relative grayscale contrast-125 sepia-[.2] hue-rotate-[-10deg] opacity-80 border-t border-white/10">
+        <section className="h-[500px] w-full relative border-t border-black/10">
           <iframe 
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15835.658254070732!2d79.8519163!3d7.2494192!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae2ee0811239c09%3A0xe1db39baadcc3905!2sNegombo%2C%20Sri%20Lanka!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus"
             width="100%" 

@@ -53,7 +53,7 @@ export default function Hero() {
   return (
     <section
       ref={containerRef}
-      className="relative h-[100svh] min-h-[500px] md:h-[110vh] md:min-h-[700px] flex items-center justify-center overflow-hidden bg-brand-black"
+      className="relative h-[100svh] min-h-[500px] md:h-[110vh] md:min-h-[700px] flex items-center justify-center overflow-hidden bg-white"
     >
       {/* Dynamic Background Image */}
       <motion.div
@@ -69,7 +69,7 @@ export default function Hero() {
           unoptimized
         />
         {/* Sophisticated Overlays */}
-        <div className="absolute inset-0 bg-gradient-to-b from-brand-black/80 via-transparent to-brand-black"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-brand-black/40 via-transparent to-brand-black/20"></div>
         <div className="absolute inset-0 bg-brand-black/20"></div>
         {/* Glass Grain Texture Overlay */}
         <div className="absolute inset-0 opacity-[0.03] pointer-events-none mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
@@ -107,22 +107,19 @@ export default function Hero() {
         {/* Refined Description */}
         <motion.p
           variants={itemVariants}
-          className="max-w-xl text-brand-grey-light text-sm md:text-xl font-light leading-relaxed mb-8 md:mb-12 px-4"
+          className="max-w-2xl text-brand-cream/90 text-sm md:text-xl font-light leading-relaxed mb-8 md:mb-12 px-4"
         >
-          Discover the most sought after Egyptian Cotton Bed Linen. 
-          Crafted with integrity, designed for luxury.
+          Discover the finest collection of premium Home Textiles. <br className="hidden md:block" />
+          Crafted with integrity, designed to enhance everyday living.
         </motion.p>
 
         {/* CTA Buttons */}
         <motion.div
           variants={itemVariants}
-          className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 mt-4 w-full sm:w-auto px-4"
+          className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mt-4 w-full sm:w-auto px-4"
         >
-          <Button href="/collections" variant="primary" size="lg" className="w-full sm:w-auto min-w-[200px] shadow-[0_0_30px_rgba(212,175,55,0.2)]">
-            Explore Collections
-          </Button>
-          <Button href="/contact" variant="glass" size="lg" className="w-full sm:w-auto min-w-[200px]">
-           Partner With Us
+          <Button href="/contact" variant="primary" size="lg" className="w-full sm:w-auto min-w-[200px] shadow-[0_0_30px_rgba(212,175,55,0.2)]">
+            Partner With Us
           </Button>
         </motion.div>
       </motion.div>
@@ -133,7 +130,7 @@ export default function Hero() {
           <div
             key={i}
             className={`w-1 h-1 rounded-full ${
-              i === 0 ? "bg-brand-gold h-4" : "bg-white/20"
+              i === 0 ? "bg-brand-gold h-4" : "bg-black/20"
             } transition-all duration-500`}
           />
         ))}
@@ -146,7 +143,7 @@ export default function Hero() {
         transition={{ delay: 1.5, duration: 1 }}
         className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4"
       >
-        <div className="relative w-[1px] h-20 bg-white/10 overflow-hidden">
+        <div className="relative w-[1px] h-20 bg-black/10 overflow-hidden">
           <motion.div
             animate={{
               y: ["-100%", "100%"],
@@ -159,7 +156,7 @@ export default function Hero() {
             className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-transparent via-brand-gold to-transparent"
           />
         </div>
-        <span className="text-[10px] uppercase tracking-[0.4em] text-brand-grey-medium font-bold">
+        <span className="text-[10px] uppercase tracking-[0.4em] text-white font-bold drop-shadow-md">
           Scroll
         </span>
       </motion.div>

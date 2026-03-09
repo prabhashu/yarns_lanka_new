@@ -28,11 +28,11 @@ export default function Button({
   const baseStyles = "inline-flex items-center justify-center font-sans tracking-[0.1em] font-medium uppercase transition-all duration-300 relative overflow-hidden group rounded-xl";
 
   const variants = {
-    primary: "bg-brand-gold text-brand-black hover:bg-brand-gold-light shadow-[0_0_15px_rgba(212,175,55,0.3)] hover:shadow-[0_0_25px_rgba(212,175,55,0.6)]",
-    secondary: "bg-brand-charcoal text-brand-cream hover:bg-brand-black border border-white/10 hover:border-brand-gold/50",
-    outline: "bg-transparent border border-brand-gold text-brand-gold hover:bg-brand-gold hover:text-brand-black",
-    ghost: "bg-transparent text-brand-cream hover:text-brand-gold",
-    glass: "bg-white/5 backdrop-blur-md border border-white/10 text-white hover:bg-white/10 hover:border-brand-gold/50",
+    primary: "bg-brand-gold text-white hover:bg-brand-gold-dark shadow-[0_0_15px_rgba(212,175,55,0.3)] hover:shadow-[0_0_25px_rgba(212,175,55,0.6)]",
+    secondary: "bg-white text-brand-black hover:bg-brand-cream border border-black/10 hover:border-brand-gold/50",
+    outline: "bg-transparent border border-brand-gold text-brand-gold hover:bg-brand-gold hover:text-white",
+    ghost: "bg-transparent text-brand-charcoal hover:text-brand-gold",
+    glass: "bg-white/40 backdrop-blur-md border border-white text-brand-black hover:bg-white/60 hover:border-brand-gold/50",
   };
 
   const sizes = {
@@ -43,8 +43,7 @@ export default function Button({
 
   const combinedStyles = cn(baseStyles, variants[variant], sizes[size], className);
 
-  // Glow effect on hover pseudo-element
-  const InnerGlow = () => (
+  const innerGlowSpan = (
     <span className="absolute inset-0 w-full h-full -ml-[100%] transition-all duration-500 ease-in-out bg-gradient-to-r from-transparent via-white/20 to-transparent group-hover:ml-[100%] pointer-events-none" />
   );
 
@@ -52,7 +51,7 @@ export default function Button({
     return (
       <Link href={href} target={target} className={combinedStyles}>
         {children}
-        <InnerGlow />
+        {innerGlowSpan}
       </Link>
     );
   }
@@ -60,7 +59,7 @@ export default function Button({
   return (
     <button className={combinedStyles} {...props}>
       {children}
-      <InnerGlow />
+      {innerGlowSpan}
     </button>
   );
 }

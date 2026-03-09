@@ -56,7 +56,7 @@ export default function SectionTitle({
       
       <motion.h2 
         variants={itemVariants} 
-        className={`font-serif text-3xl md:text-5xl leading-tight ${light ? 'text-brand-black' : 'text-white'}`}
+        className={`font-serif text-3xl md:text-5xl leading-tight ${light ? 'text-white' : 'text-brand-black'}`}
       >
         {title}
       </motion.h2>

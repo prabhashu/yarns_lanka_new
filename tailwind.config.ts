@@ -31,6 +31,11 @@ const config: Config = {
                         light: "#E5E5E5",
                         medium: "#8A8A8A",
                         dark: "#333333",
+                    },
+                    accent: {
+                        sage: "#9CAF88",
+                        blush: "#E8D3C8",
+                        slate: "#8A9A9D",
                     }
                 }
             },

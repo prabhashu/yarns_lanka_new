@@ -18,7 +18,7 @@ const rightLinks = [
   { name: "Contact", href: "/contact" },
 ];
 
-export default function Header() {
+export default function Header({ theme = 'dark' }: { theme?: 'light' | 'dark' }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isHidden, setIsHidden] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -67,7 +67,12 @@ export default function Header() {
           onMouseEnter={() => setHoveredLink(link.name)}
           onMouseLeave={() => setHoveredLink(null)}
           className={`px-5 py-2.5 text-[11px] font-sans font-medium uppercase tracking-[0.2em] transition-colors duration-300 relative z-10 block
-            ${isActive ? "text-brand-gold" : "text-white/70 hover:text-white"}
+            ${isActive 
+              ? "text-brand-gold" 
+              : isScrolled || theme === 'light'
+                ? "text-brand-charcoal/70 hover:text-brand-black" 
+                : "text-white/80 hover:text-white"
+            }
           `}
         >
           {link.name}
@@ -103,7 +108,7 @@ export default function Header() {
           className={`
             relative flex items-center justify-between transition-all duration-700 ease-[0.23, 1, 0.32, 1] pointer-events-auto
             ${isScrolled 
-              ? "w-full max-w-[840px] bg-brand-black/85 backdrop-blur-2xl border border-white/10 rounded-full px-6 py-3 md:px-8 shadow-[0_20px_40px_rgba(0,0,0,0.5)]" 
+              ? "w-full max-w-[840px] bg-white/85 backdrop-blur-2xl border border-black/10 rounded-full px-6 py-3 md:px-8 shadow-[0_20px_40px_rgba(0,0,0,0.05)]" 
               : "w-full max-w-[1400px] bg-transparent backdrop-blur-none border-transparent rounded-none px-4 py-4 md:px-12 md:py-6"
             }
           `}
@@ -126,7 +131,7 @@ export default function Header() {
                   src="/logos/Yarns_Logo_White.svg" 
                   alt="Yarns Lanka" 
                   fill
-                  className="object-contain drop-shadow-2xl brightness-110 group-hover:brightness-125 transition-all duration-500"
+                  className={`object-contain drop-shadow-sm transition-all duration-500 hover:opacity-100 ${isScrolled || theme === 'light' ? 'invert opacity-90' : 'opacity-100'}`}
                   priority
                 />
               </div>
@@ -147,19 +152,21 @@ export default function Header() {
                 relative px-6 py-2.5 rounded-full overflow-hidden transition-all duration-500 group/btn whitespace-nowrap
                 text-[11px] font-bold tracking-[0.2em] uppercase border flex items-center justify-center
                 ${isScrolled 
-                  ? "bg-brand-gold border-brand-gold text-brand-black" 
-                  : "bg-white/10 border-white/20 text-white backdrop-blur-md hover:border-brand-gold/60"
+                  ? "bg-brand-gold border-brand-gold text-white" 
+                  : theme === 'light'
+                    ? "bg-black/5 border-black/10 text-brand-black backdrop-blur-md hover:border-brand-gold/60"
+                    : "bg-white/10 border-white/20 text-white backdrop-blur-md hover:border-brand-gold/60"
                 }
               `}
             >
-              <span className={`relative z-10 transition-colors duration-500 ${isScrolled ? 'group-hover/btn:text-white' : 'group-hover/btn:text-brand-black'}`}>
+              <span className="relative z-10 transition-colors duration-500 group-hover/btn:text-white">
                 Wholesale
               </span>
               
               <div className={`
                 absolute inset-0 transition-transform duration-500 ease-[0.23, 1, 0.32, 1]
                 ${isScrolled 
-                  ? "bg-brand-black translate-y-[101%] group-hover/btn:translate-y-0" 
+                  ? "bg-brand-charcoal translate-y-[101%] group-hover/btn:translate-y-0" 
                   : "bg-brand-gold translate-y-[101%] group-hover/btn:translate-y-0"
                 }
               `} />
@@ -171,8 +178,12 @@ export default function Header() {
             <button 
               className={`p-2.5 rounded-full transition-all duration-300 relative z-[60] overflow-hidden group
                 ${mobileMenuOpen 
-                  ? "bg-brand-gold text-brand-black hover:bg-white" 
-                  : (isScrolled ? "bg-white/10 text-white hover:bg-white/20" : "bg-black/20 backdrop-blur-md border border-white/10 text-white hover:bg-white/10")
+                  ? "bg-brand-gold text-white hover:bg-brand-charcoal" 
+                  : isScrolled 
+                    ? "bg-black/5 text-brand-black hover:bg-black/10" 
+                    : theme === 'light'
+                      ? "bg-black/5 border border-black/10 text-brand-black hover:bg-black/10 backdrop-blur-md"
+                      : "bg-white/10 backdrop-blur-md border border-white/20 text-white hover:bg-white/20"
                 }
               `}
               onClick={handleMobileMenuToggle}
@@ -198,7 +209,7 @@ export default function Header() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: "-100%", transition: { delay: 0.4, duration: 0.5, ease: [0.23, 1, 0.32, 1] } }}
             transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
-            className="fixed inset-0 bg-black/95 backdrop-blur-2xl z-40 flex flex-col pointer-events-auto shadow-2xl overflow-y-auto"
+            className="fixed inset-0 bg-white/95 backdrop-blur-2xl z-40 flex flex-col pointer-events-auto shadow-2xl overflow-y-auto"
           >
             {/* Background Decorative Element */}
             <div className="absolute inset-0 z-0 opacity-[0.03] pointer-events-none flex items-center justify-center overflow-hidden">
@@ -207,7 +218,7 @@ export default function Header() {
                 alt="Watermark" 
                 width={800} 
                 height={800} 
-                className="object-contain scale-150 -rotate-12 blur-sm" 
+                className="object-contain scale-150 -rotate-12 blur-sm invert opacity-5" 
               />
             </div>
             
@@ -229,10 +240,10 @@ export default function Header() {
                           href={link.href}
                           className="group flex items-center gap-4 py-2"
                         >
-                          <span className={`text-sm font-sans tracking-[0.2em] uppercase transition-colors duration-300 w-8 ${isActive ? "text-brand-gold" : "text-white/20 group-hover:text-white/50"}`}>
+                          <span className={`text-sm font-sans tracking-[0.2em] uppercase transition-colors duration-300 w-8 ${isActive ? "text-brand-gold" : "text-brand-charcoal/40 group-hover:text-brand-charcoal/80"}`}>
                             0{i + 1}
                           </span>
-                          <span className={`text-4xl sm:text-5xl font-serif tracking-tight transition-all duration-300 ${isActive ? "text-brand-gold italic translate-x-3" : "text-white hover:translate-x-3 group-hover:text-brand-cream"}`}>
+                          <span className={`text-4xl sm:text-5xl font-serif tracking-tight transition-all duration-300 ${isActive ? "text-brand-gold italic translate-x-3" : "text-brand-charcoal hover:translate-x-3 group-hover:text-brand-black"}`}>
                             {link.name}
                           </span>
                         </Link>
@@ -252,22 +263,22 @@ export default function Header() {
               >
                 <Link 
                   href="/contact" 
-                  className="relative overflow-hidden w-full bg-brand-gold text-brand-black py-5 rounded-full text-center font-bold uppercase tracking-[0.2em] text-[12px] group/mob-btn"
+                  className="relative overflow-hidden w-full bg-brand-gold text-white py-5 rounded-full text-center font-bold uppercase tracking-[0.2em] text-[12px] group/mob-btn"
                 >
                   <span className="relative z-10 group-hover/mob-btn:text-white transition-colors duration-500">
                     Wholesale Access
                   </span>
-                  <div className="absolute inset-0 bg-brand-black translate-y-[101%] group-hover/mob-btn:translate-y-0 transition-transform duration-500 ease-[0.23, 1, 0.32, 1]" />
+                  <div className="absolute inset-0 bg-brand-charcoal translate-y-[101%] group-hover/mob-btn:translate-y-0 transition-transform duration-500 ease-[0.23, 1, 0.32, 1]" />
                 </Link>
                 
-                <div className="flex justify-between items-center border-t border-white/10 pt-6">
-                  <div className="text-white/40 text-[10px] uppercase tracking-widest font-sans">
+                <div className="flex justify-between items-center border-t border-black/10 pt-6">
+                  <div className="text-brand-charcoal/50 text-[10px] uppercase tracking-widest font-sans">
                     © {new Date().getFullYear()} Yarns Lanka
                   </div>
                   <div className="flex gap-4">
                     {/* Social placeholders if needed in future */}
-                    <a href="#" className="text-white/40 hover:text-brand-gold transition-colors text-sm">IN</a>
-                    <a href="#" className="text-white/40 hover:text-brand-gold transition-colors text-sm">FB</a>
+                    <a href="#" className="text-brand-charcoal/50 hover:text-brand-gold transition-colors text-sm">IN</a>
+                    <a href="#" className="text-brand-charcoal/50 hover:text-brand-gold transition-colors text-sm">FB</a>
                   </div>
                 </div>
               </motion.div>

@@ -95,11 +95,11 @@
 
   /* Glassmorphism helpers */
   .glass-panel {
-    @apply bg-brand-cream/80 backdrop-blur-md border border-brand-accent-sage/30 shadow-2xl;
+    @apply bg-brand-cream/80 backdrop-blur-md border border-brand-accent-sage/30 shadow-2xl transform-gpu;
   }
 
   .glass-dark {
-    @apply bg-brand-charcoal/50 backdrop-blur-xl border border-black/10;
+    @apply bg-brand-charcoal/50 backdrop-blur-xl border border-black/10 transform-gpu;
   }
 }
 

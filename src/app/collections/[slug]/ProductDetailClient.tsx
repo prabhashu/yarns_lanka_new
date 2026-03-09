@@ -32,7 +32,7 @@ export default function ProductDetailClient({ product }: { product: Product }) {
     <>
       <Header theme="light" />
       
-      <main className="w-full bg-brand-cream min-h-screen pt-[120px] pb-32">
+      <main className="w-full bg-white min-h-screen pt-[120px] pb-32">
         <div className="container mx-auto px-6 max-w-7xl">
           
           {/* Back Link */}
@@ -83,8 +83,8 @@ export default function ProductDetailClient({ product }: { product: Product }) {
                 })}
               </div>
 
-              {/* --- MINI REVIEWS (Below Image) --- */}
-              <div className="pt-12 border-t border-black/5">
+              {/* --- MINI REVIEWS (Desktop Only) --- */}
+              <div className="hidden lg:block pt-12 border-t border-black/5">
                 <div className="flex items-center justify-between mb-8">
                   <h3 className="font-serif text-2xl text-brand-black">Client Feedback</h3>
                   <div className="flex items-center gap-2">
@@ -162,7 +162,7 @@ export default function ProductDetailClient({ product }: { product: Product }) {
                       <button 
                         key={tc}
                         onClick={() => setSelectedTc(tc)}
-                        className={`flex flex-col items-center gap-1 border border-black/10 bg-brand-cream/50 rounded-xl py-3 px-2 transition-all duration-300 ${
+                        className={`flex flex-col items-center gap-1 border border-black/10 bg-black/[0.02] rounded-xl py-3 px-2 transition-all duration-300 ${
                           selectedTc === tc 
                             ? 'border-brand-gold bg-brand-gold/10 shadow-[0_0_15px_rgba(212,175,55,0.15)]' 
                             : 'hover:border-brand-gold/50 hover:bg-white'
@@ -198,7 +198,7 @@ export default function ProductDetailClient({ product }: { product: Product }) {
                         className={`px-4 py-2 border rounded-lg transition-all duration-300 font-sans text-sm ${
                           selectedSize === size.name 
                             ? 'border-brand-gold text-brand-gold-dark bg-brand-gold/10 shadow-[0_0_10px_rgba(212,175,55,0.1)]' 
-                            : 'border-black/10 text-brand-charcoal hover:border-black/30 bg-brand-cream/50 hover:bg-white'
+                            : 'border-black/10 text-brand-charcoal hover:border-black/30 bg-black/[0.02] hover:bg-white'
                         }`}
                       >
                         {size.name}
@@ -307,6 +307,61 @@ export default function ProductDetailClient({ product }: { product: Product }) {
 
             </AnimatedSection>
           </div>
+
+          {/* --- REVIEWS (Moved to Bottom for Mobile) --- */}
+          <AnimatedSection direction="up" className="lg:hidden mt-24 pt-16 border-t border-black/10">
+            <div className="max-w-4xl mx-auto">
+                <div className="flex flex-col sm:flex-row items-center justify-between mb-12 gap-6 text-center sm:text-left">
+                  <h3 className="font-serif text-3xl md:text-4xl text-brand-black">Client Feedback</h3>
+                  <div className="flex items-center gap-2">
+                    <div className="flex text-brand-gold">
+                      {[1, 2, 3, 4, 5].map((s) => (
+                        <Sparkles key={s} size={18} fill="currentColor" />
+                      ))}
+                    </div>
+                    <span className="text-lg font-sans font-bold text-brand-black">4.9/5</span>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  {[
+                    {
+                      name: "Alexander V.",
+                      location: "Sydney, AU",
+                      comment: "The feel of the Egyptian cotton is transformative. Knights has a specific weight and breathability that stands apart.",
+                    },
+                    {
+                      name: "Elizabeth R.",
+                      location: "London, UK",
+                      comment: "Exceptional attention to detail in the stitching. It washes beautifully and actually feels better with each use.",
+                    }
+                  ].map((review, idx) => (
+                    <motion.div 
+                      key={idx}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: idx * 0.1 }}
+                      className="bg-white/60 p-8 rounded-3xl border border-black/5 shadow-sm hover:shadow-md transition-shadow"
+                    >
+                      <div className="flex justify-between items-start mb-4">
+                        <span className="text-xs font-sans font-bold text-brand-black uppercase tracking-widest">{review.name}</span>
+                        <span className="text-[10px] font-sans text-brand-charcoal/40 uppercase tracking-widest">{review.location}</span>
+                      </div>
+                      <p className="text-brand-charcoal/80 text-base leading-relaxed italic">
+                        &quot;{review.comment}&quot;
+                      </p>
+                    </motion.div>
+                  ))}
+                </div>
+                
+                <div className="mt-12 text-center">
+                  <Link href="/contact" className="inline-flex items-center justify-center gap-3 px-8 py-4 text-xs font-bold tracking-[0.2em] text-brand-black hover:text-white border border-black/10 hover:border-brand-gold hover:bg-brand-gold transition-all duration-300 uppercase rounded-full bg-white shadow-sm">
+                    Share Your Experience <ArrowLeft size={16} className="rotate-180" />
+                  </Link>
+                </div>
+            </div>
+          </AnimatedSection>
         </div>
 
         {/* Modal: Size Guide */}
@@ -340,9 +395,9 @@ export default function ProductDetailClient({ product }: { product: Product }) {
                   <p className="text-brand-charcoal/80 font-serif italic">Australian Market Standards</p>
                 </div>
 
-                <div className="overflow-x-auto rounded-xl border border-black/10 bg-brand-cream/50 backdrop-blur-sm">
+                <div className="overflow-x-auto rounded-xl border border-black/10 bg-black/[0.02] backdrop-blur-sm">
                   <table className="w-full text-left text-sm">
-                    <thead className="bg-brand-cream/80 border-b border-black/10 font-sans tracking-widest text-brand-gold uppercase text-xs">
+                    <thead className="bg-black/[0.04] border-b border-black/10 font-sans tracking-widest text-brand-gold uppercase text-xs">
                       <tr>
                         <th className="p-5 font-semibold">Size</th>
                         <th className="p-5 font-semibold">Dimensions {product.slug === 'bed-linen-set' ? '(Included)' : '(cm)'}</th>

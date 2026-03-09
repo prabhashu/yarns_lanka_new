@@ -1,16 +1,16 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Inter } from "next/font/google";
+import { Jost, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 
-const playfair = Playfair_Display({ 
+const jost = Jost({ 
   subsets: ["latin"],
-  variable: "--font-playfair",
+  variable: "--font-jost",
   display: "swap",
 });
 
-const inter = Inter({ 
+const plusJakartaSans = Plus_Jakarta_Sans({ 
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-plus-jakarta",
   display: "swap",
 });
 
@@ -44,7 +44,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${playfair.variable} ${inter.variable} light`}>
+    <html lang="en" className={`${jost.variable} ${plusJakartaSans.variable} light`}>
       <body className="bg-brand-cream text-brand-black min-h-screen flex flex-col antialiased selection:bg-brand-gold selection:text-white">
         {children}
       </body>

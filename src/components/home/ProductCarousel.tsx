@@ -127,7 +127,7 @@ export default function ProductCarousel() {
         <div className="relative">
           <motion.div 
             ref={scrollRef}
-            className="flex gap-6 pb-20 items-stretch"
+            className="flex gap-6 pb-20 items-stretch will-change-transform transform-gpu"
             animate={{ x: -currentIndex * cardWidth }}
             transition={isTransitioning ? { duration: 0 } : { type: "spring", stiffness: 60, damping: 15 }}
           >
@@ -186,7 +186,9 @@ function CarouselCard({ product, isActive }: { product: Product, isActive: boole
           <Image 
             src={product.image} 
             alt={product.name} 
-            fill 
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            quality={85}
             className="object-cover transition-transform duration-[3s] ease-out group-hover:scale-110" 
           />
           <div className="absolute inset-0 bg-gradient-to-t from-brand-black/60 via-transparent to-transparent opacity-80 group-hover:opacity-40 transition-opacity duration-1000"></div>

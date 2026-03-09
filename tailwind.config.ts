@@ -40,8 +40,8 @@ const config: Config = {
                 }
             },
             fontFamily: {
-                sans: ["var(--font-inter)"],
-                serif: ["var(--font-playfair)"],
+                sans: ["var(--font-plus-jakarta)", "sans-serif"],
+                serif: ["var(--font-jost)", "sans-serif"],
             },
             backgroundImage: {
                 'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',

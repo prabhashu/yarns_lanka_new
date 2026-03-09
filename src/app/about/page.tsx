@@ -33,6 +33,8 @@ export default function About() {
               alt="Yarns Lanka manufacturing facility"
               fill
               priority
+              quality={90}
+              sizes="100vw"
               className="object-cover object-center"
             />
             {/* Dark Overlay Gradient */}
@@ -46,7 +48,7 @@ export default function About() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, ease: "easeOut" }}
             >
-              <h1 className="heading-xl mb-6 text-white drop-shadow-md">Our Story</h1>
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[5.5rem] font-serif font-light uppercase text-white leading-[1.2] tracking-widest mb-6 drop-shadow-md">Our Story</h1>
               <div className="h-[2px] w-16 bg-brand-gold mx-auto mb-8 opacity-80"></div>
               <p className="text-xl md:text-2xl text-brand-gold-dark font-serif italic max-w-2xl mx-auto px-4">
                 Building a future where timeless textiles bring joy, comfort, and sustainability.
@@ -101,7 +103,8 @@ export default function About() {
                   <Image 
                     src="/hero-bedroom.png" 
                     alt="Luxury bedding by Yarns Lanka" 
-                    fill 
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
                     className="object-cover transition-transform duration-[2s] group-hover:scale-105" 
                   />
                 </div>
@@ -131,7 +134,8 @@ export default function About() {
              <Image 
                 src="/collection-overview.png" 
                 alt="Knights Bedding Layout" 
-                fill 
+                fill
+                sizes="100vw"
                 className="object-cover -scale-x-100 opacity-[0.15] mix-blend-multiply" 
               />
           </div>
@@ -160,8 +164,8 @@ export default function About() {
         {/* --- WHAT WE DO (Staggered Floating Cards) --- */}
         <section className="py-24 md:py-32 bg-white relative overflow-hidden">
           {/* Background decoration */}
-          <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-brand-gold/5 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
-          <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-brand-accent-sage/5 rounded-full blur-[80px] translate-y-1/2 -translate-x-1/2 pointer-events-none"></div>
+          <div className="hidden md:block absolute top-0 right-0 w-[800px] h-[800px] bg-brand-gold/5 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+          <div className="hidden md:block absolute bottom-0 left-0 w-[600px] h-[600px] bg-brand-accent-sage/5 rounded-full blur-[80px] translate-y-1/2 -translate-x-1/2 pointer-events-none"></div>
 
           <div className="container mx-auto px-6 relative z-10">
             <div className="mb-20">

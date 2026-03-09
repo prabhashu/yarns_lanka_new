@@ -12,7 +12,7 @@ export default function PrivacyPolicy() {
       
       <main className="w-full bg-white min-h-screen relative overflow-hidden">
         {/* Background Gradients */}
-        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-brand-gold/5 rounded-full blur-[150px] -translate-y-1/2 translate-x-1/3 pointer-events-none"></div>
+        <div className="hidden md:block absolute top-0 right-0 w-[800px] h-[800px] bg-brand-gold/5 rounded-full blur-[150px] -translate-y-1/2 translate-x-1/3 pointer-events-none"></div>
 
         {/* --- PAGE HERO --- */}
         <section className="relative h-[45vh] min-h-[350px] flex items-center justify-center">
@@ -22,6 +22,8 @@ export default function PrivacyPolicy() {
               alt="Privacy Policy"
               fill
               priority
+              quality={90}
+              sizes="100vw"
               className="object-cover object-center"
             />
             {/* Dark Cinematic Gradient */}
@@ -35,7 +37,7 @@ export default function PrivacyPolicy() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, ease: "easeOut" }}
             >
-              <h1 className="heading-xl mb-6 text-white drop-shadow-md">Privacy Policy</h1>
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-serif font-light uppercase text-white leading-[1.2] tracking-widest mb-6 drop-shadow-md">Privacy Policy</h1>
               <div className="h-[2px] w-16 bg-brand-gold mx-auto mb-8 opacity-80"></div>
               <p className="font-serif italic text-xl text-brand-gold-dark max-w-2xl mx-auto px-4">
                 Committed to honesty, integrity, and protecting your data.
@@ -44,13 +46,13 @@ export default function PrivacyPolicy() {
           </div>
         </section>
 
-        <section className="pb-32 container mx-auto px-6 relative z-10 -mt-16">
+        <section className="pb-32 pt-16 container mx-auto px-6 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="bg-brand-cream border border-brand-accent-sage/20 p-10 md:p-16 rounded-3xl max-w-4xl mx-auto shadow-2xl"
+            className="bg-white border border-black/8 p-10 md:p-16 rounded-3xl max-w-4xl mx-auto shadow-sm"
           >
             <div className="border-b border-black/10 pb-10 mb-10">
               <p className="font-sans text-xs tracking-widest uppercase text-brand-gold mb-6">

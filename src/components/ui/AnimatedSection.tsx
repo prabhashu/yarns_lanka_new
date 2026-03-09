@@ -50,7 +50,7 @@ export default function AnimatedSection({
         delay: delay, 
         ease: [0.21, 0.47, 0.32, 0.98] // custom spring-like ease
       }}
-      className={cn("w-full h-full", className)}
+      className={cn("w-full h-full will-change-transform transform-gpu", className)}
     >
       {children}
     </motion.div>

@@ -16,7 +16,7 @@ export default function Collections() {
     <>
       <Header />
       
-      <main className="w-full bg-brand-cream min-h-screen relative">
+      <main className="w-full bg-white min-h-screen relative">
         {/* --- PAGE HERO --- */}
         <section className="relative h-[45vh] min-h-[350px] flex items-center justify-center">
           <div className="absolute inset-0 w-full h-full z-0">
@@ -25,6 +25,8 @@ export default function Collections() {
               alt="Knights Egyptian Cotton Bedding"
               fill
               priority
+              quality={90}
+              sizes="100vw"
               className="object-cover object-center"
             />
             {/* Dark Overlay Gradient */}
@@ -38,7 +40,7 @@ export default function Collections() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, ease: "easeOut" }}
             >
-              <h1 className="heading-xl mb-6 text-white drop-shadow-md">The Collection</h1>
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[5.5rem] font-serif font-light uppercase text-white leading-[1.2] tracking-widest mb-6 drop-shadow-md">The Collection</h1>
               <div className="h-[2px] w-16 bg-brand-gold mx-auto mb-8 opacity-80"></div>
               <p className="text-xl md:text-2xl text-brand-gold-dark font-serif italic max-w-2xl mx-auto px-4">
                 Tailored for the discerning taste, where innovation meets the timeless legacy of 100% organic fibers.
@@ -48,7 +50,7 @@ export default function Collections() {
         </section>
 
         {/* --- PRODUCTS GRID --- */}
-        <section className="section-padding bg-brand-cream container mx-auto px-6 relative z-20">
+        <section className="section-padding bg-white container mx-auto px-6 relative z-20">
           <div className="mb-20 text-center">
              <SectionTitle 
               subtitle="Individual & Set Options"
@@ -118,6 +120,7 @@ export default function Collections() {
                       src="https://i.pinimg.com/1200x/ca/f2/84/caf284f7402f5328e3c21ddacab64f75.jpg"
                       alt="Knights Bedding Quality"
                       fill
+                      sizes="(max-width: 1024px) 100vw, 40vw"
                       className="object-cover transition-transform duration-[3s] hover:scale-110"
                     />
                   </div>
@@ -128,7 +131,7 @@ export default function Collections() {
         </section>
 
         {/* --- COLLECTION GRADES --- */}
-        <section className="py-24 bg-brand-cream/50 relative z-20 border-t border-black/5">
+        <section className="py-24 bg-white relative z-20 border-t border-black/5">
           <div className="container mx-auto px-6">
             <div className="mb-16">
               <SectionTitle 
@@ -137,56 +140,73 @@ export default function Collections() {
               />
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
+            <div className="flex flex-col gap-6">
               {[
                 {
-                  title: "STANDARD COLLECTION",
+                  title: "Standard Collection",
                   desc: "Lightweight and breathable, this collection offers a crisp, fresh feel that is ideal for everyday comfort. Its balanced weave ensures durability while maintaining a smooth and inviting texture.",
-                  tc: "300 THREAD COUNT",
-                  accent: "bg-brand-accent-sage/20"
+                  tc: "300 Thread Count",
+                  image: "https://images.unsplash.com/photo-1596436889106-be35e843f974?q=80&w=2070&auto=format&fit=crop",
+                  slug: "flat-sheet",
+                  align: "left",
                 },
                 {
-                  title: "CLASSIC COLLECTION",
+                  title: "Classic Collection",
                   desc: "Known for its enhanced softness, the Classic Collection provides a smoother and more refined finish, offering a perfect balance between everyday practicality and elevated comfort.",
-                  tc: "400 THREAD COUNT",
-                  accent: "bg-brand-gold/10"
+                  tc: "400 Thread Count",
+                  image: "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?q=80&w=2070&auto=format&fit=crop",
+                  slug: "fitted-sheet",
+                  align: "right",
                 },
                 {
-                  title: "SIGNATURE COLLECTION",
+                  title: "Signature Collection",
                   desc: "Our most luxurious offering, the Signature Collection features a rich, silky texture and superior density, delivering exceptional smoothness and an indulgent sleeping experience.",
-                  tc: "600 THREAD COUNT",
-                  accent: "bg-brand-black/5"
-                }
+                  tc: "600 Thread Count",
+                  image: "https://images.unsplash.com/photo-1540518614846-7eded433c457?q=80&w=2057&auto=format&fit=crop",
+                  slug: "bed-linen-set",
+                  align: "left",
+                },
               ].map((item, idx) => (
                 <AnimatedSection 
                   key={idx} 
                   delay={idx * 0.1} 
                   direction="up"
-                  className="h-full"
+                  className="w-full"
                 >
-                  <div className="bg-white h-full p-10 lg:p-12 rounded-[2.5rem] border border-black/5 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-700 group relative overflow-hidden">
-                    {/* Background Glow */}
-                    <div className={`absolute top-0 right-0 w-32 h-32 ${item.accent} rounded-full blur-[40px] opacity-20 group-hover:opacity-100 transition-opacity duration-700 -mr-10 -mt-10`}></div>
-                    
-                    <div className="relative z-10">
-                      <div className="flex justify-between items-center mb-10">
-                        <span className="text-brand-gold font-sans text-[10px] font-bold tracking-[0.3em] uppercase">{item.tc}</span>
-                        <div className="w-10 h-10 rounded-full border border-brand-gold/10 flex items-center justify-center text-brand-gold/30 group-hover:text-brand-gold group-hover:border-brand-gold/30 transition-all duration-500">
-                           <Sparkles size={18} />
-                        </div>
-                      </div>
-                      
-                      <h4 className="font-serif text-2xl lg:text-3xl text-brand-black mb-8 leading-snug group-hover:text-brand-gold transition-colors duration-500">
+                  <Link href={`/collections/${item.slug}`} className="group block w-full relative overflow-hidden rounded-3xl h-[340px] md:h-[420px] shadow-xl">
+                    {/* Background image */}
+                    <Image
+                      src={item.image}
+                      alt={item.title}
+                      fill
+                      sizes="100vw"
+                      quality={85}
+                      className="object-cover transition-transform duration-[1.5s] group-hover:scale-105"
+                    />
+
+                    {/* Base dark overlay for readability */}
+                    <div className="absolute inset-0 bg-brand-black/50 z-[5]" />
+
+                    {/* Directional gradient overlay */}
+                    <div className={`absolute inset-0 bg-gradient-to-${item.align === "left" ? "r" : "l"} from-brand-black/90 via-brand-black/50 to-brand-black/10 z-10`} />
+
+                    {/* Content */}
+                    <div className={`absolute inset-0 z-20 flex flex-col justify-end p-10 md:p-16 ${item.align === "right" ? "items-end text-right" : "items-start text-left"}`}>
+                      <span className="font-sans text-[10px] font-bold tracking-[0.35em] uppercase text-brand-gold mb-4 block">
+                        {item.tc}
+                      </span>
+                      <h3 className="font-serif text-3xl md:text-5xl text-white font-light mb-4 leading-tight">
                         {item.title}
-                      </h4>
-                      
-                      <div className="w-12 h-[1px] bg-brand-gold/30 mb-8 group-hover:w-20 transition-all duration-500"></div>
-                      
-                      <p className="text-brand-charcoal/70 font-light leading-relaxed text-base md:text-lg">
+                      </h3>
+                      <div className={`h-[1px] w-12 bg-brand-gold mb-6 transition-all duration-500 group-hover:w-24 ${item.align === "right" ? "ml-auto" : ""}`} />
+                      <p className="text-white/90 font-light text-sm md:text-base max-w-lg leading-relaxed mb-8">
                         {item.desc}
                       </p>
+                      <span className="inline-flex items-center gap-3 px-7 py-3 border border-white/30 text-white text-xs uppercase tracking-[0.2em] font-sans backdrop-blur-sm bg-white/10 group-hover:bg-brand-gold group-hover:border-brand-gold transition-all duration-500 rounded-full">
+                        Explore <ArrowRight size={14} />
+                      </span>
                     </div>
-                  </div>
+                  </Link>
                 </AnimatedSection>
               ))}
             </div>
@@ -218,7 +238,9 @@ function ProductCard({ product, index }: { product: any, index: number }) {
           <Image 
             src={currentImage} 
             alt={product.name} 
-            fill 
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            quality={85}
             className="object-cover transition-transform duration-700 group-hover:scale-110" 
           />
           <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500"></div>

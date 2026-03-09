@@ -46,7 +46,9 @@ export default function Home() {
               <Image 
                 src="/product-sheets.png" 
                 alt="Detailed fabric texture by Yarns Lanka" 
-                fill 
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                quality={85}
                 className="object-cover transition-transform duration-700 group-hover:scale-105" 
               />
               <div className="absolute inset-0 bg-gradient-to-t from-white/80 via-transparent to-transparent"></div>
@@ -60,7 +62,9 @@ export default function Home() {
                 <Image 
                   src="/product-pillow.png" 
                   alt="Knights pillows" 
-                  fill 
+                  fill
+                  sizes="256px"
+                  quality={80}
                   className="object-cover" 
                 />
               </motion.div>
@@ -115,7 +119,9 @@ export default function Home() {
                 <Image 
                   src="/collection-overview.png" 
                   alt="Discover Yarns Knights Collection" 
-                  fill 
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  quality={85}
                   className="object-cover transition-transform duration-[1.5s] ease-out group-hover:scale-110" 
                 />
                 <div className="absolute inset-0 bg-gradient-to-tr from-brand-black/50 via-transparent to-white/10 opacity-60"></div>
@@ -125,7 +131,7 @@ export default function Home() {
           </div>
           
           {/* Decorative background element */}
-          <div className="absolute -left-[10%] -bottom-[20%] w-[500px] h-[500px] rounded-full bg-brand-gold/5 blur-[100px] pointer-events-none"></div>
+          <div className="hidden md:block absolute -left-[10%] -bottom-[20%] w-[500px] h-[500px] rounded-full bg-brand-gold/5 blur-[100px] pointer-events-none"></div>
         </section>
 
         {/* --- PRODUCT CAROUSEL --- */}

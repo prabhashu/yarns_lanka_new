@@ -28,8 +28,8 @@ export default function Contact() {
       
       <main className="w-full bg-white min-h-screen relative overflow-hidden">
         {/* Background Gradients */}
-        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-brand-gold/5 rounded-full blur-[150px] -translate-y-1/2 translate-x-1/3 pointer-events-none"></div>
-        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-brand-gold/5 rounded-full blur-[120px] translate-y-1/2 -translate-x-1/3 pointer-events-none"></div>
+        <div className="hidden md:block absolute top-0 right-0 w-[800px] h-[800px] bg-brand-gold/5 rounded-full blur-[150px] -translate-y-1/2 translate-x-1/3 pointer-events-none"></div>
+        <div className="hidden md:block absolute bottom-0 left-0 w-[600px] h-[600px] bg-brand-gold/5 rounded-full blur-[120px] translate-y-1/2 -translate-x-1/3 pointer-events-none"></div>
 
         {/* --- PAGE HERO --- */}
         <section className="relative h-[45vh] min-h-[350px] flex items-center justify-center mb-16">
@@ -39,6 +39,8 @@ export default function Contact() {
               alt="Get In Touch"
               fill
               priority
+              quality={90}
+              sizes="100vw"
               className="object-cover object-center"
             />
             {/* Dark Cinematic Gradient */}
@@ -52,7 +54,7 @@ export default function Contact() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, ease: "easeOut" }}
             >
-              <h1 className="heading-xl mb-6 text-white drop-shadow-md">Get In Touch</h1>
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[5.5rem] font-serif font-light uppercase text-white leading-[1.2] tracking-widest mb-6 drop-shadow-md">Get In Touch</h1>
               <div className="h-[2px] w-16 bg-brand-gold mx-auto mb-8 opacity-80"></div>
               <p className="font-serif italic text-xl text-brand-gold-dark max-w-2xl mx-auto px-4">
                 For wholesale inquiries, partnerships, or customer support.

@@ -36,7 +36,7 @@ export default function ProductDetailClient({ product }: { product: Product }) {
         <div className="container mx-auto px-6 max-w-7xl">
           
           {/* Back Link */}
-          <Link href="/collections" className="inline-flex items-center gap-2 font-sans text-xs uppercase tracking-widest text-brand-charcoal hover:text-brand-gold transition-colors duration-300 mb-12">
+          <Link href="/collections" className="inline-flex items-center gap-2 font-sans text-xs uppercase tracking-widest text-brand-charcoal hover:text-brand-grey-medium transition-colors duration-300 mb-12">
             <ArrowLeft size={16} /> Back to Collections
           </Link>
 
@@ -44,7 +44,7 @@ export default function ProductDetailClient({ product }: { product: Product }) {
             
             {/* Gallery Section - Sticky left */}
             <AnimatedSection direction="right" className="lg:col-span-6 lg:sticky lg:top-[120px]">
-              <div className="relative w-full aspect-[4/5] rounded-3xl overflow-hidden mb-6 bg-white border border-black/5 group shadow-sm">
+              <div className="relative w-full aspect-[4/5] rounded-none overflow-hidden mb-6 bg-white border border-black/5 group shadow-sm">
                 <Image 
                   src={currentImage} 
                   alt={product.name} 
@@ -64,10 +64,10 @@ export default function ProductDetailClient({ product }: { product: Product }) {
                     <div 
                       key={color.name}
                       onClick={() => setSelectedColor(color.name)}
-                      className={`relative w-20 h-20 rounded-xl overflow-hidden cursor-pointer border-2 transition-colors duration-300 ${
+                      className={`relative w-20 h-20 rounded-none overflow-hidden cursor-pointer border-2 transition-colors duration-300 ${
                         isSelected 
-                          ? 'border-brand-gold shadow-[0_0_15px_rgba(212,175,55,0.3)]' 
-                          : 'border-transparent hover:border-brand-gold/50'
+                          ? 'border-brand-grey-medium shadow-[0_0_15px_rgba(138, 138, 138,0.3)]' 
+                          : 'border-transparent hover:border-brand-grey-medium/50'
                       }`}
                     >
                       <Image 
@@ -88,7 +88,7 @@ export default function ProductDetailClient({ product }: { product: Product }) {
                 <div className="flex items-center justify-between mb-8">
                   <h3 className="font-serif text-2xl text-brand-black">Client Feedback</h3>
                   <div className="flex items-center gap-2">
-                    <div className="flex text-brand-gold">
+                    <div className="flex text-brand-grey-medium">
                       {[1, 2, 3, 4, 5].map((s) => (
                         <Sparkles key={s} size={14} fill="currentColor" />
                       ))}
@@ -116,7 +116,7 @@ export default function ProductDetailClient({ product }: { product: Product }) {
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
                       transition={{ delay: idx * 0.1 }}
-                      className="bg-white/40 p-6 rounded-2xl border border-black/5"
+                      className="bg-white/40 p-6 rounded-none border border-black/5"
                     >
                       <div className="flex justify-between items-start mb-3">
                         <span className="text-[10px] font-sans font-bold text-brand-black uppercase tracking-widest">{review.name}</span>
@@ -128,7 +128,7 @@ export default function ProductDetailClient({ product }: { product: Product }) {
                     </motion.div>
                   ))}
                   
-                  <Link href="/contact" className="inline-flex items-center gap-2 px-1 py-1 text-[10px] font-bold tracking-[0.2em] text-brand-gold hover:text-brand-black transition-colors uppercase mt-4">
+                  <Link href="/contact" className="inline-flex items-center gap-2 px-1 py-1 text-[10px] font-bold tracking-[0.2em] text-brand-grey-medium hover:text-brand-black transition-colors uppercase mt-4">
                     Share Your Experience <ArrowLeft size={12} className="rotate-180" />
                   </Link>
                 </div>
@@ -140,7 +140,7 @@ export default function ProductDetailClient({ product }: { product: Product }) {
               
               {/* Product Header */}
               <div className="mb-10">
-                <span className="font-sans text-xs font-semibold tracking-[0.2em] uppercase text-brand-gold block mb-4">
+                <span className="font-sans text-xs font-semibold tracking-[0.2em] uppercase text-brand-grey-medium block mb-4">
                   KNIGHTS by Yarns Lanka
                 </span>
                 <h1 className="font-serif text-4xl md:text-5xl lg:text-5xl text-brand-black mb-4 leading-tight">
@@ -150,7 +150,7 @@ export default function ProductDetailClient({ product }: { product: Product }) {
               </div>
 
               {/* Selectors Block */}
-              <div className="bg-white border border-brand-accent-sage/20 shadow-lg rounded-2xl p-8 mb-10">
+              <div className="bg-white border border-brand-accent-sage/20 shadow-lg rounded-none p-8 mb-10">
                 
                 {/* Thread Count Selector */}
                 <div className="mb-8">
@@ -162,13 +162,13 @@ export default function ProductDetailClient({ product }: { product: Product }) {
                       <button 
                         key={tc}
                         onClick={() => setSelectedTc(tc)}
-                        className={`flex flex-col items-center gap-1 border border-black/10 bg-black/[0.02] rounded-xl py-3 px-2 transition-all duration-300 ${
+                        className={`flex flex-col items-center gap-1 border border-black/10 bg-black/[0.02] rounded-none py-3 px-2 transition-all duration-300 ${
                           selectedTc === tc 
-                            ? 'border-brand-gold bg-brand-gold/10 shadow-[0_0_15px_rgba(212,175,55,0.15)]' 
-                            : 'hover:border-brand-gold/50 hover:bg-white'
+                            ? 'border-brand-grey-medium bg-brand-grey-medium/10 shadow-[0_0_15px_rgba(138, 138, 138,0.15)]' 
+                            : 'hover:border-brand-grey-medium/50 hover:bg-white'
                         }`}
                       >
-                        <span className={`font-sans font-bold ${selectedTc === tc ? 'text-brand-gold-dark' : 'text-brand-black'}`}>
+                        <span className={`font-sans font-bold ${selectedTc === tc ? 'text-brand-grey-dark' : 'text-brand-black'}`}>
                           {tc} TC
                         </span>
                         <span className="text-xs text-brand-charcoal/80">
@@ -185,7 +185,7 @@ export default function ProductDetailClient({ product }: { product: Product }) {
                     <span className="font-sans text-xs font-bold uppercase tracking-widest text-brand-black">Size</span>
                     <button 
                       onClick={() => setIsSizeGuideOpen(true)} 
-                      className="text-xs font-serif italic text-brand-charcoal/80 underline hover:text-brand-gold transition-colors"
+                      className="text-xs font-serif italic text-brand-charcoal/80 underline hover:text-brand-grey-medium transition-colors"
                     >
                       View Size Guide
                     </button>
@@ -195,9 +195,9 @@ export default function ProductDetailClient({ product }: { product: Product }) {
                       <button 
                         key={size.name}
                         onClick={() => setSelectedSize(size.name)}
-                        className={`px-4 py-2 border rounded-lg transition-all duration-300 font-sans text-sm ${
+                        className={`px-4 py-2 border rounded-none transition-all duration-300 font-sans text-sm ${
                           selectedSize === size.name 
-                            ? 'border-brand-gold text-brand-gold-dark bg-brand-gold/10 shadow-[0_0_10px_rgba(212,175,55,0.1)]' 
+                            ? 'border-brand-grey-medium text-brand-grey-dark bg-brand-grey-medium/10 shadow-[0_0_10px_rgba(138, 138, 138,0.1)]' 
                             : 'border-black/10 text-brand-charcoal hover:border-black/30 bg-black/[0.02] hover:bg-white'
                         }`}
                       >
@@ -218,15 +218,15 @@ export default function ProductDetailClient({ product }: { product: Product }) {
                       <button 
                         key={color.name}
                         onClick={() => setSelectedColor(color.name)}
-                        className={`w-12 h-12 rounded-full border transition-all duration-300 flex items-center justify-center p-[2px] ${
+                        className={`w-12 h-12 rounded-none border transition-all duration-300 flex items-center justify-center p-[2px] ${
                           selectedColor === color.name 
-                            ? 'border-brand-gold translate-y-[-2px] shadow-[0_4px_10px_rgba(212,175,55,0.3)]' 
+                            ? 'border-brand-grey-medium translate-y-[-2px] shadow-[0_4px_10px_rgba(138, 138, 138,0.3)]' 
                             : 'border-transparent hover:border-black/30 hover:scale-105'
                         }`}
                         aria-label={`Select ${color.name} color`}
                       >
                         <span 
-                          className="w-full h-full rounded-full shadow-inner border border-black/10" 
+                          className="w-full h-full rounded-none shadow-inner border border-black/10" 
                           style={{ backgroundColor: color.hex }}
                         ></span>
                       </button>
@@ -241,8 +241,8 @@ export default function ProductDetailClient({ product }: { product: Product }) {
                   Request Wholesale Quote
                 </Button>
                 <div className="flex justify-center gap-8 text-brand-charcoal text-sm font-sans tracking-wide">
-                  <span className="flex items-center gap-2"><Sparkles className="text-brand-gold" size={16} /> ISO 9001:2015</span>
-                  <span className="flex items-center gap-2"><Droplets className="text-brand-gold" size={16} /> Organic Cotton</span>
+                  <span className="flex items-center gap-2"><Sparkles className="text-brand-grey-medium" size={16} /> ISO 9001:2015</span>
+                  <span className="flex items-center gap-2"><Droplets className="text-brand-grey-medium" size={16} /> Organic Cotton</span>
                 </div>
               </div>
 
@@ -257,12 +257,12 @@ export default function ProductDetailClient({ product }: { product: Product }) {
                 {/* Features List */}
                 <div>
                   <h4 className="font-sans text-sm tracking-widest uppercase text-brand-black mb-6 flex items-center gap-3">
-                    <span className="w-6 h-[1px] bg-brand-gold"></span> Features
+                    <span className="w-6 h-[1px] bg-brand-grey-medium"></span> Features
                   </h4>
                   <ul className="space-y-3">
                     {features.map((feature, idx) => (
                       <li key={idx} className="relative pl-6 text-brand-charcoal/80 leading-relaxed">
-                        <span className="absolute left-0 top-[10px] w-1.5 h-1.5 rounded-full bg-brand-gold"></span>
+                        <span className="absolute left-0 top-[10px] w-1.5 h-1.5 rounded-none bg-brand-grey-medium"></span>
                         {feature}
                       </li>
                     ))}
@@ -276,10 +276,10 @@ export default function ProductDetailClient({ product }: { product: Product }) {
                     onClick={() => setIsCareOpen(!isCareOpen)}
                     aria-expanded={isCareOpen}
                   >
-                    <span className="group-hover:text-brand-gold transition-colors">Care Instructions</span>
+                    <span className="group-hover:text-brand-grey-medium transition-colors">Care Instructions</span>
                     <ChevronDown 
                       size={20} 
-                      className={`text-brand-gold transition-transform duration-300 ${isCareOpen ? 'rotate-180' : ''}`} 
+                      className={`text-brand-grey-medium transition-transform duration-300 ${isCareOpen ? 'rotate-180' : ''}`} 
                     />
                   </button>
                   
@@ -314,7 +314,7 @@ export default function ProductDetailClient({ product }: { product: Product }) {
                 <div className="flex flex-col sm:flex-row items-center justify-between mb-12 gap-6 text-center sm:text-left">
                   <h3 className="font-serif text-3xl md:text-4xl text-brand-black">Client Feedback</h3>
                   <div className="flex items-center gap-2">
-                    <div className="flex text-brand-gold">
+                    <div className="flex text-brand-grey-medium">
                       {[1, 2, 3, 4, 5].map((s) => (
                         <Sparkles key={s} size={18} fill="currentColor" />
                       ))}
@@ -342,7 +342,7 @@ export default function ProductDetailClient({ product }: { product: Product }) {
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
                       transition={{ delay: idx * 0.1 }}
-                      className="bg-white/60 p-8 rounded-3xl border border-black/5 shadow-sm hover:shadow-md transition-shadow"
+                      className="bg-white/60 p-8 rounded-none border border-black/5 shadow-sm hover:shadow-md transition-shadow"
                     >
                       <div className="flex justify-between items-start mb-4">
                         <span className="text-xs font-sans font-bold text-brand-black uppercase tracking-widest">{review.name}</span>
@@ -356,7 +356,7 @@ export default function ProductDetailClient({ product }: { product: Product }) {
                 </div>
                 
                 <div className="mt-12 text-center">
-                  <Link href="/contact" className="inline-flex items-center justify-center gap-3 px-8 py-4 text-xs font-bold tracking-[0.2em] text-brand-black hover:text-white border border-black/10 hover:border-brand-gold hover:bg-brand-gold transition-all duration-300 uppercase rounded-full bg-white shadow-sm">
+                  <Link href="/contact" className="inline-flex items-center justify-center gap-3 px-8 py-4 text-xs font-bold tracking-[0.2em] text-brand-black hover:text-white border border-black/10 hover:border-brand-grey-medium hover:bg-brand-grey-medium transition-all duration-300 uppercase rounded-none bg-white shadow-sm">
                     Share Your Experience <ArrowLeft size={16} className="rotate-180" />
                   </Link>
                 </div>
@@ -379,7 +379,7 @@ export default function ProductDetailClient({ product }: { product: Product }) {
                 initial={{ opacity: 0, scale: 0.95, y: 20 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.95, y: 20 }}
-                className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto bg-white border border-brand-accent-sage/30 rounded-3xl p-8 z-10 shadow-2xl"
+                className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto bg-white border border-brand-accent-sage/30 rounded-none p-8 z-10 shadow-2xl"
               >
                 <button 
                   onClick={() => setIsSizeGuideOpen(false)}
@@ -390,14 +390,14 @@ export default function ProductDetailClient({ product }: { product: Product }) {
                 </button>
                 
                 <div className="text-center mb-8">
-                  <Ruler className="text-brand-gold mx-auto mb-4" size={32} />
+                  <Ruler className="text-brand-grey-medium mx-auto mb-4" size={32} />
                   <h3 className="font-serif text-3xl text-brand-black mb-2">Size Guide</h3>
                   <p className="text-brand-charcoal/80 font-serif italic">Australian Market Standards</p>
                 </div>
 
-                <div className="overflow-x-auto rounded-xl border border-black/10 bg-black/[0.02] backdrop-blur-sm">
+                <div className="overflow-x-auto rounded-none border border-black/10 bg-black/[0.02] backdrop-blur-sm">
                   <table className="w-full text-left text-sm">
-                    <thead className="bg-black/[0.04] border-b border-black/10 font-sans tracking-widest text-brand-gold uppercase text-xs">
+                    <thead className="bg-black/[0.04] border-b border-black/10 font-sans tracking-widest text-brand-grey-medium uppercase text-xs">
                       <tr>
                         <th className="p-5 font-semibold">Size</th>
                         <th className="p-5 font-semibold">Dimensions {product.slug === 'bed-linen-set' ? '(Included)' : '(cm)'}</th>

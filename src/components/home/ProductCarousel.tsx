@@ -109,14 +109,14 @@ export default function ProductCarousel() {
           <div className="flex items-center gap-4 mb-2 md:mb-0">
             <button 
               onClick={prevSlide}
-              className="w-12 h-12 md:w-14 md:h-14 rounded-full border border-brand-gold/20 flex items-center justify-center hover:bg-brand-gold hover:text-white transition-all duration-500 group shadow-sm hover:shadow-xl bg-white"
+              className="w-12 h-12 md:w-14 md:h-14 rounded-none border border-brand-grey-medium/20 flex items-center justify-center hover:bg-brand-grey-medium hover:text-white transition-all duration-500 group shadow-sm hover:shadow-xl bg-white"
               aria-label="Previous products"
             >
               <ChevronLeft size={24} className="group-hover:-translate-x-1 transition-transform" />
             </button>
             <button 
               onClick={nextSlide}
-              className="w-12 h-12 md:w-14 md:h-14 rounded-full border border-brand-gold/20 flex items-center justify-center hover:bg-brand-gold hover:text-white transition-all duration-500 group shadow-sm hover:shadow-xl bg-white"
+              className="w-12 h-12 md:w-14 md:h-14 rounded-none border border-brand-grey-medium/20 flex items-center justify-center hover:bg-brand-grey-medium hover:text-white transition-all duration-500 group shadow-sm hover:shadow-xl bg-white"
               aria-label="Next products"
             >
               <ChevronRight size={24} className="group-hover:translate-x-1 transition-transform" />
@@ -148,7 +148,7 @@ export default function ProductCarousel() {
           {/* Custom Progress Bar */}
           <div className="max-w-md mx-auto relative h-[1px] bg-black/5 mt-4">
             <motion.div 
-              className="absolute top-0 h-full bg-brand-gold"
+              className="absolute top-0 h-full bg-brand-grey-medium"
               animate={{ 
                 width: `${(1 / products.length) * 100}%`,
                 left: `${((currentIndex % products.length) / products.length) * 100}%`
@@ -165,7 +165,7 @@ export default function ProductCarousel() {
         <div className="mt-24 text-center">
           <Link 
             href="/collections" 
-            className="inline-flex items-center gap-6 text-[10px] font-bold tracking-[0.4em] text-brand-black hover:text-brand-gold transition-all group py-5 px-10 border border-black/10 hover:border-brand-gold rounded-full bg-white shadow-sm hover:shadow-xl uppercase"
+            className="inline-flex items-center gap-6 text-[10px] font-bold tracking-[0.4em] text-brand-black hover:text-brand-grey-medium transition-all group py-5 px-10 border border-black/10 hover:border-brand-grey-medium rounded-none bg-white shadow-sm hover:shadow-xl uppercase"
           >
             Explore Full Registry 
             <ArrowRight size={18} className="group-hover:translate-x-3 transition-transform duration-500" />
@@ -182,7 +182,7 @@ function CarouselCard({ product, isActive }: { product: Product, isActive: boole
       className={`min-w-[280px] w-[80vw] sm:min-w-[380px] md:min-w-[450px] group transition-all duration-700 ${isActive ? 'opacity-100 scale-100' : 'opacity-80 scale-[0.98]'}`}
     >
       <Link href={`/collections/${product.slug}`} className="block relative">
-        <div className="relative aspect-[4/5] rounded-[2.5rem] overflow-hidden mb-10 bg-brand-cream/10 shadow-[0_20px_50px_rgba(0,0,0,0.1)] transition-all duration-1000 group-hover:shadow-[0_30px_60px_rgba(212,175,55,0.15)]">
+        <div className="relative aspect-[4/5] rounded-none overflow-hidden mb-10 bg-brand-cream/10 shadow-[0_20px_50px_rgba(0,0,0,0.1)] transition-all duration-1000 group-hover:shadow-[0_30px_60px_rgba(138, 138, 138,0.15)]">
           <Image 
             src={product.image} 
             alt={product.name} 
@@ -195,14 +195,14 @@ function CarouselCard({ product, isActive }: { product: Product, isActive: boole
           
           {/* High-End Label */}
           <div className="absolute top-10 left-10">
-            <span className="px-5 py-2.5 bg-white/10 backdrop-blur-xl text-[9px] font-bold tracking-[0.3em] text-white rounded-full border border-white/20 uppercase">
+            <span className="px-5 py-2.5 bg-white/10 backdrop-blur-xl text-[9px] font-bold tracking-[0.3em] text-white rounded-none border border-white/20 uppercase">
               {product.shortName}
             </span>
           </div>
           
           {/* Floating Detail Action */}
           <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-1000">
-             <div className="w-24 h-24 rounded-full bg-white flex flex-col items-center justify-center text-brand-black shadow-2xl scale-50 group-hover:scale-100 transition-all duration-700 ease-out border border-brand-gold/20">
+             <div className="w-24 h-24 rounded-none bg-white flex flex-col items-center justify-center text-brand-black shadow-2xl scale-50 group-hover:scale-100 transition-all duration-700 ease-out border border-brand-grey-medium/20">
                 <ArrowRight size={28} className="mb-1" />
                 <span className="text-[8px] font-bold tracking-widest uppercase">View</span>
              </div>
@@ -211,10 +211,10 @@ function CarouselCard({ product, isActive }: { product: Product, isActive: boole
         
         <div className="space-y-5 px-4">
           <div className="flex items-start justify-between gap-6">
-            <h3 className={`text-2xl md:text-3xl font-serif text-brand-black group-hover:text-brand-gold transition-colors duration-700 leading-tight`}>
+            <h3 className={`text-2xl md:text-3xl font-serif text-brand-black group-hover:text-brand-grey-medium transition-colors duration-700 leading-tight`}>
               {product.name}
             </h3>
-            <div className="mt-3 text-brand-gold opacity-0 group-hover:opacity-100 transition-all duration-700 transform translate-y-4 group-hover:translate-y-0">
+            <div className="mt-3 text-brand-grey-medium opacity-0 group-hover:opacity-100 transition-all duration-700 transform translate-y-4 group-hover:translate-y-0">
                <Sparkles size={22} />
             </div>
           </div>

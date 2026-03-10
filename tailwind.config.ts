@@ -21,11 +21,8 @@ const config: Config = {
                 brand: {
                     black: "#050505",
                     charcoal: "#1A1A1A",
-                    gold: {
-                        DEFAULT: "#D4AF37",
-                        light: "#F3E5AB",
-                        dark: "#B8972E",
-                    },
+                    red: "#8B0000", // Dark luxury red
+
                     cream: "#F5F0EB",
                     grey: {
                         light: "#E5E5E5",
@@ -57,8 +54,8 @@ const config: Config = {
                     '50%': { transform: 'translateY(-10px)' },
                 },
                 glow: {
-                    'from': { boxShadow: '0 0 10px -5px rgba(212, 175, 55, 0.5)' },
-                    'to': { boxShadow: '0 0 20px 5px rgba(212, 175, 55, 0.6)' },
+                    'from': { boxShadow: '0 0 10px -5px rgba(138, 138, 138, 0.5)' },
+                    'to': { boxShadow: '0 0 20px 5px rgba(138, 138, 138, 0.6)' },
                 }
             }
         },

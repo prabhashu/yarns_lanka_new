@@ -23,7 +23,7 @@
 }
 
 .backLink:hover {
-    color: var(--color-gold);
+    color: var(--color-medium-grey);
 }
 
 .grid {
@@ -43,7 +43,7 @@
     position: relative;
     width: 100%;
     aspect-ratio: 4/5;
-    border-radius: var(--radius-sm);
+    border-radius: 0;
     overflow: hidden;
     margin-bottom: var(--space-md);
     background-color: var(--color-off-white);
@@ -62,7 +62,7 @@
     position: relative;
     width: 80px;
     height: 80px;
-    border-radius: var(--radius-sm);
+    border-radius: 0;
     overflow: hidden;
     cursor: pointer;
     border: 2px solid transparent;
@@ -70,7 +70,7 @@
 }
 
 .thumbnailActive {
-    border-color: var(--color-gold);
+    border-color: var(--color-medium-grey);
 }
 
 .thumbnail {
@@ -88,7 +88,7 @@
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.15em;
-    color: var(--color-gold);
+    color: var(--color-medium-grey);
     display: block;
     margin-bottom: var(--space-md);
 }
@@ -139,7 +139,7 @@
 
 .tcBtn {
     border: 1px solid var(--color-light-grey);
-    border-radius: var(--radius-sm);
+    border-radius: 0;
     padding: var(--space-md) var(--space-sm);
     text-align: center;
     transition: all var(--transition-fast);
@@ -183,7 +183,7 @@
 .colorBtn {
     width: 44px;
     height: 44px;
-    border-radius: 50%;
+    border-radius: 0;
     border: 1px solid var(--color-light-grey);
     display: flex;
     align-items: center;
@@ -201,7 +201,7 @@
 .colorSwatch {
     width: 100%;
     height: 100%;
-    border-radius: 50%;
+    border-radius: 0;
     border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
@@ -265,8 +265,8 @@
     top: 10px;
     width: 6px;
     height: 6px;
-    border-radius: 50%;
-    background-color: var(--color-gold);
+    border-radius: 0;
+    background-color: var(--color-medium-grey);
 }
 
 /* Table */
@@ -335,7 +335,7 @@
 }
 
 .accordionIcon {
-    color: var(--color-gold);
+    color: var(--color-medium-grey);
     transition: transform var(--transition-fast);
 }
 

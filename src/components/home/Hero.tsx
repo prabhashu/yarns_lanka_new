@@ -129,7 +129,7 @@ export default function Hero() {
             className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[6rem] font-serif font-light uppercase text-white leading-[1.2] md:leading-[1.1] tracking-widest pb-2"
           >
             Enduring Style for a <br className="hidden md:block" />
-            <span className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-brand-gold-light via-brand-gold to-brand-gold-dark pr-2 xl:pr-4">
+            <span className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-brand-grey-medium pr-2 xl:pr-4">
               Refined
             </span>{" "}
             Lifestyle
@@ -150,7 +150,7 @@ export default function Hero() {
           variants={itemVariants}
           className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mt-4 w-full sm:w-auto px-4"
         >
-          <Button href="/contact" variant="primary" size="lg" className="w-full sm:w-auto min-w-[200px] shadow-[0_0_30px_rgba(212,175,55,0.2)]">
+          <Button href="/contact" variant="primary" size="lg" className="w-full sm:w-auto min-w-[200px] shadow-[0_0_30px_rgba(138, 138, 138,0.2)]">
             Partner With Us
           </Button>
         </motion.div>
@@ -166,8 +166,8 @@ export default function Hero() {
               setDirection(i > currentImageIndex ? 1 : -1);
               setCurrentImageIndex(i);
             }}
-            className={`w-1 transition-all rounded-full duration-500 ease-out focus:outline-none ${
-              i === currentImageIndex ? "bg-brand-gold h-8" : "bg-white/40 h-2 hover:bg-white/70 hover:h-4"
+            className={`w-1 transition-all rounded-none duration-500 ease-out focus:outline-none ${
+              i === currentImageIndex ? "bg-white h-8" : "bg-white/40 h-2 hover:bg-white/70 hover:h-4"
             }`}
             aria-label={`Go to slide ${i + 1}`}
           />
@@ -191,7 +191,7 @@ export default function Hero() {
               repeat: Infinity,
               ease: "easeInOut",
             }}
-            className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-transparent via-brand-gold to-transparent"
+            className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-transparent via-white to-transparent"
           />
         </div>
         <span className="text-[10px] uppercase tracking-[0.4em] text-white font-bold drop-shadow-md">
@@ -200,8 +200,8 @@ export default function Hero() {
       </motion.div>
 
       {/* Decorative Elements */}
-      <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-brand-gold/5 blur-[120px] rounded-full -translate-y-1/2 translate-x-1/2 pointer-events-none hidden md:block z-20"></div>
-      <div className="absolute bottom-0 left-0 w-1/3 h-1/3 bg-brand-gold/5 blur-[120px] rounded-full translate-y-1/2 -translate-x-1/2 pointer-events-none hidden md:block z-20"></div>
+      <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-brand-grey-medium/5 blur-[120px] rounded-none -translate-y-1/2 translate-x-1/2 pointer-events-none hidden md:block z-20"></div>
+      <div className="absolute bottom-0 left-0 w-1/3 h-1/3 bg-brand-grey-medium/5 blur-[120px] rounded-none translate-y-1/2 -translate-x-1/2 pointer-events-none hidden md:block z-20"></div>
     </section>
   );
 }

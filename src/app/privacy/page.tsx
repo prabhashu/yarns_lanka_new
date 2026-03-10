@@ -12,7 +12,7 @@ export default function PrivacyPolicy() {
       
       <main className="w-full bg-white min-h-screen relative overflow-hidden">
         {/* Background Gradients */}
-        <div className="hidden md:block absolute top-0 right-0 w-[800px] h-[800px] bg-brand-gold/5 rounded-full blur-[150px] -translate-y-1/2 translate-x-1/3 pointer-events-none"></div>
+        <div className="hidden md:block absolute top-0 right-0 w-[800px] h-[800px] bg-brand-grey-medium/5 rounded-none blur-[150px] -translate-y-1/2 translate-x-1/3 pointer-events-none"></div>
 
         {/* --- PAGE HERO --- */}
         <section className="relative h-[45vh] min-h-[350px] flex items-center justify-center">
@@ -38,8 +38,8 @@ export default function PrivacyPolicy() {
               transition={{ duration: 1, ease: "easeOut" }}
             >
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-serif font-light uppercase text-white leading-[1.2] tracking-widest mb-6 drop-shadow-md">Privacy Policy</h1>
-              <div className="h-[2px] w-16 bg-brand-gold mx-auto mb-8 opacity-80"></div>
-              <p className="font-serif italic text-xl text-brand-gold-dark max-w-2xl mx-auto px-4">
+              <div className="h-[2px] w-16 bg-brand-grey-medium mx-auto mb-8 opacity-80"></div>
+              <p className="font-serif italic text-xl text-brand-grey-light max-w-2xl mx-auto px-4">
                 Committed to honesty, integrity, and protecting your data.
               </p>
             </motion.div>
@@ -52,10 +52,10 @@ export default function PrivacyPolicy() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="bg-white border border-black/8 p-10 md:p-16 rounded-3xl max-w-4xl mx-auto shadow-sm"
+            className="bg-white border border-black/8 p-10 md:p-16 rounded-none max-w-4xl mx-auto shadow-sm"
           >
             <div className="border-b border-black/10 pb-10 mb-10">
-              <p className="font-sans text-xs tracking-widest uppercase text-brand-gold mb-6">
+              <p className="font-sans text-xs tracking-widest uppercase text-brand-grey-medium mb-6">
                 Effective Date: February 2026
               </p>
               <p className="text-lg leading-relaxed text-brand-charcoal font-light mb-6">
@@ -68,16 +68,16 @@ export default function PrivacyPolicy() {
 
             <div className="space-y-12">
               <div>
-                <h2 className="font-sans text-lg tracking-widest uppercase text-brand-black border-l-2 border-brand-gold pl-4 mb-6">1. Information We Collect</h2>
+                <h2 className="font-sans text-lg tracking-widest uppercase text-brand-black border-l-2 border-brand-grey-medium pl-4 mb-6">1. Information We Collect</h2>
                 <p className="text-brand-charcoal/80 mb-4 leading-relaxed">We collect information that you provide directly to us, such as when you:</p>
                 <ul className="space-y-3 pl-4">
-                  <li className="relative pl-6 text-brand-charcoal/70 before:content-[''] before:absolute before:left-0 before:top-[10px] before:w-1.5 before:h-1.5 before:rounded-full before:bg-brand-gold">
+                  <li className="relative pl-6 text-brand-charcoal/70 before:content-[''] before:absolute before:left-0 before:top-[10px] before:w-1.5 before:h-1.5 before:rounded-none before:bg-brand-grey-medium">
                     Submit inquiries through our contact forms
                   </li>
-                  <li className="relative pl-6 text-brand-charcoal/70 before:content-[''] before:absolute before:left-0 before:top-[10px] before:w-1.5 before:h-1.5 before:rounded-full before:bg-brand-gold">
+                  <li className="relative pl-6 text-brand-charcoal/70 before:content-[''] before:absolute before:left-0 before:top-[10px] before:w-1.5 before:h-1.5 before:rounded-none before:bg-brand-grey-medium">
                     Request wholesale pricing or partnership details
                   </li>
-                  <li className="relative pl-6 text-brand-charcoal/70 before:content-[''] before:absolute before:left-0 before:top-[10px] before:w-1.5 before:h-1.5 before:rounded-full before:bg-brand-gold">
+                  <li className="relative pl-6 text-brand-charcoal/70 before:content-[''] before:absolute before:left-0 before:top-[10px] before:w-1.5 before:h-1.5 before:rounded-none before:bg-brand-grey-medium">
                     Communicate with us via email or social media
                   </li>
                 </ul>
@@ -85,47 +85,47 @@ export default function PrivacyPolicy() {
               </div>
 
               <div>
-                <h2 className="font-sans text-lg tracking-widest uppercase text-brand-black border-l-2 border-brand-gold pl-4 mb-6">2. How We Use Your Information</h2>
+                <h2 className="font-sans text-lg tracking-widest uppercase text-brand-black border-l-2 border-brand-grey-medium pl-4 mb-6">2. How We Use Your Information</h2>
                 <p className="text-brand-charcoal/80 mb-4 leading-relaxed">We use the information we collect to:</p>
                 <ul className="space-y-3 pl-4">
-                  <li className="relative pl-6 text-brand-charcoal/70 before:content-[''] before:absolute before:left-0 before:top-[10px] before:w-1.5 before:h-1.5 before:rounded-full before:bg-brand-gold">
+                  <li className="relative pl-6 text-brand-charcoal/70 before:content-[''] before:absolute before:left-0 before:top-[10px] before:w-1.5 before:h-1.5 before:rounded-none before:bg-brand-grey-medium">
                     Respond to your wholesale or direct inquiries
                   </li>
-                  <li className="relative pl-6 text-brand-charcoal/70 before:content-[''] before:absolute before:left-0 before:top-[10px] before:w-1.5 before:h-1.5 before:rounded-full before:bg-brand-gold">
+                  <li className="relative pl-6 text-brand-charcoal/70 before:content-[''] before:absolute before:left-0 before:top-[10px] before:w-1.5 before:h-1.5 before:rounded-none before:bg-brand-grey-medium">
                     Process bespoke orders and custom sizing requests
                   </li>
-                  <li className="relative pl-6 text-brand-charcoal/70 before:content-[''] before:absolute before:left-0 before:top-[10px] before:w-1.5 before:h-1.5 before:rounded-full before:bg-brand-gold">
+                  <li className="relative pl-6 text-brand-charcoal/70 before:content-[''] before:absolute before:left-0 before:top-[10px] before:w-1.5 before:h-1.5 before:rounded-none before:bg-brand-grey-medium">
                     Provide customer support
                   </li>
-                  <li className="relative pl-6 text-brand-charcoal/70 before:content-[''] before:absolute before:left-0 before:top-[10px] before:w-1.5 before:h-1.5 before:rounded-full before:bg-brand-gold">
+                  <li className="relative pl-6 text-brand-charcoal/70 before:content-[''] before:absolute before:left-0 before:top-[10px] before:w-1.5 before:h-1.5 before:rounded-none before:bg-brand-grey-medium">
                     Improve our website and product offerings
                   </li>
                 </ul>
               </div>
 
               <div>
-                <h2 className="font-sans text-lg tracking-widest uppercase text-brand-black border-l-2 border-brand-gold pl-4 mb-6">3. Information Sharing</h2>
+                <h2 className="font-sans text-lg tracking-widest uppercase text-brand-black border-l-2 border-brand-grey-medium pl-4 mb-6">3. Information Sharing</h2>
                 <p className="text-brand-charcoal/80 leading-relaxed">
                   As an ethical manufacturer, we respect your privacy. We do not sell, trade, or otherwise transfer to outside parties your personally identifiable information. This does not include trusted third parties who assist us in operating our website, conducting our business, or servicing you, so long as those parties agree to keep this information confidential and secure.
                 </p>
               </div>
 
               <div>
-                <h2 className="font-sans text-lg tracking-widest uppercase text-brand-black border-l-2 border-brand-gold pl-4 mb-6">4. Data Security</h2>
+                <h2 className="font-sans text-lg tracking-widest uppercase text-brand-black border-l-2 border-brand-grey-medium pl-4 mb-6">4. Data Security</h2>
                 <p className="text-brand-charcoal/80 leading-relaxed">
                   We implement a variety of security measures to maintain the safety of your personal information. However, please note that no method of transmission over the Internet or method of electronic storage is 100% secure.
                 </p>
               </div>
 
-              <div className="bg-white border border-black/5 rounded-2xl p-8 mt-12 shadow-sm">
-                <h2 className="font-sans text-sm tracking-widest uppercase text-brand-gold mb-6">Contacting Us</h2>
+              <div className="bg-white border border-black/5 rounded-none p-8 mt-12 shadow-sm">
+                <h2 className="font-sans text-sm tracking-widest uppercase text-brand-grey-medium mb-6">Contacting Us</h2>
                 <p className="text-brand-charcoal/80 mb-6 leading-relaxed">If there are any questions regarding this privacy policy, you may contact us using the information below:</p>
                 <div className="text-brand-charcoal/80 leading-relaxed space-y-1">
                   <strong className="text-brand-black block font-normal tracking-wide">Yarns Lanka Private Limited</strong>
                   <p>189/G, Kondagammulla, Demanhandiya</p>
                   <p>Negombo, Sri Lanka</p>
                   <p className="pt-4">
-                    Email: <a href="mailto:Info@yarnslanka.com" className="text-brand-gold hover:underline transition-all">Info@yarnslanka.com</a>
+                    Email: <a href="mailto:Info@yarnslanka.com" className="text-brand-grey-medium hover:underline transition-all">Info@yarnslanka.com</a>
                   </p>
                 </div>
               </div>

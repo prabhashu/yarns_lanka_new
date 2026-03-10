@@ -25,14 +25,14 @@ export default function Button({
   target,
   ...props
 }: ButtonProps) {
-  const baseStyles = "inline-flex items-center justify-center font-sans tracking-[0.1em] font-medium uppercase transition-all duration-300 relative overflow-hidden group rounded-xl";
+  const baseStyles = "inline-flex items-center justify-center font-sans tracking-[0.1em] font-medium uppercase transition-all duration-300 relative overflow-hidden group rounded-none";
 
   const variants = {
-    primary: "bg-brand-gold text-white hover:bg-brand-gold-dark shadow-[0_0_15px_rgba(212,175,55,0.3)] hover:shadow-[0_0_25px_rgba(212,175,55,0.6)]",
-    secondary: "bg-white text-brand-black hover:bg-brand-cream border border-black/10 hover:border-brand-gold/50",
-    outline: "bg-transparent border border-brand-gold text-brand-gold hover:bg-brand-gold hover:text-white",
-    ghost: "bg-transparent text-brand-charcoal hover:text-brand-gold",
-    glass: "bg-white/40 backdrop-blur-md border border-white text-brand-black hover:bg-white/60 hover:border-brand-gold/50",
+    primary: "bg-brand-grey-medium text-white hover:bg-brand-grey-dark shadow-[0_0_15px_rgba(138, 138, 138,0.3)] hover:shadow-[0_0_25px_rgba(138, 138, 138,0.6)]",
+    secondary: "bg-white text-brand-black hover:bg-brand-cream border border-black/10 hover:border-brand-grey-medium/50",
+    outline: "bg-transparent border border-brand-grey-medium text-brand-grey-medium hover:bg-brand-grey-medium hover:text-white",
+    ghost: "bg-transparent text-brand-charcoal hover:text-brand-grey-medium",
+    glass: "bg-white/40 backdrop-blur-md border border-white text-brand-black hover:bg-white/60 hover:border-brand-grey-medium/50",
   };
 
   const sizes = {

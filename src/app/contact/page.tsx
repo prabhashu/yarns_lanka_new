@@ -28,8 +28,8 @@ export default function Contact() {
       
       <main className="w-full bg-white min-h-screen relative overflow-hidden">
         {/* Background Gradients */}
-        <div className="hidden md:block absolute top-0 right-0 w-[800px] h-[800px] bg-brand-gold/5 rounded-full blur-[150px] -translate-y-1/2 translate-x-1/3 pointer-events-none"></div>
-        <div className="hidden md:block absolute bottom-0 left-0 w-[600px] h-[600px] bg-brand-gold/5 rounded-full blur-[120px] translate-y-1/2 -translate-x-1/3 pointer-events-none"></div>
+        <div className="hidden md:block absolute top-0 right-0 w-[800px] h-[800px] bg-brand-grey-medium/5 rounded-none blur-[150px] -translate-y-1/2 translate-x-1/3 pointer-events-none"></div>
+        <div className="hidden md:block absolute bottom-0 left-0 w-[600px] h-[600px] bg-brand-grey-medium/5 rounded-none blur-[120px] translate-y-1/2 -translate-x-1/3 pointer-events-none"></div>
 
         {/* --- PAGE HERO --- */}
         <section className="relative h-[45vh] min-h-[350px] flex items-center justify-center mb-16">
@@ -55,8 +55,8 @@ export default function Contact() {
               transition={{ duration: 1, ease: "easeOut" }}
             >
               <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[5.5rem] font-serif font-light uppercase text-white leading-[1.2] tracking-widest mb-6 drop-shadow-md">Get In Touch</h1>
-              <div className="h-[2px] w-16 bg-brand-gold mx-auto mb-8 opacity-80"></div>
-              <p className="font-serif italic text-xl text-brand-gold-dark max-w-2xl mx-auto px-4">
+              <div className="h-[2px] w-16 bg-brand-grey-medium mx-auto mb-8 opacity-80"></div>
+              <p className="font-serif italic text-xl text-brand-grey-light max-w-2xl mx-auto px-4">
                 For wholesale inquiries, partnerships, or customer support.
               </p>
             </motion.div>
@@ -75,7 +75,7 @@ export default function Contact() {
               
               <div className="space-y-12 mb-16">
                 <div className="flex gap-6 items-start group">
-                  <div className="w-14 h-14 bg-brand-accent-sage/10 border border-brand-accent-sage/20 rounded-2xl flex items-center justify-center text-brand-gold shrink-0 shadow-sm group-hover:scale-110 group-hover:bg-brand-gold group-hover:text-white transition-all duration-500">
+                  <div className="w-14 h-14 bg-brand-accent-sage/10 border border-brand-accent-sage/20 rounded-none flex items-center justify-center text-brand-grey-medium shrink-0 shadow-sm group-hover:scale-110 group-hover:bg-brand-grey-medium group-hover:text-white transition-all duration-500">
                     <MapPin size={24} />
                   </div>
                   <div>
@@ -85,13 +85,13 @@ export default function Contact() {
                 </div>
                 
                 <div className="flex gap-6 items-start group">
-                  <div className="w-14 h-14 bg-brand-accent-sage/10 border border-brand-accent-sage/20 rounded-2xl flex items-center justify-center text-brand-gold shrink-0 shadow-sm group-hover:scale-110 group-hover:bg-brand-gold group-hover:text-white transition-all duration-500">
+                  <div className="w-14 h-14 bg-brand-accent-sage/10 border border-brand-accent-sage/20 rounded-none flex items-center justify-center text-brand-grey-medium shrink-0 shadow-sm group-hover:scale-110 group-hover:bg-brand-grey-medium group-hover:text-white transition-all duration-500">
                     <Mail size={24} />
                   </div>
                   <div>
                     <h4 className="font-sans text-sm tracking-widest uppercase text-brand-black mb-2">Email Us</h4>
                     <p className="flex flex-col gap-1">
-                      <a href="mailto:Info@yarnslanka.com" className="text-brand-charcoal/80 hover:text-brand-gold transition-colors duration-300">Info@yarnslanka.com</a>
+                      <a href="mailto:Info@yarnslanka.com" className="text-brand-charcoal/80 hover:text-brand-grey-medium transition-colors duration-300">Info@yarnslanka.com</a>
                       
                     </p>
                   </div>
@@ -99,8 +99,8 @@ export default function Contact() {
               </div>
 
               <div>
-                <h4 className="font-sans text-xs tracking-[0.2em] uppercase text-brand-gold mb-6 flex items-center gap-4">
-                  <span className="w-8 h-[1px] bg-brand-gold"></span> Follow Our Journey
+                <h4 className="font-sans text-xs tracking-[0.2em] uppercase text-brand-grey-medium mb-6 flex items-center gap-4">
+                  <span className="w-8 h-[1px] bg-brand-grey-medium"></span> Follow Our Journey
                 </h4>
                 <div className="flex gap-4">
                   {[
@@ -113,7 +113,7 @@ export default function Contact() {
                       key={i} 
                       href="#" 
                       aria-label={social.label}
-                      className="w-12 h-12 rounded-full border border-black/10 flex items-center justify-center text-brand-charcoal hover:bg-brand-gold hover:text-white hover:border-brand-gold transition-all duration-300 hover:-translate-y-1 shadow-sm"
+                      className="w-12 h-12 rounded-none border border-black/10 flex items-center justify-center text-brand-charcoal hover:bg-brand-grey-medium hover:text-white hover:border-brand-grey-medium transition-all duration-300 hover:-translate-y-1 shadow-sm"
                     >
                       {social.icon}
                     </a>
@@ -124,9 +124,9 @@ export default function Contact() {
             
             {/* Form Column */}
             <AnimatedSection direction="left" delay={0.2} className="lg:col-span-7">
-              <div className="bg-brand-cream border border-brand-accent-sage/20 p-8 md:p-12 rounded-3xl relative overflow-hidden shadow-xl group">
+              <div className="bg-brand-cream border border-brand-accent-sage/20 p-8 md:p-12 rounded-none relative overflow-hidden shadow-xl group">
                  {/* Internal hover glow */}
-                <div className="absolute top-0 right-0 w-32 h-32 bg-brand-gold/5 rounded-full blur-[40px] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
+                <div className="absolute top-0 right-0 w-32 h-32 bg-brand-grey-medium/5 rounded-none blur-[40px] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
 
                 <div className="mb-10 text-center lg:text-left">
                   <h3 className="font-serif text-3xl text-brand-black mb-3">Send an Inquiry</h3>
@@ -141,7 +141,7 @@ export default function Contact() {
                         type="text" 
                         id="firstName" 
                         required 
-                        className="w-full bg-white border border-black/10 rounded-xl px-4 py-4 text-brand-black placeholder-black/20 focus:outline-none focus:border-brand-gold/50 focus:ring-1 focus:ring-brand-gold/50 transition-all duration-300" 
+                        className="w-full bg-white border border-black/10 rounded-none px-4 py-4 text-brand-black placeholder-black/20 focus:outline-none focus:border-brand-grey-medium/50 focus:ring-1 focus:ring-brand-grey-medium/50 transition-all duration-300" 
                         placeholder="John"
                       />
                     </div>
@@ -151,7 +151,7 @@ export default function Contact() {
                         type="text" 
                         id="lastName" 
                         required 
-                        className="w-full bg-white border border-black/10 rounded-xl px-4 py-4 text-brand-black placeholder-black/20 focus:outline-none focus:border-brand-gold/50 focus:ring-1 focus:ring-brand-gold/50 transition-all duration-300"
+                        className="w-full bg-white border border-black/10 rounded-none px-4 py-4 text-brand-black placeholder-black/20 focus:outline-none focus:border-brand-grey-medium/50 focus:ring-1 focus:ring-brand-grey-medium/50 transition-all duration-300"
                         placeholder="Doe"
                       />
                     </div>
@@ -164,7 +164,7 @@ export default function Contact() {
                         type="email" 
                         id="email" 
                         required 
-                        className="w-full bg-white border border-black/10 rounded-xl px-4 py-4 text-brand-black placeholder-black/20 focus:outline-none focus:border-brand-gold/50 focus:ring-1 focus:ring-brand-gold/50 transition-all duration-300"
+                        className="w-full bg-white border border-black/10 rounded-none px-4 py-4 text-brand-black placeholder-black/20 focus:outline-none focus:border-brand-grey-medium/50 focus:ring-1 focus:ring-brand-grey-medium/50 transition-all duration-300"
                         placeholder="john@example.com"
                       />
                     </div>
@@ -173,7 +173,7 @@ export default function Contact() {
                       <input 
                         type="text" 
                         id="company" 
-                        className="w-full bg-white border border-black/10 rounded-xl px-4 py-4 text-brand-black placeholder-black/20 focus:outline-none focus:border-brand-gold/50 focus:ring-1 focus:ring-brand-gold/50 transition-all duration-300"
+                        className="w-full bg-white border border-black/10 rounded-none px-4 py-4 text-brand-black placeholder-black/20 focus:outline-none focus:border-brand-grey-medium/50 focus:ring-1 focus:ring-brand-grey-medium/50 transition-all duration-300"
                         placeholder="Company Name"
                       />
                     </div>
@@ -185,7 +185,7 @@ export default function Contact() {
                       id="inquiryType" 
                       required 
                       defaultValue=""
-                      className="w-full bg-white border border-black/10 rounded-xl px-4 py-4 text-brand-black focus:outline-none focus:border-brand-gold/50 focus:ring-1 focus:ring-brand-gold/50 transition-all duration-300 appearance-none"
+                      className="w-full bg-white border border-black/10 rounded-none px-4 py-4 text-brand-black focus:outline-none focus:border-brand-grey-medium/50 focus:ring-1 focus:ring-brand-grey-medium/50 transition-all duration-300 appearance-none"
                       style={{ backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23333333' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e")`, backgroundPosition: 'right .5rem center', backgroundRepeat: 'no-repeat', backgroundSize: '1.5em 1.5em' }}
                     >
                       <option value="" disabled className="bg-white text-brand-charcoal">Select an option</option>
@@ -202,7 +202,7 @@ export default function Contact() {
                       id="message" 
                       rows={5} 
                       required 
-                      className="w-full bg-white border border-black/10 rounded-xl px-4 py-4 text-brand-black placeholder-black/20 focus:outline-none focus:border-brand-gold/50 focus:ring-1 focus:ring-brand-gold/50 transition-all duration-300 resize-y"
+                      className="w-full bg-white border border-black/10 rounded-none px-4 py-4 text-brand-black placeholder-black/20 focus:outline-none focus:border-brand-grey-medium/50 focus:ring-1 focus:ring-brand-grey-medium/50 transition-all duration-300 resize-y"
                       placeholder="How can we help you?"
                     ></textarea>
                   </div>

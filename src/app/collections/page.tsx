@@ -41,8 +41,8 @@ export default function Collections() {
               transition={{ duration: 1, ease: "easeOut" }}
             >
               <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[5.5rem] font-serif font-light uppercase text-white leading-[1.2] tracking-widest mb-6 drop-shadow-md">The Collection</h1>
-              <div className="h-[2px] w-16 bg-brand-gold mx-auto mb-8 opacity-80"></div>
-              <p className="text-xl md:text-2xl text-brand-gold-dark font-serif italic max-w-2xl mx-auto px-4">
+              <div className="h-[2px] w-16 bg-brand-grey-medium mx-auto mb-8 opacity-80"></div>
+              <p className="text-xl md:text-2xl text-brand-grey-light font-serif italic max-w-2xl mx-auto px-4">
                 Tailored for the discerning taste, where innovation meets the timeless legacy of 100% organic fibers.
               </p>
             </motion.div>
@@ -67,16 +67,16 @@ export default function Collections() {
           
           {/* Featured Info Card */}
           <AnimatedSection delay={0.6} direction="up" className="mt-20">
-            <div className="relative overflow-hidden rounded-3xl border border-brand-accent-sage/30 bg-white shadow-xl p-1">
+            <div className="relative overflow-hidden rounded-none border border-brand-accent-sage/30 bg-white shadow-xl p-1">
               <div className="absolute inset-0 opacity-10 pointer-events-none"></div>
               
               <div className="relative z-10 p-10 md:p-16 text-center max-w-4xl mx-auto flex flex-col items-center">
-                <Sparkles className="text-brand-gold mb-6" size={32} />
+                <Sparkles className="text-brand-grey-medium mb-6" size={32} />
                 <h3 className="heading-md mb-6 text-brand-black">The Complete Experience</h3>
                 <p className="text-lg text-brand-charcoal/80 mb-10 font-light max-w-2xl mx-auto">
                   The Yarns LK collection includes a comprehensive bedding range. The complete set features 1 fitted sheet, 1 flat sheet, 1 duvet cover, and 2 standard pillowcases for ultimate coordination.
                 </p>
-                <Link href="/collections/bed-linen-set" className="inline-flex items-center justify-center px-10 py-4 border border-brand-gold text-brand-gold font-sans text-sm uppercase tracking-[0.15em] font-medium hover:bg-brand-gold hover:text-white transition-all duration-300 group shadow-[0_0_20px_rgba(212,175,55,0.1)] hover:shadow-[0_0_30px_rgba(212,175,55,0.4)]">
+                <Link href="/collections/bed-linen-set" className="inline-flex items-center justify-center px-10 py-4 border border-brand-grey-medium text-brand-grey-medium font-sans text-sm uppercase tracking-[0.15em] font-medium hover:bg-brand-grey-medium hover:text-white transition-all duration-300 group shadow-[0_0_20px_rgba(138, 138, 138,0.1)] hover:shadow-[0_0_30px_rgba(138, 138, 138,0.4)]">
                   Shop The Set
                   <span className="absolute inset-0 w-full h-full -ml-[100%] transition-all duration-500 ease-in-out bg-gradient-to-r from-transparent via-white/20 to-transparent group-hover:ml-[100%] pointer-events-none" />
                 </Link>
@@ -115,7 +115,7 @@ export default function Collections() {
 
               <div className="lg:col-span-5">
                 <AnimatedSection direction="left" delay={0.3}>
-                  <div className="relative aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl border border-black/5">
+                  <div className="relative aspect-[4/5] rounded-none overflow-hidden shadow-2xl border border-black/5">
                     <Image 
                       src="https://i.pinimg.com/1200x/ca/f2/84/caf284f7402f5328e3c21ddacab64f75.jpg"
                       alt="Knights Bedding Quality"
@@ -173,7 +173,7 @@ export default function Collections() {
                   direction="up"
                   className="w-full"
                 >
-                  <Link href={`/collections/${item.slug}`} className="group block w-full relative overflow-hidden rounded-3xl h-[340px] md:h-[420px] shadow-xl">
+                  <Link href={`/collections/${item.slug}`} className="group block w-full relative overflow-hidden rounded-none h-[340px] md:h-[420px] shadow-xl">
                     {/* Background image */}
                     <Image
                       src={item.image}
@@ -192,17 +192,17 @@ export default function Collections() {
 
                     {/* Content */}
                     <div className={`absolute inset-0 z-20 flex flex-col justify-end p-10 md:p-16 ${item.align === "right" ? "items-end text-right" : "items-start text-left"}`}>
-                      <span className="font-sans text-[10px] font-bold tracking-[0.35em] uppercase text-brand-gold mb-4 block">
+                      <span className="font-sans text-[10px] font-bold tracking-[0.35em] uppercase text-brand-grey-medium mb-4 block">
                         {item.tc}
                       </span>
                       <h3 className="font-serif text-3xl md:text-5xl text-white font-light mb-4 leading-tight">
                         {item.title}
                       </h3>
-                      <div className={`h-[1px] w-12 bg-brand-gold mb-6 transition-all duration-500 group-hover:w-24 ${item.align === "right" ? "ml-auto" : ""}`} />
+                      <div className={`h-[1px] w-12 bg-brand-grey-medium mb-6 transition-all duration-500 group-hover:w-24 ${item.align === "right" ? "ml-auto" : ""}`} />
                       <p className="text-white/90 font-light text-sm md:text-base max-w-lg leading-relaxed mb-8">
                         {item.desc}
                       </p>
-                      <span className="inline-flex items-center gap-3 px-7 py-3 border border-white/30 text-white text-xs uppercase tracking-[0.2em] font-sans backdrop-blur-sm bg-white/10 group-hover:bg-brand-gold group-hover:border-brand-gold transition-all duration-500 rounded-full">
+                      <span className="inline-flex items-center gap-3 px-7 py-3 border border-white/30 text-white text-xs uppercase tracking-[0.2em] font-sans backdrop-blur-sm bg-white/10 group-hover:bg-brand-grey-medium group-hover:border-brand-grey-medium transition-all duration-500 rounded-none">
                         Explore <ArrowRight size={14} />
                       </span>
                     </div>
@@ -231,7 +231,7 @@ function ProductCard({ product, index }: { product: any, index: number }) {
     <AnimatedSection 
       delay={index * 0.15} 
       direction="up" 
-      className="group flex flex-col h-full bg-white rounded-2xl overflow-hidden border border-black/5 hover:border-brand-gold/40 transition-all duration-500 shadow-xl"
+      className="group flex flex-col h-full bg-white rounded-none overflow-hidden border border-black/5 hover:border-brand-grey-medium/40 transition-all duration-500 shadow-xl"
     >
       <div className="relative h-[320px] overflow-hidden w-full">
         <Link href={`/collections/${product.slug}`} className="block w-full h-full outline-none">
@@ -255,7 +255,7 @@ function ProductCard({ product, index }: { product: any, index: number }) {
       
       <div className="p-8 pb-6 flex flex-col flex-grow bg-white">
         <Link href={`/collections/${product.slug}`} className="outline-none">
-          <h3 className="font-serif text-2xl text-brand-black mb-3 group-hover:text-brand-gold transition-colors duration-300">
+          <h3 className="font-serif text-2xl text-brand-black mb-3 group-hover:text-brand-grey-medium transition-colors duration-300">
             {product.shortName}
           </h3>
           <p className="text-brand-charcoal/80 text-sm leading-relaxed flex-grow">
@@ -272,15 +272,15 @@ function ProductCard({ product, index }: { product: any, index: number }) {
                 e.preventDefault();
                 setSelectedColor(color.name);
               }}
-              className={`w-7 h-7 rounded-full border transition-all duration-300 flex items-center justify-center p-[2px] ${
+              className={`w-7 h-7 rounded-none border transition-all duration-300 flex items-center justify-center p-[2px] ${
                 selectedColor === color.name 
-                  ? 'border-brand-gold translate-y-[-2px] shadow-[0_2px_8px_rgba(212,175,55,0.4)] scale-110' 
+                  ? 'border-brand-grey-medium translate-y-[-2px] shadow-[0_2px_8px_rgba(138, 138, 138,0.4)] scale-110' 
                   : 'border-black/10 hover:border-black/30'
               }`}
               title={color.name}
             >
               <span 
-                className="w-full h-full rounded-full shadow-inner border border-black/20" 
+                className="w-full h-full rounded-none shadow-inner border border-black/20" 
                 style={{ backgroundColor: color.hex }}
               ></span>
             </button>
@@ -289,7 +289,7 @@ function ProductCard({ product, index }: { product: any, index: number }) {
         
         {/* Fake Footer Action */}
         <div className="flex items-center justify-between mt-6 pt-4 border-t border-black/10">
-          <Link href={`/collections/${product.slug}`} className="font-sans text-xs uppercase tracking-widest text-brand-gold flex items-center gap-2 group-hover:translate-x-2 transition-transform duration-300 outline-none">
+          <Link href={`/collections/${product.slug}`} className="font-sans text-xs uppercase tracking-widest text-brand-grey-medium flex items-center gap-2 group-hover:translate-x-2 transition-transform duration-300 outline-none">
             Explore <ArrowRight size={14} />
           </Link>
           <span className="text-brand-accent-sage/60"><Sparkles size={14}/></span>

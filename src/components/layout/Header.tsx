@@ -68,7 +68,7 @@ export default function Header({ theme = 'dark' }: { theme?: 'light' | 'dark' })
           onMouseLeave={() => setHoveredLink(null)}
           className={`px-5 py-2.5 text-[11px] font-sans font-medium uppercase tracking-[0.2em] transition-colors duration-300 relative z-10 block
             ${isActive 
-              ? "text-brand-gold" 
+              ? "text-brand-red" 
               : isScrolled || theme === 'light'
                 ? "text-brand-charcoal/70 hover:text-brand-black" 
                 : "text-white/80 hover:text-white"
@@ -78,16 +78,6 @@ export default function Header({ theme = 'dark' }: { theme?: 'light' | 'dark' })
           {link.name}
         </Link>
         
-        {/* Clean Underline Effect */}
-        <motion.div
-          initial={false}
-          animate={{ 
-            width: isActive ? "80%" : (isHovered ? "80%" : "0%"),
-            opacity: isActive ? 1 : (isHovered ? 1 : 0)
-          }}
-          transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
-          className="absolute left-1/2 -translate-x-1/2 bottom-[4px] h-[1px] bg-brand-gold"
-        />
       </li>
     );
   };
@@ -108,7 +98,7 @@ export default function Header({ theme = 'dark' }: { theme?: 'light' | 'dark' })
           className={`
             relative flex items-center justify-between transition-all duration-700 ease-[0.23, 1, 0.32, 1] pointer-events-auto
             ${isScrolled 
-              ? "w-full max-w-[840px] bg-white/85 backdrop-blur-2xl border border-black/10 rounded-full px-6 py-3 md:px-8 shadow-[0_20px_40px_rgba(0,0,0,0.05)]" 
+              ? "w-full max-w-[840px] bg-white/85 backdrop-blur-2xl border border-black/10 rounded-none px-6 py-3 md:px-8 shadow-[0_20px_40px_rgba(0,0,0,0.05)]" 
               : "w-full max-w-[1400px] bg-transparent backdrop-blur-none border-transparent rounded-none px-4 py-4 md:px-12 md:py-6"
             }
           `}
@@ -149,13 +139,13 @@ export default function Header({ theme = 'dark' }: { theme?: 'light' | 'dark' })
             <Link 
               href="/contact"
               className={`
-                relative px-6 py-2.5 rounded-full overflow-hidden transition-all duration-500 group/btn whitespace-nowrap
+                relative px-6 py-2.5 rounded-none overflow-hidden transition-all duration-500 group/btn whitespace-nowrap
                 text-[11px] font-bold tracking-[0.2em] uppercase border flex items-center justify-center
                 ${isScrolled 
-                  ? "bg-brand-gold border-brand-gold text-white" 
+                  ? "bg-brand-grey-medium border-brand-grey-medium text-white" 
                   : theme === 'light'
-                    ? "bg-black/5 border-black/10 text-brand-black backdrop-blur-md hover:border-brand-gold/60"
-                    : "bg-white/10 border-white/20 text-white backdrop-blur-md hover:border-brand-gold/60"
+                    ? "bg-black/5 border-black/10 text-brand-black backdrop-blur-md hover:border-brand-grey-medium/60"
+                    : "bg-white/10 border-white/20 text-white backdrop-blur-md hover:border-brand-grey-medium/60"
                 }
               `}
             >
@@ -167,7 +157,7 @@ export default function Header({ theme = 'dark' }: { theme?: 'light' | 'dark' })
                 absolute inset-0 transition-transform duration-500 ease-[0.23, 1, 0.32, 1]
                 ${isScrolled 
                   ? "bg-brand-charcoal translate-y-[101%] group-hover/btn:translate-y-0" 
-                  : "bg-brand-gold translate-y-[101%] group-hover/btn:translate-y-0"
+                  : "bg-brand-grey-medium translate-y-[101%] group-hover/btn:translate-y-0"
                 }
               `} />
             </Link>
@@ -176,9 +166,9 @@ export default function Header({ theme = 'dark' }: { theme?: 'light' | 'dark' })
           {/* MOBILE TOGGLE BUTTON */}
           <div className="md:hidden flex items-center">
             <button 
-              className={`p-2.5 rounded-full transition-all duration-300 relative z-[60] overflow-hidden group
+              className={`p-2.5 rounded-none transition-all duration-300 relative z-[60] overflow-hidden group
                 ${mobileMenuOpen 
-                  ? "bg-brand-gold text-white hover:bg-brand-charcoal" 
+                  ? "bg-brand-grey-medium text-white hover:bg-brand-charcoal" 
                   : isScrolled 
                     ? "bg-black/5 text-brand-black hover:bg-black/10" 
                     : theme === 'light'
@@ -240,10 +230,10 @@ export default function Header({ theme = 'dark' }: { theme?: 'light' | 'dark' })
                           href={link.href}
                           className="group flex items-center gap-4 py-2"
                         >
-                          <span className={`text-sm font-sans tracking-[0.2em] uppercase transition-colors duration-300 w-8 ${isActive ? "text-brand-gold" : "text-brand-charcoal/40 group-hover:text-brand-charcoal/80"}`}>
+                          <span className={`text-sm font-sans tracking-[0.2em] uppercase transition-colors duration-300 w-8 ${isActive ? "text-brand-red" : "text-brand-charcoal/40 group-hover:text-brand-charcoal/80"}`}>
                             0{i + 1}
                           </span>
-                          <span className={`text-4xl sm:text-5xl font-serif tracking-tight transition-all duration-300 ${isActive ? "text-brand-gold italic translate-x-3" : "text-brand-charcoal hover:translate-x-3 group-hover:text-brand-black"}`}>
+                          <span className={`text-4xl sm:text-5xl font-serif tracking-tight transition-all duration-300 ${isActive ? "text-brand-red italic translate-x-3" : "text-brand-charcoal hover:translate-x-3 group-hover:text-brand-black"}`}>
                             {link.name}
                           </span>
                         </Link>
@@ -263,7 +253,7 @@ export default function Header({ theme = 'dark' }: { theme?: 'light' | 'dark' })
               >
                 <Link 
                   href="/contact" 
-                  className="relative overflow-hidden w-full bg-brand-gold text-white py-5 rounded-full text-center font-bold uppercase tracking-[0.2em] text-[12px] group/mob-btn"
+                  className="relative overflow-hidden w-full bg-brand-grey-medium text-white py-5 rounded-none text-center font-bold uppercase tracking-[0.2em] text-[12px] group/mob-btn"
                 >
                   <span className="relative z-10 group-hover/mob-btn:text-white transition-colors duration-500">
                     Wholesale Access
@@ -277,8 +267,8 @@ export default function Header({ theme = 'dark' }: { theme?: 'light' | 'dark' })
                   </div>
                   <div className="flex gap-4">
                     {/* Social placeholders if needed in future */}
-                    <a href="#" className="text-brand-charcoal/50 hover:text-brand-gold transition-colors text-sm">IN</a>
-                    <a href="#" className="text-brand-charcoal/50 hover:text-brand-gold transition-colors text-sm">FB</a>
+                    <a href="#" className="text-brand-charcoal/50 hover:text-brand-grey-medium transition-colors text-sm">IN</a>
+                    <a href="#" className="text-brand-charcoal/50 hover:text-brand-grey-medium transition-colors text-sm">FB</a>
                   </div>
                 </div>
               </motion.div>

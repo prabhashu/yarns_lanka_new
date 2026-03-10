@@ -9,9 +9,7 @@
 
     --color-black: #050505;
     --color-charcoal: #1A1A1A;
-    --color-gold: #D4AF37;
-    --color-gold-light: #F3E5AB;
-    --color-gold-dark: #B8972E;
+
     --color-cream: #F5F0EB;
     --color-white: #FFFFFF;
     --color-off-white: #FAFAFA;
@@ -66,12 +64,12 @@
 
 @layer components {
 
-  /* Reusable Gold Divider */
-  .gold-divider {
-    @apply h-[2px] w-12 bg-brand-gold my-6 opacity-80;
+  /* Reusable Grey Divider */
+  .grey-divider {
+    @apply h-[2px] w-12 bg-brand-grey-medium my-6 opacity-80;
   }
 
-  .gold-divider-center {
+  .grey-divider-center {
     @apply mx-auto;
   }
 
@@ -114,9 +112,9 @@
 
 ::-webkit-scrollbar-thumb {
   background: var(--color-medium-grey);
-  border-radius: 5px;
+  border-radius: 0;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-gold);
+  background: var(--color-medium-grey);
 }

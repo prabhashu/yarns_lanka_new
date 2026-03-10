@@ -48,7 +48,7 @@ export default function SectionTitle({
       {subtitle && (
         <motion.h4 
           variants={itemVariants} 
-          className="font-sans text-xs md:text-sm uppercase tracking-[0.2em] font-medium text-brand-gold mb-3"
+          className="font-sans text-xs md:text-sm uppercase tracking-[0.2em] font-medium text-brand-grey-medium mb-3"
         >
           {subtitle}
         </motion.h4>
@@ -63,7 +63,7 @@ export default function SectionTitle({
 
       <motion.div 
         variants={dividerVariants} 
-        className="h-[2px] bg-brand-gold mt-6 origin-left"
+        className="h-[2px] bg-brand-grey-medium mt-6 origin-left"
         style={{ originX: centered ? 0.5 : 0 }}
       />
     </motion.div>

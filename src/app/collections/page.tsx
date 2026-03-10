@@ -40,9 +40,9 @@ export default function Collections() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, ease: "easeOut" }}
             >
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[5.5rem] font-serif font-light uppercase text-white leading-[1.2] tracking-widest mb-6 drop-shadow-md">The Collection</h1>
+              <h1 className="text-[2.5rem] sm:text-5xl md:text-6xl lg:text-[5rem] font-serif text-white tracking-tight leading-[1.05] mb-3 md:mb-6 font-medium max-w-[95%] md:max-w-none mx-auto drop-shadow-md">The Collection</h1>
               <div className="h-[2px] w-16 bg-brand-grey-medium mx-auto mb-8 opacity-80"></div>
-              <p className="text-xl md:text-2xl text-brand-grey-light font-serif italic max-w-2xl mx-auto px-4">
+              <p className="text-brand-grey-light text-sm sm:text-base md:text-lg max-w-2xl font-light px-2 mx-auto drop-shadow-sm">
                 Tailored for the discerning taste, where innovation meets the timeless legacy of 100% organic fibers.
               </p>
             </motion.div>

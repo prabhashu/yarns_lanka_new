@@ -138,7 +138,7 @@ export default function About() {
     <>
       <Header />
       
-      <main ref={containerRef} className="w-full bg-brand-cream relative">
+      <main ref={containerRef} className="w-full bg-white relative">
         {/* --- PAGE HERO --- */}
         <section className="relative h-[45vh] min-h-[350px] flex items-center justify-center">
           <div className="absolute inset-0 w-full h-full z-0">
@@ -162,9 +162,9 @@ export default function About() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, ease: "easeOut" }}
             >
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[5.5rem] font-serif font-light uppercase text-white leading-[1.2] tracking-widest mb-6 drop-shadow-md">Our Story</h1>
+              <h1 className="text-[2.5rem] sm:text-5xl md:text-6xl lg:text-[5rem] font-serif text-white tracking-tight leading-[1.05] mb-3 md:mb-6 font-medium max-w-[95%] md:max-w-none mx-auto drop-shadow-md">Our Story</h1>
               <div className="h-[2px] w-16 bg-brand-grey-medium mx-auto mb-8 opacity-80"></div>
-              <p className="text-xl md:text-2xl text-brand-grey-light font-serif italic max-w-2xl mx-auto px-4">
+              <p className="text-brand-grey-light text-sm sm:text-base md:text-lg max-w-2xl font-light px-2 mx-auto drop-shadow-sm">
                 Building a future where timeless textiles bring joy, comfort, and sustainability.
               </p>
             </motion.div>
@@ -250,7 +250,7 @@ export default function About() {
         </section>
 
         {/* --- FORGING NEW HORIZONS (Split Layout) --- */}
-        <section className="relative py-24 md:py-32 bg-brand-cream border border-black/5 z-30 flex items-center">
+        <section className="relative py-24 md:py-32 bg-black/[0.02] border border-black/5 z-30 flex items-center">
           <div className="container mx-auto px-6">
             <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
               
@@ -310,7 +310,7 @@ export default function About() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-16 md:mt-24">
               
               <AnimatedSection direction="up" delay={0.1} className="h-full">
-                <div className="bg-brand-cream/50 h-full p-8 md:p-10 rounded-none hover:bg-white hover:shadow-2xl hover:-translate-y-4 transition-all duration-500 border border-brand-black/5 hover:border-brand-grey-medium/30 flex flex-col items-center text-center group">
+                <div className="bg-black/[0.02] h-full p-8 md:p-10 rounded-none hover:bg-white hover:shadow-2xl hover:-translate-y-4 transition-all duration-500 border border-black/5 hover:border-brand-grey-medium/30 flex flex-col items-center text-center group">
                   <div className="w-16 h-16 rounded-none bg-white border border-brand-black/5 flex items-center justify-center text-brand-grey-medium mb-8 shadow-md group-hover:scale-110 transition-transform duration-500">
                     <Users size={28} strokeWidth={1.5} />
                   </div>
@@ -324,7 +324,7 @@ export default function About() {
               </AnimatedSection>
 
               <AnimatedSection direction="up" delay={0.2} className="h-full lg:translate-y-8">
-                <div className="bg-brand-cream/50 h-full p-8 md:p-10 rounded-none hover:bg-white hover:shadow-2xl hover:-translate-y-4 transition-all duration-500 border border-brand-black/5 hover:border-brand-grey-medium/30 flex flex-col items-center text-center group">
+                <div className="bg-black/[0.02] h-full p-8 md:p-10 rounded-none hover:bg-white hover:shadow-2xl hover:-translate-y-4 transition-all duration-500 border border-black/5 hover:border-brand-grey-medium/30 flex flex-col items-center text-center group">
                   <div className="w-16 h-16 rounded-none bg-white border border-brand-black/5 flex items-center justify-center text-brand-grey-medium mb-8 shadow-md group-hover:scale-110 transition-transform duration-500">
                     <Heart size={28} strokeWidth={1.5} />
                   </div>
@@ -336,7 +336,7 @@ export default function About() {
               </AnimatedSection>
 
               <AnimatedSection direction="up" delay={0.3} className="h-full lg:translate-y-16">
-                <div className="bg-brand-cream/50 h-full p-8 md:p-10 rounded-none hover:bg-white hover:shadow-2xl hover:-translate-y-4 transition-all duration-500 border border-brand-black/5 hover:border-brand-grey-medium/30 flex flex-col items-center text-center group">
+                <div className="bg-black/[0.02] h-full p-8 md:p-10 rounded-none hover:bg-white hover:shadow-2xl hover:-translate-y-4 transition-all duration-500 border border-black/5 hover:border-brand-grey-medium/30 flex flex-col items-center text-center group">
                   <div className="w-16 h-16 rounded-none bg-white border border-brand-black/5 flex items-center justify-center text-brand-grey-medium mb-8 shadow-md group-hover:scale-110 transition-transform duration-500">
                     <Lightbulb size={28} strokeWidth={1.5} />
                   </div>
@@ -348,7 +348,7 @@ export default function About() {
               </AnimatedSection>
 
               <AnimatedSection direction="up" delay={0.4} className="h-full lg:translate-y-24">
-                <div className="bg-brand-cream/50 h-full p-8 md:p-10 rounded-none hover:bg-white hover:shadow-2xl hover:-translate-y-4 transition-all duration-500 border border-brand-black/5 hover:border-brand-grey-medium/30 flex flex-col items-center text-center group">
+                <div className="bg-black/[0.02] h-full p-8 md:p-10 rounded-none hover:bg-white hover:shadow-2xl hover:-translate-y-4 transition-all duration-500 border border-black/5 hover:border-brand-grey-medium/30 flex flex-col items-center text-center group">
                   <div className="w-16 h-16 rounded-none bg-white border border-brand-black/5 flex items-center justify-center text-brand-grey-medium mb-8 shadow-md group-hover:scale-110 transition-transform duration-500">
                     <Factory size={28} strokeWidth={1.5} />
                   </div>
@@ -366,7 +366,7 @@ export default function About() {
         </section>
 
         {/* --- VALUES (Dynamic Bento) --- */}
-        <section className="py-24 bg-brand-cream border-t border-black/5 relative">
+        <section className="py-24 bg-black/[0.02] border-t border-black/5 relative">
           <div className="container mx-auto px-6">
             <AnimatedSection>
                <SectionTitle 

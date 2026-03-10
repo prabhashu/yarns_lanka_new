@@ -68,7 +68,7 @@ export default function Header({ theme = 'dark' }: { theme?: 'light' | 'dark' })
           onMouseLeave={() => setHoveredLink(null)}
           className={`px-5 py-2.5 text-[11px] font-sans font-medium uppercase tracking-[0.2em] transition-colors duration-300 relative z-10 block
             ${isActive 
-              ? "text-brand-red" 
+              ? (isScrolled || theme === 'light' ? "text-brand-black" : "text-white")
               : isScrolled || theme === 'light'
                 ? "text-brand-charcoal/70 hover:text-brand-black" 
                 : "text-white/80 hover:text-white"
@@ -230,10 +230,10 @@ export default function Header({ theme = 'dark' }: { theme?: 'light' | 'dark' })
                           href={link.href}
                           className="group flex items-center gap-4 py-2"
                         >
-                          <span className={`text-sm font-sans tracking-[0.2em] uppercase transition-colors duration-300 w-8 ${isActive ? "text-brand-red" : "text-brand-charcoal/40 group-hover:text-brand-charcoal/80"}`}>
+                          <span className={`text-sm font-sans tracking-[0.2em] uppercase transition-colors duration-300 w-8 ${isActive ? "text-brand-grey-medium" : "text-brand-charcoal/40 group-hover:text-brand-charcoal/80"}`}>
                             0{i + 1}
                           </span>
-                          <span className={`text-4xl sm:text-5xl font-serif tracking-tight transition-all duration-300 ${isActive ? "text-brand-red italic translate-x-3" : "text-brand-charcoal hover:translate-x-3 group-hover:text-brand-black"}`}>
+                          <span className={`text-4xl sm:text-5xl font-serif tracking-tight transition-all duration-300 ${isActive ? "text-brand-black italic translate-x-3" : "text-brand-charcoal hover:translate-x-3 group-hover:text-brand-black"}`}>
                             {link.name}
                           </span>
                         </Link>

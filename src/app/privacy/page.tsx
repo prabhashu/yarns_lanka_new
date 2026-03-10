@@ -37,22 +37,22 @@ export default function PrivacyPolicy() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, ease: "easeOut" }}
             >
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-serif font-light uppercase text-white leading-[1.2] tracking-widest mb-6 drop-shadow-md">Privacy Policy</h1>
+              <h1 className="text-[2.5rem] sm:text-5xl md:text-6xl lg:text-[5rem] font-serif text-white tracking-tight leading-[1.05] mb-3 md:mb-6 font-medium max-w-[95%] md:max-w-none mx-auto drop-shadow-md">Privacy Policy</h1>
               <div className="h-[2px] w-16 bg-brand-grey-medium mx-auto mb-8 opacity-80"></div>
-              <p className="font-serif italic text-xl text-brand-grey-light max-w-2xl mx-auto px-4">
+              <p className="text-brand-grey-light text-sm sm:text-base md:text-lg max-w-2xl font-light px-2 mx-auto drop-shadow-sm">
                 Committed to honesty, integrity, and protecting your data.
               </p>
             </motion.div>
           </div>
         </section>
 
-        <section className="pb-32 pt-16 container mx-auto px-6 relative z-10">
+        <section className="pb-32 pt-16 container mx-auto px-6 relative z-10 w-full">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="bg-white border border-black/8 p-10 md:p-16 rounded-none max-w-4xl mx-auto shadow-sm"
+            className="max-w-5xl mx-auto w-full"
           >
             <div className="border-b border-black/10 pb-10 mb-10">
               <p className="font-sans text-xs tracking-widest uppercase text-brand-grey-medium mb-6">
@@ -117,8 +117,8 @@ export default function PrivacyPolicy() {
                 </p>
               </div>
 
-              <div className="bg-white border border-black/5 rounded-none p-8 mt-12 shadow-sm">
-                <h2 className="font-sans text-sm tracking-widest uppercase text-brand-grey-medium mb-6">Contacting Us</h2>
+              <div className="mt-16">
+                <h2 className="font-sans text-lg tracking-widest uppercase text-brand-black border-l-2 border-brand-grey-medium pl-4 mb-6">Contacting Us</h2>
                 <p className="text-brand-charcoal/80 mb-6 leading-relaxed">If there are any questions regarding this privacy policy, you may contact us using the information below:</p>
                 <div className="text-brand-charcoal/80 leading-relaxed space-y-1">
                   <strong className="text-brand-black block font-normal tracking-wide">Yarns Lanka Private Limited</strong>

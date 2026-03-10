@@ -54,9 +54,9 @@ export default function Contact() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, ease: "easeOut" }}
             >
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[5.5rem] font-serif font-light uppercase text-white leading-[1.2] tracking-widest mb-6 drop-shadow-md">Get In Touch</h1>
+              <h1 className="text-[2.5rem] sm:text-5xl md:text-6xl lg:text-[5rem] font-serif text-white tracking-tight leading-[1.05] mb-3 md:mb-6 font-medium max-w-[95%] md:max-w-none mx-auto drop-shadow-md">Get In Touch</h1>
               <div className="h-[2px] w-16 bg-brand-grey-medium mx-auto mb-8 opacity-80"></div>
-              <p className="font-serif italic text-xl text-brand-grey-light max-w-2xl mx-auto px-4">
+              <p className="text-brand-grey-light text-sm sm:text-base md:text-lg max-w-2xl font-light px-2 mx-auto drop-shadow-sm">
                 For wholesale inquiries, partnerships, or customer support.
               </p>
             </motion.div>
@@ -124,7 +124,7 @@ export default function Contact() {
             
             {/* Form Column */}
             <AnimatedSection direction="left" delay={0.2} className="lg:col-span-7">
-              <div className="bg-brand-cream border border-brand-accent-sage/20 p-8 md:p-12 rounded-none relative overflow-hidden shadow-xl group">
+              <div className="bg-black/[0.02] border border-black/5 p-8 md:p-12 rounded-none relative overflow-hidden shadow-xl group">
                  {/* Internal hover glow */}
                 <div className="absolute top-0 right-0 w-32 h-32 bg-brand-grey-medium/5 rounded-none blur-[40px] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
 

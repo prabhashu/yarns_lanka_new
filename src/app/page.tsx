@@ -3,7 +3,10 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import Hero from "@/components/home/Hero";
-import ProductCarousel from "@/components/home/ProductCarousel";
+import dynamic from 'next/dynamic';
+const ProductCarousel = dynamic(() => import('@/components/home/ProductCarousel'), {
+  loading: () => <div className="min-h-[400px] flex items-center justify-center bg-white"><p className="text-brand-charcoal/50 animate-pulse uppercase tracking-widest text-sm">Loading Collection...</p></div>
+});
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import Button from "@/components/ui/Button";
@@ -14,7 +17,7 @@ import { Factory } from "lucide-react";
 export default function Home() {
   return (
     <>
-      <Header />
+      <Header theme="light" />
       <main className="w-full bg-white overflow-x-hidden relative">
         <Hero />
 

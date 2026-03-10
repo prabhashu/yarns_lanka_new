@@ -1,207 +1,146 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
-import { useRef, useState, useEffect } from "react";
-import Button from "@/components/ui/Button";
+import { ArrowDown } from "lucide-react";
 
 const IMAGES = [
   "https://images.unsplash.com/photo-1659986480984-9b7a847168d4?q=80&w=1943&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1620868173320-2d3345be5f0f?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  "https://images.unsplash.com/photo-1557751949-dd97255ae824?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  "https://images.unsplash.com/photo-1630809388741-244e8aedc336?q=80&w=1541&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  "https://images.unsplash.com/photo-1620868173320-2d3345be5f0f?q=80&w=1740&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1557751949-dd97255ae824?q=80&w=1932&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1630809388741-244e8aedc336?q=80&w=1541&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1615873968403-89e068629265?q=80&w=1932&auto=format&fit=crop"
 ];
 
+// Circular spinning badge text matching the design
+const CircularText = ({ text }: { text: string }) => {
+  const characters = text.split("");
+  return (
+    <div className="relative w-24 h-24 md:w-32 md:h-32 flex items-center justify-center animate-[spin_20s_linear_infinite] shrink-0">
+      <div className="absolute w-2 h-2 bg-brand-charcoal rounded-full" />
+      {characters.map((char, i) => (
+        <span
+          key={i}
+          className="absolute text-[10px] md:text-sm font-semibold uppercase tracking-widest text-brand-charcoal"
+          style={{
+            transform: `rotate(${i * (360 / characters.length)}deg) translateY(-40px)`,
+            transformOrigin: "center",
+          }}
+        >
+          {char}
+        </span>
+      ))}
+    </div>
+  );
+};
+
 export default function Hero() {
-  const containerRef = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end start"],
-  });
-
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [direction, setDirection] = useState(1);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setDirection(1);
-      setCurrentImageIndex((prev) => (prev + 1) % IMAGES.length);
-    }, 5000); // Change image every 5 seconds
-    return () => clearInterval(timer);
-  }, []);
-
-  const yOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
-  const yImage = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
-  const yContent = useTransform(scrollYProgress, [0, 1], ["0%", "40%"]);
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.15,
-        delayChildren: 0.2,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.8,
-        ease: [0.215, 0.61, 0.355, 1] as const,
-      },
-    },
-  };
-
-  const revealVariants = {
-    hidden: { clipPath: "polygon(0 100%, 100% 100%, 100% 100%, 0 100%)" },
-    visible: {
-      clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
-      transition: {
-        duration: 1.2,
-        ease: [0.19, 1, 0.22, 1] as const,
-      },
-    },
-  };
-
-  const slideVariants = {
-    initial: (d: number) => ({ x: d > 0 ? "100%" : "-100%", opacity: 0.8 }),
-    animate: { x: "0%", opacity: 1 },
-    exit: (d: number) => ({ x: d > 0 ? "-100%" : "100%", opacity: 0.8 }),
+  const handleScroll = () => {
+    window.scrollBy({ top: window.innerHeight * 0.8, behavior: "smooth" });
   };
 
   return (
-    <section
-      ref={containerRef}
-      className="relative h-[100svh] min-h-[500px] md:h-[110vh] md:min-h-[700px] flex items-center justify-center overflow-hidden bg-white"
-    >
-      {/* Dynamic Background Image Slider */}
-      <motion.div
-        style={{ y: yImage }}
-        className="absolute inset-0 w-full h-full scale-110 will-change-transform transform-gpu"
-      >
-        <AnimatePresence mode="popLayout" custom={direction}>
-          <motion.div
-            key={currentImageIndex}
-            custom={direction}
-            variants={slideVariants}
-            initial="initial"
-            animate="animate"
-            exit="exit"
-            transition={{ duration: 1.2, ease: [0.7, 0, 0.3, 1] }}
-            className="absolute inset-0 w-full h-full z-0"
-          >
-            <Image
-              src={IMAGES[currentImageIndex]}
-              alt={`Luxury KNIGHTS Bedding ${currentImageIndex + 1}`}
-              fill
-              priority
-              quality={90}
-              sizes="100vw"
-              className="object-cover object-center will-change-transform transform-gpu"
-            />
-          </motion.div>
-        </AnimatePresence>
+    <section className="relative w-full bg-[#f4f4f4] flex flex-col overflow-hidden h-[100dvh] min-h-[650px]">
+      <style dangerouslySetInnerHTML={{__html: `
+        @keyframes scroll-left {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        .animate-scroll-left {
+          animation: scroll-left 40s linear infinite;
+        }
+      `}} />
 
-        {/* Sophisticated Overlays */}
-        <div className="absolute inset-0 bg-gradient-to-b from-brand-black/40 via-transparent to-brand-black/20 z-10 pointer-events-none"></div>
-        <div className="absolute inset-0 bg-brand-black/30 z-10 pointer-events-none"></div>
-        {/* Glass Grain Texture Overlay */}
-        <div className="absolute inset-0 opacity-[0.03] pointer-events-none mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')] hidden md:block z-10"></div>
-      </motion.div>
-
-      {/* Hero Content */}
-      <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-        style={{ opacity: yOpacity, y: yContent }}
-        className="relative z-20 container mx-auto px-6 flex flex-col items-center text-center"
-      >
-        {/* Masked Text Reveal Headline */}
-        <div className="overflow-hidden mb-8 w-full px-4 max-w-7xl">
-          <motion.h1
-            variants={revealVariants}
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[6rem] font-serif font-light uppercase text-white leading-[1.2] md:leading-[1.1] tracking-widest pb-2"
-          >
-            Enduring Style for a <br className="hidden md:block" />
-            <span className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-brand-grey-medium pr-2 xl:pr-4">
-              Refined
-            </span>{" "}
-            Lifestyle
-          </motion.h1>
+      {/* TOP WHITE SECTION */}
+      {/* Notice: Z-index 20 keeps it hovering over the image container */}
+      <div className="relative z-20 bg-white w-full flex flex-col shrink-0 pt-24 md:pt-32 pb-8 md:pb-12 px-4 md:px-12">
+        
+        {/* Text Area */}
+        <div className="flex flex-col items-center text-center max-w-4xl mx-auto z-10 w-full">
+            <h1 className="text-[2.5rem] sm:text-5xl md:text-6xl lg:text-[5rem] font-serif text-brand-charcoal tracking-tight leading-[1.05] mb-3 md:mb-6 font-medium max-w-[95%] md:max-w-none mx-auto">
+                Enduring Style for a <br className="hidden md:block"/> Refined Lifestyle
+            </h1>
+            <p className="text-brand-charcoal/60 text-sm sm:text-base md:text-lg max-w-2xl font-light px-2 object-cover">
+                Showcase your true self with our distinctive collection that blends style and individuality perfectly for everyday luxury.
+            </p>
         </div>
 
-        {/* Refined Description */}
-        <motion.p
-          variants={itemVariants}
-          className="max-w-2xl text-brand-cream/90 text-sm md:text-xl font-light leading-relaxed mb-8 md:mb-12 px-4"
-        >
-          Discover the finest collection of premium Home Textiles. <br className="hidden md:block" />
-          Crafted with integrity, designed to enhance everyday living.
-        </motion.p>
-
-        {/* CTA Buttons */}
-        <motion.div
-          variants={itemVariants}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mt-4 w-full sm:w-auto px-4"
-        >
-          <Button href="/contact" variant="primary" size="lg" className="w-full sm:w-auto min-w-[200px] shadow-[0_0_30px_rgba(138, 138, 138,0.2)]">
-            Partner With Us
-          </Button>
-        </motion.div>
-      </motion.div>
-
-      {/* Elegant Side Navigation Dots */}
-      <div className="absolute right-10 top-1/2 -translate-y-1/2 flex flex-col gap-4 hidden lg:flex z-20">
-        {IMAGES.map((_, i) => (
-          <button
-            key={i}
-            onClick={() => {
-              if (i === currentImageIndex) return;
-              setDirection(i > currentImageIndex ? 1 : -1);
-              setCurrentImageIndex(i);
-            }}
-            className={`w-1 transition-all rounded-none duration-500 ease-out focus:outline-none ${
-              i === currentImageIndex ? "bg-white h-8" : "bg-white/40 h-2 hover:bg-white/70 hover:h-4"
-            }`}
-            aria-label={`Go to slide ${i + 1}`}
-          />
-        ))}
+        {/* Top Wave Mask - Creates the downward arching curve in the center */}
+        <svg className="absolute bottom-0 left-0 w-full translate-y-[99%] z-10 pointer-events-none drop-shadow-[0_4px_10px_rgba(0,0,0,0.03)]" viewBox="0 0 1440 100" preserveAspectRatio="none" style={{ height: '7vw', minHeight: '50px' }}>
+            {/* Draw from 0,0 to 1440,0 then curve backwards dropping down to 130 */}
+            <path d="M0,0 L1440,0 C960,130 480,130 0,0 Z" fill="white" />
+        </svg>
       </div>
 
-      {/* Floating Scroll Indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5, duration: 1 }}
-        className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 z-20"
-      >
-        <div className="relative w-[1px] h-20 bg-white/20 overflow-hidden">
-          <motion.div
-            animate={{
-              y: ["-100%", "100%"],
-            }}
-            transition={{
-              duration: 2,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-            className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-transparent via-white to-transparent"
-          />
-        </div>
-        <span className="text-[10px] uppercase tracking-[0.4em] text-white font-bold drop-shadow-md">
-          Scroll
-        </span>
-      </motion.div>
+      {/* MID SECTION - IMAGE MARQUEE */}
+      {/* Background is lightly grayed, hidden seamlessly by the white SVG edges */}
+      <div className="relative w-full flex-1 min-h-[250px] overflow-hidden z-0">
+         <div className="absolute inset-0 flex w-max animate-scroll-left hover:[animation-play-state:paused] items-center">
+            {[...IMAGES, ...IMAGES].map((src, i) => (
+                <div key={i} className="flex-none w-[280px] sm:w-[320px] md:w-[350px] lg:w-[450px] h-full relative overflow-hidden bg-brand-cream border-r-4 md:border-r-8 border-white group">
+                    <Image 
+                      src={src} 
+                      alt="Collection showcase" 
+                      fill 
+                      className="object-cover transition-transform duration-700 ease-out group-hover:scale-105" 
+                      sizes="(max-width: 768px) 260px, (max-width: 1024px) 350px, 450px"
+                      priority={i < 4}
+                    />
+                </div>
+            ))}
+         </div>
+      </div>
 
-      {/* Decorative Elements */}
-      <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-brand-grey-medium/5 blur-[120px] rounded-none -translate-y-1/2 translate-x-1/2 pointer-events-none hidden md:block z-20"></div>
-      <div className="absolute bottom-0 left-0 w-1/3 h-1/3 bg-brand-grey-medium/5 blur-[120px] rounded-none translate-y-1/2 -translate-x-1/2 pointer-events-none hidden md:block z-20"></div>
+      {/* BOTTOM WHITE SECTION */}
+      <div className="relative z-20 bg-white w-full flex flex-col shrink-0 px-4 md:px-12 pt-12 md:pt-24 pb-8 md:pb-10">
+        
+        {/* Bottom Wave Mask - Creates the upward arching curve in the center */}
+        <svg className="absolute top-0 left-0 w-full -translate-y-[99%] z-10 pointer-events-none drop-shadow-[0_-4px_10px_rgba(0,0,0,0.02)]" viewBox="0 0 1440 100" preserveAspectRatio="none" style={{ height: '7vw', minHeight: '50px' }}>
+            {/* Draw from 0,100 to 1440,100 then curve upwards rising to near 0 */}
+            <path d="M0,100 L1440,100 C960,-30 480,-30 0,100 Z" fill="white" />
+        </svg>
+
+        <div className="flex flex-col md:flex-row items-center justify-between w-full max-w-[1400px] mx-auto gap-4 md:gap-12 lg:gap-8 z-10">
+            
+            {/* Center: Explore More (Moved for mobile visual flow) */}
+            <div className="flex flex-col items-center gap-2 md:gap-4 flex-1 order-1 md:order-2 -mt-10 md:-mt-12 lg:-mt-20">
+                <span className="text-[10px] md:text-sm font-semibold text-brand-charcoal uppercase tracking-wider">Explore More</span>
+                <button 
+                  onClick={handleScroll}
+                  className="w-10 h-10 md:w-14 md:h-14 rounded-full border border-brand-charcoal/20 flex items-center justify-center hover:bg-brand-charcoal/5 hover:scale-105 transition-all outline-none"
+                  aria-label="Scroll Down"
+                >
+                    <ArrowDown className="w-4 h-4 md:w-5 md:h-5 text-brand-charcoal stroke-[1.5]" />
+                </button>
+            </div>
+
+            {/* Combined Reviews & Badge container for Mobile Layout */}
+            <div className="flex flex-row items-center justify-between w-full md:contents order-2 flex-grow-0 md:flex-grow flex-1 mt-2 md:mt-0 px-2 sm:px-6 md:px-0">
+                {/* Left: 10K+ Reviews */}
+                <div className="flex items-center gap-2 md:gap-4 order-1 pt-0 justify-start">
+                    <div className="flex -space-x-3">
+                        <div className="w-8 h-8 md:w-12 md:h-12 rounded-full border-2 border-white overflow-hidden relative shadow-sm">
+                          <Image src={IMAGES[2]} alt="User 1" fill sizes="48px" className="object-cover" priority />
+                        </div>
+                        <div className="w-8 h-8 md:w-12 md:h-12 rounded-full border-2 border-white overflow-hidden relative shadow-sm">
+                          <Image src={IMAGES[3]} alt="User 2" fill sizes="48px" className="object-cover" priority />
+                        </div>
+                        <div className="w-8 h-8 md:w-12 md:h-12 rounded-full border-2 border-white overflow-hidden relative shadow-sm">
+                          <Image src={IMAGES[4]} alt="User 3" fill sizes="48px" className="object-cover" priority />
+                        </div>
+                    </div>
+                    <div className="flex flex-col text-sm pt-1">
+                        <span className="font-bold text-brand-charcoal text-sm md:text-base leading-tight">10K+ Reviews</span>
+                        <span className="text-brand-charcoal/60 text-[10px] md:text-xs">Customers satisfied</span>
+                    </div>
+                </div>
+
+                {/* Right: Circular Badge */}
+                <div className="flex justify-end order-3 md:order-3">
+                    <CircularText text="QUALITY BEST DESIGN AND " />
+                </div>
+            </div>
+        </div>
+      </div>
     </section>
   );
 }

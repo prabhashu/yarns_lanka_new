@@ -45,7 +45,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${jost.variable} ${plusJakartaSans.variable} light`}>
-      <body className="bg-brand-cream text-brand-black min-h-screen flex flex-col antialiased selection:bg-brand-grey-medium selection:text-white">
+      <head>
+        <link rel="preconnect" href="https://images.unsplash.com" />
+        <link rel="preconnect" href="https://i.pinimg.com" />
+      </head>
+      <body className="bg-white text-brand-black min-h-screen flex flex-col antialiased selection:bg-brand-grey-medium selection:text-white">
         {children}
       </body>
     </html>

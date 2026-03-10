@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
@@ -16,6 +16,93 @@ import {
   Heart,
   Sparkles
 } from "lucide-react";
+
+const StickyScrollSection = ({ 
+  title, 
+  subtitle, 
+  description, 
+  highlight,
+  imageSrc, 
+  bgColor 
+}: { 
+  title: string; 
+  subtitle: string; 
+  description: string; 
+  highlight: string;
+  imageSrc: string; 
+  bgColor: string; 
+}) => {
+  const ref = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start start", "end end"]
+  });
+
+  const titleOpacity = useTransform(scrollYProgress, [0, 0.3], [1, 0]);
+  const titleY = useTransform(scrollYProgress, [0, 0.3], [0, -100]);
+  
+  const descOpacity = useTransform(scrollYProgress, [0.4, 0.6, 0.8, 1], [0, 1, 1, 0]);
+  const descY = useTransform(scrollYProgress, [0.4, 0.6, 0.8, 1], [100, 0, 0, -100]);
+  
+  const imageScale = useTransform(scrollYProgress, [0, 1], [1, 1.15]);
+  const overlayOpacity = useTransform(scrollYProgress, [0, 0.5], [0.5, 0.8]);
+
+  return (
+    <section ref={ref} className={`relative h-[250vh] ${bgColor}`}>
+      <div className="sticky top-0 h-screen w-full flex flex-col items-center justify-center overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <motion.div style={{ scale: imageScale }} className="w-full h-full origin-center">
+            <Image 
+              src={imageSrc} 
+              alt={title} 
+              fill 
+              sizes="100vw"
+              className="object-cover"
+            />
+          </motion.div>
+          <motion.div 
+            style={{ opacity: overlayOpacity }}
+            className={`absolute inset-0 ${bgColor === 'bg-brand-black' ? 'bg-[#050505]' : 'bg-[#1A1A1A]'}`}
+          ></motion.div>
+        </div>
+        
+        {/* Content */}
+        <div className="relative z-10 w-full px-6 h-full">
+          
+          {/* Title Area */}
+          <motion.div 
+            style={{ opacity: titleOpacity, y: titleY }}
+            className="absolute inset-0 flex flex-col items-center justify-center w-full pointer-events-none"
+          >
+            <h3 className="text-white/70 font-sans text-sm md:text-base tracking-[0.5em] uppercase mb-6 flex items-center justify-center gap-4">
+              <span className="w-16 h-[1px] bg-white/50"></span> {subtitle} <span className="w-16 h-[1px] bg-white/50"></span>
+            </h3>
+            <h2 className="text-6xl sm:text-7xl md:text-9xl font-serif font-bold text-white tracking-widest uppercase text-center w-full text-center">
+              {title}
+            </h2>
+          </motion.div>
+
+          {/* Description Area */}
+          <motion.div 
+            style={{ opacity: descOpacity, y: descY }}
+            className="absolute inset-0 flex flex-col items-center justify-center w-full px-6 pointer-events-none"
+          >
+            <div className="max-w-5xl mx-auto w-full flex flex-col items-center">
+              <h3 className="text-brand-grey-light font-sans text-xs md:text-sm tracking-[0.4em] uppercase mb-8 md:mb-12 flex items-center justify-center gap-4">
+                <span className="w-8 h-[1px] bg-brand-grey-light"></span> THE {subtitle} <span className="w-8 h-[1px] bg-brand-grey-light"></span>
+              </h3>
+              <p className="text-2xl sm:text-3xl md:text-5xl lg:text-5xl font-serif leading-[1.3] text-white italic drop-shadow-xl text-center">
+                &quot;{description} <span className="text-brand-grey-medium not-italic">{highlight}</span>&quot;
+              </p>
+            </div>
+          </motion.div>
+          
+        </div>
+      </div>
+    </section>
+  );
+};
 
 export default function About() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -51,7 +138,7 @@ export default function About() {
     <>
       <Header />
       
-      <main ref={containerRef} className="w-full bg-brand-cream overflow-hidden relative">
+      <main ref={containerRef} className="w-full bg-brand-cream relative">
         {/* --- PAGE HERO --- */}
         <section className="relative h-[45vh] min-h-[350px] flex items-center justify-center">
           <div className="absolute inset-0 w-full h-full z-0">
@@ -83,6 +170,26 @@ export default function About() {
             </motion.div>
           </div>
         </section>
+
+        {/* --- MISSION (Sticky Scroll) --- */}
+        <StickyScrollSection 
+          title="MISSION"
+          subtitle="PURPOSE"
+          description="To enrich lives and inspire better lifestyles through timeless home textiles,"
+          highlight="one home at a time."
+          imageSrc="https://images.unsplash.com/photo-1601578318413-af2284f10486?q=80&w=1064&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          bgColor="bg-brand-charcoal"
+        />
+
+        {/* --- VISION (Sticky Scroll) --- */}
+        <StickyScrollSection 
+          title="VISION"
+          subtitle="FUTURE"
+          description="To be the leading home-textiles brand, inspiring better lifestyles worldwide through"
+          highlight="trend-evolving products in every home."
+          imageSrc="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?q=80&w=2000&auto=format&fit=crop"
+          bgColor="bg-brand-black"
+        />
 
         {/* --- WHO WE ARE (Parallax Scroll) --- */}
         <section className="relative bg-white py-24 z-20">
@@ -255,36 +362,6 @@ export default function About() {
             
             {/* Spacer for staggered cards */}
             <div className="h-0 lg:h-32"></div>
-          </div>
-        </section>
-
-        {/* --- MISSION & VISION (Massive Typography) --- */}
-        <section className="py-24 md:py-32 bg-brand-charcoal text-white relative overflow-hidden rounded-none md:rounded-none shadow-[0_-20px_50px_rgba(0,0,0,0.1)]">
-          {/* Background Text */}
-          <div className="absolute top-10 left-0 w-full overflow-hidden opacity-[0.02] pointer-events-none select-none">
-             <span className="text-[10rem] md:text-[15rem] font-serif font-bold whitespace-nowrap">PURPOSE PURPOSE</span>
-          </div>
-
-          <div className="container mx-auto px-6 relative z-10">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
-              <AnimatedSection direction="right">
-                <h3 className="text-brand-grey-medium font-sans text-xs md:text-sm tracking-[0.4em] uppercase mb-8 flex items-center gap-4">
-                  <span className="w-8 h-[1px] bg-brand-grey-medium"></span> MISSION
-                </h3>
-                <p className="text-2xl md:text-4xl font-serif leading-[1.3] text-white italic drop-shadow-lg">
-                  &quot;To enrich lives and inspire better lifestyles through timeless home textiles, <span className="text-brand-grey-medium not-italic">one home at a time.</span>&quot;
-                </p>
-              </AnimatedSection>
-              
-              <AnimatedSection direction="left" delay={0.2}>
-                <h3 className="text-brand-grey-medium font-sans text-xs md:text-sm tracking-[0.4em] uppercase mb-8 flex items-center gap-4">
-                  <span className="w-8 h-[1px] bg-brand-grey-medium"></span> VISION
-                </h3>
-                <p className="text-2xl md:text-4xl font-serif leading-[1.3] text-white italic drop-shadow-lg">
-                  &quot;To be the leading home-textiles brand, inspiring better lifestyles worldwide through <span className="text-brand-grey-medium not-italic">trend-evolving products</span> in every home.&quot;
-                </p>
-              </AnimatedSection>
-            </div>
           </div>
         </section>
 

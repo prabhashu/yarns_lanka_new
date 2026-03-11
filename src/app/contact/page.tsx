@@ -1,7 +1,8 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import SectionTitle from "@/components/ui/SectionTitle";
@@ -13,13 +14,86 @@ import {
   Facebook, 
   Instagram, 
   Twitter, 
-  MessageCircle 
+  MessageCircle,
+  CheckCircle2,
+  AlertCircle
 } from "lucide-react";
 
 export default function Contact() {
-  const handleSubmit = (e: React.FormEvent) => {
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    company: "",
+    inquiryType: "",
+    message: ""
+  });
+
+  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const validate = () => {
+    const newErrors: Record<string, string> = {};
+    
+    if (!formData.firstName.trim()) newErrors.firstName = "First name is required";
+    if (!formData.lastName.trim()) newErrors.lastName = "Last name is required";
+    
+    if (!formData.email.trim()) {
+      newErrors.email = "Email is required";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      newErrors.email = "Please enter a valid email address";
+    }
+    
+    if (!formData.inquiryType) newErrors.inquiryType = "Please select an inquiry type";
+    
+    if (!formData.message.trim()) {
+      newErrors.message = "Message is required";
+    } else if (formData.message.trim().length < 10) {
+      newErrors.message = "Message must be at least 10 characters long";
+    }
+    
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { id, value } = e.target;
+    setFormData(prev => ({ ...prev, [id]: value }));
+    // Clear error when user starts typing
+    if (errors[id]) {
+      setErrors(prev => {
+        const newErrors = { ...prev };
+        delete newErrors[id];
+        return newErrors;
+      });
+    }
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    alert("Thank you for your inquiry. Our team will get back to you shortly.");
+    
+    if (!validate()) return;
+    
+    setIsSubmitting(true);
+    
+    // Simulate API call
+    try {
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      setIsSubmitted(true);
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        company: "",
+        inquiryType: "",
+        message: ""
+      });
+    } catch (error) {
+      alert("Something went wrong. Please try again later.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -128,89 +202,150 @@ export default function Contact() {
                  {/* Internal hover glow */}
                 <div className="absolute top-0 right-0 w-32 h-32 bg-brand-grey-medium/5 rounded-none blur-[40px] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
 
-                <div className="mb-10 text-center lg:text-left">
-                  <h3 className="font-serif text-3xl text-brand-black mb-3">Send an Inquiry</h3>
-                  <p className="text-brand-charcoal/80">Fill out the form below and our team will be in touch within 24 hours.</p>
-                </div>
-                
-                <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="space-y-2">
-                      <label htmlFor="firstName" className="font-sans text-xs font-semibold tracking-widest uppercase text-brand-charcoal">First Name</label>
-                      <input 
-                        type="text" 
-                        id="firstName" 
-                        required 
-                        className="w-full bg-white border border-black/10 rounded-none px-4 py-4 text-brand-black placeholder-black/20 focus:outline-none focus:border-brand-grey-medium/50 focus:ring-1 focus:ring-brand-grey-medium/50 transition-all duration-300" 
-                        placeholder="John"
-                      />
+                {isSubmitted ? (
+                  <motion.div 
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    className="text-center py-12 px-4"
+                  >
+                    <div className="w-20 h-20 bg-brand-accent-sage/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                      <CheckCircle2 size={40} className="text-brand-charcoal" />
                     </div>
-                    <div className="space-y-2">
-                      <label htmlFor="lastName" className="font-sans text-xs font-semibold tracking-widest uppercase text-brand-charcoal">Last Name</label>
-                      <input 
-                        type="text" 
-                        id="lastName" 
-                        required 
-                        className="w-full bg-white border border-black/10 rounded-none px-4 py-4 text-brand-black placeholder-black/20 focus:outline-none focus:border-brand-grey-medium/50 focus:ring-1 focus:ring-brand-grey-medium/50 transition-all duration-300"
-                        placeholder="Doe"
-                      />
-                    </div>
-                  </div>
-                  
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="space-y-2">
-                      <label htmlFor="email" className="font-sans text-xs font-semibold tracking-widest uppercase text-brand-charcoal">Email Address</label>
-                      <input 
-                        type="email" 
-                        id="email" 
-                        required 
-                        className="w-full bg-white border border-black/10 rounded-none px-4 py-4 text-brand-black placeholder-black/20 focus:outline-none focus:border-brand-grey-medium/50 focus:ring-1 focus:ring-brand-grey-medium/50 transition-all duration-300"
-                        placeholder="john@example.com"
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <label htmlFor="company" className="font-sans text-xs font-semibold tracking-widest uppercase text-brand-charcoal">Company (Optional)</label>
-                      <input 
-                        type="text" 
-                        id="company" 
-                        className="w-full bg-white border border-black/10 rounded-none px-4 py-4 text-brand-black placeholder-black/20 focus:outline-none focus:border-brand-grey-medium/50 focus:ring-1 focus:ring-brand-grey-medium/50 transition-all duration-300"
-                        placeholder="Company Name"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="space-y-2">
-                    <label htmlFor="inquiryType" className="font-sans text-xs font-semibold tracking-widest uppercase text-brand-charcoal">Inquiry Type</label>
-                    <select 
-                      id="inquiryType" 
-                      required 
-                      defaultValue=""
-                      className="w-full bg-white border border-black/10 rounded-none px-4 py-4 text-brand-black focus:outline-none focus:border-brand-grey-medium/50 focus:ring-1 focus:ring-brand-grey-medium/50 transition-all duration-300 appearance-none"
-                      style={{ backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23333333' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e")`, backgroundPosition: 'right .5rem center', backgroundRepeat: 'no-repeat', backgroundSize: '1.5em 1.5em' }}
+                    <h3 className="font-serif text-3xl text-brand-black mb-4">Message Sent!</h3>
+                    <p className="text-brand-charcoal/80 max-w-md mx-auto mb-8">
+                      Thank you for reaching out to Yarns Lanka. We've received your inquiry and our team will get back to you within 24 hours.
+                    </p>
+                    <Button 
+                      variant="outline" 
+                      onClick={() => setIsSubmitted(false)}
+                      className="px-8"
                     >
-                      <option value="" disabled className="bg-white text-brand-charcoal">Select an option</option>
-                      <option value="wholesale" className="bg-white">Wholesale / B2B</option>
-                      <option value="retail" className="bg-white">Customer Support</option>
-                      <option value="press" className="bg-white">Press & Media</option>
-                      <option value="other" className="bg-white">Other</option>
-                    </select>
-                  </div>
-                  
-                  <div className="space-y-2">
-                    <label htmlFor="message" className="font-sans text-xs font-semibold tracking-widest uppercase text-brand-charcoal">Message</label>
-                    <textarea 
-                      id="message" 
-                      rows={5} 
-                      required 
-                      className="w-full bg-white border border-black/10 rounded-none px-4 py-4 text-brand-black placeholder-black/20 focus:outline-none focus:border-brand-grey-medium/50 focus:ring-1 focus:ring-brand-grey-medium/50 transition-all duration-300 resize-y"
-                      placeholder="How can we help you?"
-                    ></textarea>
-                  </div>
-                  
-                  <Button type="submit" variant="primary" className="w-full pt-4 mt-4">
-                    Send Message
-                  </Button>
-                </form>
+                      Send Another Message
+                    </Button>
+                  </motion.div>
+                ) : (
+                  <>
+                    <div className="mb-10 text-center lg:text-left">
+                      <h3 className="font-serif text-3xl text-brand-black mb-3">Send an Inquiry</h3>
+                      <p className="text-brand-charcoal/80">Fill out the form below and our team will be in touch within 24 hours.</p>
+                    </div>
+                    
+                    <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div className="space-y-2">
+                          <label htmlFor="firstName" className="font-sans text-xs font-semibold tracking-widest uppercase text-brand-charcoal">First Name</label>
+                          <input 
+                            type="text" 
+                            id="firstName" 
+                            value={formData.firstName}
+                            onChange={handleChange}
+                            className={`w-full bg-white border ${errors.firstName ? 'border-red-500' : 'border-black/10'} rounded-none px-4 py-4 text-brand-black placeholder-black/20 focus:outline-none focus:border-brand-grey-medium/50 focus:ring-1 focus:ring-brand-grey-medium/50 transition-all duration-300`} 
+                            placeholder="John"
+                          />
+                          {errors.firstName && (
+                            <p className="text-red-500 text-[10px] uppercase tracking-wider font-semibold flex items-center gap-1">
+                              <AlertCircle size={10} /> {errors.firstName}
+                            </p>
+                          )}
+                        </div>
+                        <div className="space-y-2">
+                          <label htmlFor="lastName" className="font-sans text-xs font-semibold tracking-widest uppercase text-brand-charcoal">Last Name</label>
+                          <input 
+                            type="text" 
+                            id="lastName" 
+                            value={formData.lastName}
+                            onChange={handleChange}
+                            className={`w-full bg-white border ${errors.lastName ? 'border-red-500' : 'border-black/10'} rounded-none px-4 py-4 text-brand-black placeholder-black/20 focus:outline-none focus:border-brand-grey-medium/50 focus:ring-1 focus:ring-brand-grey-medium/50 transition-all duration-300`}
+                            placeholder="Doe"
+                          />
+                          {errors.lastName && (
+                            <p className="text-red-500 text-[10px] uppercase tracking-wider font-semibold flex items-center gap-1">
+                              <AlertCircle size={10} /> {errors.lastName}
+                            </p>
+                          )}
+                        </div>
+                      </div>
+                      
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div className="space-y-2">
+                          <label htmlFor="email" className="font-sans text-xs font-semibold tracking-widest uppercase text-brand-charcoal">Email Address</label>
+                          <input 
+                            type="email" 
+                            id="email" 
+                            value={formData.email}
+                            onChange={handleChange}
+                            className={`w-full bg-white border ${errors.email ? 'border-red-500' : 'border-black/10'} rounded-none px-4 py-4 text-brand-black placeholder-black/20 focus:outline-none focus:border-brand-grey-medium/50 focus:ring-1 focus:ring-brand-grey-medium/50 transition-all duration-300`}
+                            placeholder="john@example.com"
+                          />
+                          {errors.email && (
+                            <p className="text-red-500 text-[10px] uppercase tracking-wider font-semibold flex items-center gap-1">
+                              <AlertCircle size={10} /> {errors.email}
+                            </p>
+                          )}
+                        </div>
+                        <div className="space-y-2">
+                          <label htmlFor="company" className="font-sans text-xs font-semibold tracking-widest uppercase text-brand-charcoal">Company (Optional)</label>
+                          <input 
+                            type="text" 
+                            id="company" 
+                            value={formData.company}
+                            onChange={handleChange}
+                            className="w-full bg-white border border-black/10 rounded-none px-4 py-4 text-brand-black placeholder-black/20 focus:outline-none focus:border-brand-grey-medium/50 focus:ring-1 focus:ring-brand-grey-medium/50 transition-all duration-300"
+                            placeholder="Company Name"
+                          />
+                        </div>
+                      </div>
+
+                      <div className="space-y-2">
+                        <label htmlFor="inquiryType" className="font-sans text-xs font-semibold tracking-widest uppercase text-brand-charcoal">Inquiry Type</label>
+                        <select 
+                          id="inquiryType" 
+                          value={formData.inquiryType}
+                          onChange={handleChange}
+                          className={`w-full bg-white border ${errors.inquiryType ? 'border-red-500' : 'border-black/10'} rounded-none px-4 py-4 text-brand-black focus:outline-none focus:border-brand-grey-medium/50 focus:ring-1 focus:ring-brand-grey-medium/50 transition-all duration-300 appearance-none`}
+                          style={{ backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23333333' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e")`, backgroundPosition: 'right .5rem center', backgroundRepeat: 'no-repeat', backgroundSize: '1.5em 1.5em' }}
+                        >
+                          <option value="" disabled className="bg-white text-brand-charcoal">Select an option</option>
+                          <option value="wholesale" className="bg-white">Wholesale / B2B</option>
+                          <option value="retail" className="bg-white">Customer Support</option>
+                          <option value="press" className="bg-white">Press & Media</option>
+                          <option value="other" className="bg-white">Other</option>
+                        </select>
+                        {errors.inquiryType && (
+                          <p className="text-red-500 text-[10px] uppercase tracking-wider font-semibold flex items-center gap-1">
+                            <AlertCircle size={10} /> {errors.inquiryType}
+                          </p>
+                        )}
+                      </div>
+                      
+                      <div className="space-y-2">
+                        <label htmlFor="message" className="font-sans text-xs font-semibold tracking-widest uppercase text-brand-charcoal">Message</label>
+                        <textarea 
+                          id="message" 
+                          rows={5} 
+                          value={formData.message}
+                          onChange={handleChange}
+                          className={`w-full bg-white border ${errors.message ? 'border-red-500' : 'border-black/10'} rounded-none px-4 py-4 text-brand-black placeholder-black/20 focus:outline-none focus:border-brand-grey-medium/50 focus:ring-1 focus:ring-brand-grey-medium/50 transition-all duration-300 resize-y`}
+                          placeholder="How can we help you?"
+                        ></textarea>
+                        {errors.message && (
+                          <p className="text-red-500 text-[10px] uppercase tracking-wider font-semibold flex items-center gap-1">
+                            <AlertCircle size={10} /> {errors.message}
+                          </p>
+                        )}
+                      </div>
+                      
+                      <Button 
+                        type="submit" 
+                        variant="primary" 
+                        className="w-full pt-4 mt-4"
+                        disabled={isSubmitting}
+                      >
+                        {isSubmitting ? "Sending..." : "Send Message"}
+                      </Button>
+                    </form>
+                  </>
+                )}
               </div>
             </AnimatedSection>
           </div>

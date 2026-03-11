@@ -28,7 +28,7 @@ export async function generateMetadata({
     title: product.name,
     description: product.description,
     openGraph: {
-      title: `${product.name} | KNIGHTS by Yarns Lanka`,
+      title: `${product.name} | Yarns Lanka`,
       description: product.description,
       images: [{ url: product.image }],
     },

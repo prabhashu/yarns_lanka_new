@@ -73,7 +73,8 @@ export default function ProductDetailClient({ product }: { product: Product }) {
                       <Image 
                         src={thumbSrc} 
                         alt={`${product.name} - ${color.name}`} 
-                        fill 
+                        fill
+                        sizes="80px" 
                         className={`object-cover transition-opacity duration-300 ${
                           isSelected ? 'opacity-100' : 'opacity-60 hover:opacity-100'
                         }`} 

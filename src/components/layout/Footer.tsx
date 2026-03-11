@@ -87,12 +87,9 @@ export default function Footer() {
                   Sri Lanka
                 </span>
               </li>
-              <li className="flex flex-col md:flex-row items-center md:items-start justify-center md:justify-start gap-2 md:gap-4 group">
-                <Mail size={20} className="text-brand-grey-medium md:mt-1 group-hover:scale-110 transition-transform duration-300" />
-                <div className="flex flex-col">
-                  <a href="mailto:Info@yarnslanka.com" className="text-sm text-white/70 hover:text-brand-grey-medium transition-colors">Info@yarnslanka.com</a>
-                  <a href="mailto:yarnslanka@gmail.com" className="text-sm text-white/70 hover:text-brand-grey-medium transition-colors">yarnslanka@gmail.com</a>
-                </div>
+              <li className="flex flex-col md:flex-row items-center justify-center md:justify-start gap-2 md:gap-4 group">
+                <Mail size={20} className="text-brand-grey-medium group-hover:scale-110 transition-transform duration-300 shrink-0" />
+                <a href="mailto:Info@yarnslanka.com" className="text-sm text-white/70 hover:text-brand-grey-medium transition-colors">Info@yarnslanka.com</a>
               </li>
             </ul>
           </div>

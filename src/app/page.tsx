@@ -8,7 +8,7 @@ const ProductCarousel = dynamic(() => import('@/components/home/ProductCarousel'
   loading: () => <div className="min-h-[400px] flex items-center justify-center bg-white"><p className="text-brand-charcoal/50 animate-pulse uppercase tracking-widest text-sm">Loading Collection...</p></div>
 });
 import Header from "@/components/layout/Header";
-import Footer from "@/components/layout/Footer";
+const Footer = dynamic(() => import('@/components/layout/Footer'));
 import Button from "@/components/ui/Button";
 import SectionTitle from "@/components/ui/SectionTitle";
 import AnimatedSection from "@/components/ui/AnimatedSection";

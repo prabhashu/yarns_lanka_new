@@ -8,14 +8,14 @@ import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-
 import { Menu, X } from "lucide-react";
 
 const leftLinks = [
-  { name: "Home", href: "/" },
-  { name: "About", href: "/about" },
-  { name: "Collections", href: "/collections" },
+  { name: "Home", href: "/", tooltip: "Back to start" },
+  { name: "About", href: "/about", tooltip: "Our story & values" },
+  { name: "Collections", href: "/collections", tooltip: "Browse all products" },
 ];
 
 const rightLinks = [
-  { name: "Privacy", href: "/privacy" },
-  { name: "Contact", href: "/contact" },
+  { name: "Privacy", href: "/privacy", tooltip: "Data & policies" },
+  { name: "Contact", href: "/contact", tooltip: "Get in touch" },
 ];
 
 export default function Header({ theme = 'dark' }: { theme?: 'light' | 'dark' }) {
@@ -56,28 +56,33 @@ export default function Header({ theme = 'dark' }: { theme?: 'light' | 'dark' })
     setMobileMenuOpen(!mobileMenuOpen);
   };
 
-  const NavItem = ({ link }: { link: { name: string, href: string } }) => {
+  const NavItem = ({ link }: { link: { name: string, href: string, tooltip?: string } }) => {
     const isActive = pathname === link.href;
     const isHovered = hoveredLink === link.name;
-    
+
     return (
-      <li className="relative group/nav-item">
-        <Link 
-          href={link.href} 
+      <li className="relative">
+        <Link
+          href={link.href}
           onMouseEnter={() => setHoveredLink(link.name)}
           onMouseLeave={() => setHoveredLink(null)}
-          className={`px-5 py-2.5 text-[11px] font-sans font-medium uppercase tracking-[0.2em] transition-colors duration-300 relative z-10 block
-            ${isActive 
+          className={`px-5 py-2.5 text-[11px] font-sans font-medium uppercase tracking-[0.2em] transition-colors duration-300 relative z-10 flex items-center justify-center
+            ${isActive
               ? (isScrolled || theme === 'light' ? "text-brand-black" : "text-white")
               : isScrolled || theme === 'light'
-                ? "text-brand-charcoal/70 hover:text-brand-black" 
+                ? "text-brand-charcoal/70 hover:text-brand-black"
                 : "text-white/80 hover:text-white"
             }
           `}
         >
-          {link.name}
+          <motion.span
+            animate={{ scale: isHovered ? 1.05 : 1 }}
+            transition={{ type: "spring", stiffness: 400, damping: 20 }}
+            style={{ display: "inline-block" }}
+          >
+            {link.name}
+          </motion.span>
         </Link>
-        
       </li>
     );
   };

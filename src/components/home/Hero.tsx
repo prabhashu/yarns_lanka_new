@@ -40,7 +40,7 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative w-full bg-[#f4f4f4] flex flex-col overflow-hidden h-[100dvh] min-h-[650px]">
+    <section className="relative w-full bg-[#f4f4f4] flex flex-col overflow-hidden min-h-[100dvh] md:h-[100dvh] xl:min-h-[800px] xl:h-auto 2xl:min-h-[900px]">
       <style dangerouslySetInnerHTML={{__html: `
         @keyframes scroll-left {
           0% { transform: translate3d(0, 0, 0); }
@@ -54,7 +54,7 @@ export default function Hero() {
 
       {/* TOP WHITE SECTION */}
       {/* Notice: Z-index 20 keeps it hovering over the image container */}
-      <div className="relative z-20 bg-white w-full flex flex-col shrink-0 pt-24 md:pt-32 pb-8 md:pb-12 px-4 md:px-12">
+      <div className="relative z-20 bg-white w-full flex flex-col shrink-0 pt-20 sm:pt-24 md:pt-32 pb-10 md:pb-16 px-4 md:px-12">
         
         {/* Text Area */}
         <motion.div 
@@ -63,8 +63,8 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         >
-            <h1 className="text-[2.85rem] sm:text-5xl md:text-6xl lg:text-[5.5rem] font-serif text-brand-charcoal tracking-tight leading-[1.1] mb-5 md:mb-6 font-semibold max-w-[95%] md:max-w-none mx-auto">
-                Enduring Style <br className="md:hidden"/> for a <br className="hidden md:block"/> Refined Lifestyle
+            <h1 className="text-[2.5rem] xs:text-[2.85rem] sm:text-5xl md:text-6xl lg:text-[5.5rem] font-serif text-brand-charcoal tracking-tight leading-[1.1] mb-5 md:mb-6 font-semibold max-w-[95%] md:max-w-none mx-auto">
+                Enduring Style <br className="xs:hidden"/> for a <br className="hidden xs:block md:hidden"/> Refined Lifestyle
             </h1>
             <p className="text-brand-charcoal/60 text-sm sm:text-base md:text-lg max-w-2xl font-light px-2">
                 Showcase your true self with our distinctive collection that blends style and individuality perfectly for everyday luxury.
@@ -72,24 +72,24 @@ export default function Hero() {
         </motion.div>
 
         {/* Top Wave Mask - Creates the downward arching curve in the center */}
-        <svg className="absolute bottom-0 left-0 w-full translate-y-[99%] z-10 pointer-events-none drop-shadow-[0_4px_10px_rgba(0,0,0,0.03)]" viewBox="0 0 1440 100" preserveAspectRatio="none" style={{ height: '7vw', minHeight: '50px' }}>
-            {/* Draw from 0,0 to 1440,0 then curve backwards dropping down to 130 */}
-            <path d="M0,0 L1440,0 C960,130 480,130 0,0 Z" fill="white" />
+        <svg className="absolute bottom-0 left-0 w-full translate-y-[98%] z-10 pointer-events-none drop-shadow-[0_4px_10px_rgba(0,0,0,0.03)] h-[40px] sm:h-[60px] md:h-[7vw] lg:h-[8vw] xl:h-[100px] 2xl:h-[120px]" viewBox="0 0 1440 100" preserveAspectRatio="none">
+            {/* Draw from 0,0 to 1440,0 then curve backwards dropping down to 100 */}
+            <path d="M0,0 L1440,0 C960,100 480,100 0,0 Z" fill="white" />
         </svg>
       </div>
 
       {/* MID SECTION - IMAGE MARQUEE */}
       {/* Background is lightly grayed, hidden seamlessly by the white SVG edges */}
-      <div className="relative w-full flex-1 min-h-[250px] overflow-hidden z-0">
+      <div className="relative w-full flex-1 min-h-[320px] sm:min-h-[400px] md:min-h-[450px] xl:min-h-[500px] 2xl:min-h-[560px] overflow-hidden z-0 bg-[#f8f8f8]">
          <div className="absolute inset-0 flex w-max animate-scroll-left items-center">
             {[...IMAGES, ...IMAGES].map((src, i) => (
-                <div key={i} className="flex-none w-[280px] sm:w-[320px] md:w-[350px] lg:w-[450px] h-full relative overflow-hidden bg-brand-cream border-r-4 md:border-r-8 border-white group">
+                <div key={i} className="flex-none w-[240px] sm:w-[300px] md:w-[380px] lg:w-[480px] xl:w-[30vw] 2xl:w-[28vw] h-full relative overflow-hidden bg-brand-cream border-r-2 md:border-r-4 border-white group">
                     <Image 
                       src={src} 
                       alt="Collection showcase" 
                       fill 
                       className="object-cover transition-transform duration-700 ease-out group-hover:scale-105" 
-                      sizes="(max-width: 768px) 260px, (max-width: 1024px) 350px, 450px"
+                      sizes="(max-width: 768px) 260px, (max-width: 1024px) 350px, (max-width: 1280px) 480px, (max-width: 1536px) 30vw, 28vw"
                       priority={i < 3}
                     />
                 </div>
@@ -101,15 +101,15 @@ export default function Hero() {
       <div className="relative z-20 bg-white w-full flex flex-col shrink-0 px-4 md:px-12 pt-12 md:pt-24 pb-8 md:pb-10">
         
         {/* Bottom Wave Mask - Creates the upward arching curve in the center */}
-        <svg className="absolute top-0 left-0 w-full -translate-y-[99%] z-10 pointer-events-none drop-shadow-[0_-4px_10px_rgba(0,0,0,0.02)]" viewBox="0 0 1440 100" preserveAspectRatio="none" style={{ height: '7vw', minHeight: '50px' }}>
-            {/* Draw from 0,100 to 1440,100 then curve upwards rising to near 0 */}
-            <path d="M0,100 L1440,100 C960,-30 480,-30 0,100 Z" fill="white" />
+        <svg className="absolute top-0 left-0 w-full -translate-y-[98%] z-10 pointer-events-none drop-shadow-[0_-4px_10px_rgba(0,0,0,0.02)] h-[40px] sm:h-[60px] md:h-[7vw] lg:h-[8vw] xl:h-[100px] 2xl:h-[120px]" viewBox="0 0 1440 100" preserveAspectRatio="none">
+            {/* Draw from 0,100 to 1440,100 then curve upwards rising to 0 */}
+            <path d="M0,100 L1440,100 C960,0 480,0 0,100 Z" fill="white" />
         </svg>
 
         <div className="flex flex-col md:flex-row items-center justify-between w-full max-w-[1400px] mx-auto gap-4 md:gap-12 lg:gap-8 z-10">
             
             {/* Center: Explore More (Moved for mobile visual flow) */}
-            <div className="flex flex-col items-center gap-2 md:gap-4 flex-1 order-1 md:order-2 -mt-10 md:-mt-12 lg:-mt-20">
+            <div className="flex flex-col items-center gap-2 md:gap-4 flex-1 order-1 md:order-2 -mt-12 sm:-mt-16 md:-mt-20 lg:-mt-24">
                 <span className="text-[10px] md:text-sm font-semibold text-brand-charcoal uppercase tracking-wider">Explore More</span>
                 <button 
                   onClick={handleScroll}

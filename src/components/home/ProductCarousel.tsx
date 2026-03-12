@@ -93,9 +93,7 @@ export default function ProductCarousel() {
       onMouseLeave={() => setIsPaused(false)}
     >
       {/* Background Decorative Text - Repositioned for mobile */}
-      <div className="absolute top-[15%] left-0 w-full flex justify-center pointer-events-none opacity-[0.03] select-none z-0 overflow-hidden">
-        <span className="text-[10rem] sm:text-[15rem] md:text-[20rem] font-serif font-bold text-brand-black leading-none uppercase">LUXURY</span>
-      </div>
+      
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
